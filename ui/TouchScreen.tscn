@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon32.png" type="Texture" id=1]
-[ext_resource path="res://ui/TouchScreen.gd" type="Script" id=2]
 [ext_resource path="res://playericon.png" type="Texture" id=3]
 
 [node name="TouchScreen" type="CanvasLayer"]
-script = ExtResource( 2 )
 
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2( 69, 255 )
@@ -35,5 +33,3 @@ position = Vector2( 513, 124 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 3 )
-
-[connection signal="pressed" from="Interact" to="." method="_on_Interact_pressed"]
