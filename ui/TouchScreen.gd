@@ -1,17 +1,12 @@
 extends CanvasLayer
 
+# 1. YOU MUST ADD THIS LINE AT THE VERY TOP
+signal interact_pressed 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Interact.visible = false
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Interact_pressed():
+	# 2. This now "shouts" to any script listening
+	emit_signal("interact_pressed")
+	print("UI Script: Signal sent!") # Add this to confirm the button works
