@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://icon32.png" type="Texture" id=1]
-[ext_resource path="res://puzzles/test drag and drop/drag and drop.tscn" type="PackedScene" id=2]
 
 [node name="NinePatchRect" type="NinePatchRect"]
 margin_left = 121.0
@@ -13,6 +12,3 @@ patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
-
-[node name="TestDnD" parent="." instance=ExtResource( 2 )]
-position = Vector2( -48, -46 )
