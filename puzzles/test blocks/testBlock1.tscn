@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon32.png" type="Texture" id=1]
+[ext_resource path="res://puzzles/test blocks/testBlock1.gd" type="Script" id=2]
+
+[node name="testBlock1" type="TextureRect"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 2
