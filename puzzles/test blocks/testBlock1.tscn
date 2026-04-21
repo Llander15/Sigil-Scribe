@@ -14,3 +14,7 @@ show_behind_parent = true
 margin_right = 32.0
 margin_bottom = 32.0
 mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = -32.0
+margin_right = 40.0
