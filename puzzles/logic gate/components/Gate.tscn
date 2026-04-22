@@ -11,4 +11,5 @@ script = ExtResource( 2 )
 margin_top = -16.0
 margin_right = 48.0
 mouse_filter = 2
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "AND"

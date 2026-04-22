@@ -45,6 +45,8 @@ func evaluate_logic():
 			current_output = not (input_a or input_b)
 		"XOR":
 			current_output = input_a != input_b
+		"XNOR":
+			current_output = input_a == input_b
 		"NOT":
 			current_output = not input_a
 		_:
@@ -60,21 +62,27 @@ func get_drag_data(_position):
 		"gate_name": LogicGate,
 		"source_node": self 
 	}
+
+	# 1. Create a "Pivot" node that stays at your finger
+	var pivot = Control.new()
 	
-	# Create the preview directly
+	# 2. Create the actual Gate visual
 	var drag_preview = TextureRect.new()
 	drag_preview.texture = texture
 	drag_preview.expand = true
 	drag_preview.rect_size = Vector2(64, 64)
 	drag_preview.modulate = Color(1, 1, 1, drag_opacity) 
 	
-	# Setting the position to half the size centers it on your touch/cursor
-	drag_preview.rect_position = Vector2(-32, -32) 
+	# 3. Position the visual RELATIVE to the pivot
+	drag_preview.rect_position = Vector2(-32, -100) 
 	
-	# Use the TextureRect directly as the preview
-	set_drag_preview(drag_preview)
+	# 4. Put the visual inside the pivot and show the pivot
+	pivot.add_child(drag_preview)
+	set_drag_preview(pivot)
 	
 	return data
+
+
 
 func can_drop_data(_position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("source_node")
