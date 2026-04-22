@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/test tile.tres" type="TileSet" id=2]
 [ext_resource path="res://playericon.png" type="Texture" id=3]
 [ext_resource path="res://puzzles/logic gate/LG 1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://puzzles/test puzzle/testPuzzle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://puzzles/logic gate/LG 2.tscn" type="PackedScene" id=6]
 
 [node name="World Test" type="Node2D"]
@@ -21,13 +20,6 @@ tile_data = PoolIntArray( -1376283, 0, 0, -1310747, 0, 0, -1245211, 0, 0, -12452
 position = Vector2( 2107.49, -352 )
 
 [node name="puzzles" type="Node2D" parent="."]
-
-[node name="testPuzzle" parent="puzzles" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 2316.04, -337 )
-
-[node name="Sprite" type="Sprite" parent="puzzles/testPuzzle"]
-texture = ExtResource( 3 )
 
 [node name="LG 1" parent="puzzles" instance=ExtResource( 4 )]
 position = Vector2( 2011.69, -320 )
