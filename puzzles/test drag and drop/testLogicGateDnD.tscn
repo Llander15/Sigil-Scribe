@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://puzzles/test blocks/testBlock1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://playericon.png" type="Texture" id=2]
+
+[node name="TestLogicGateDnD" type="Node2D"]
+
+[node name="Base Input" type="Node2D" parent="."]
+
+[node name="BI 1" type="ColorRect" parent="Base Input"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 1, 0.4, 0.4, 1 )
+
+[node name="BI 2" type="ColorRect" parent="Base Input"]
+margin_left = 32.0
+margin_top = 96.0
+margin_right = 64.0
+margin_bottom = 128.0
+color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="Block" type="Node2D" parent="."]
+
+[node name="Block 1" parent="Block" instance=ExtResource( 1 )]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 160.0
+margin_bottom = 96.0
+LogicGate = "AND"
+
+[node name="Block 2" parent="Block" instance=ExtResource( 1 )]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 160.0
+margin_bottom = 160.0
+texture = ExtResource( 2 )
+LogicGate = "OR"
+
+[node name="Lines" type="Node2D" parent="."]
+
+[node name="line 1" type="Line2D" parent="Lines"]
+position = Vector2( 0, 16 )
+points = PoolVector2Array( 64, 44, 86, 44, 96, 53, 128, 53 )
+width = 8.0
+default_color = Color( 1, 0.4, 0.4, 1 )
+
+[node name="line 2" type="Line2D" parent="Lines"]
+position = Vector2( 0, 81 )
+points = PoolVector2Array( 64, 19, 86, 19, 96, 10, 128, 10 )
+width = 8.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="line 3" type="Line2D" parent="Lines"]
+position = Vector2( 96, 48 )
+points = PoolVector2Array( 64, 32, 64, 32, 64, 32, 128, 32 )
+width = 8.0
+default_color = Color( 1, 0.4, 0.4, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 224.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 96.0
+color = Color( 1, 0.4, 0.4, 1 )

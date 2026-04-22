@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon32.png" type="Texture" id=1]
+[ext_resource path="res://puzzles/logic gate/components/Gate.gd" type="Script" id=2]
+
+[node name="Gate" type="TextureRect"]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = -16.0
+margin_right = 48.0
+mouse_filter = 2
+text = "AND"
