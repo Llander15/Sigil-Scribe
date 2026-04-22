@@ -12,9 +12,14 @@ func _ready():
 
 # runs this function when interact button is pressed
 func _on_Interact_pressed():
-	emit_signal("interact_pressed")
-	print("Interact Btn tapped -> Signal emitted!")
-	pass
+	if is_on_floor(): # Only allow interaction if standing still
+		emit_signal("interact_pressed")
+	else:
+		print("Cannot interact while jumping!")
+		
+#	emit_signal("interact_pressed")
+#	print("Interact Btn tapped -> Signal emitted!")
+#	pass
 
 const UP = Vector2(0, -1)
 const GRAVITY = 20 * 60

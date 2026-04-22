@@ -21,6 +21,7 @@ scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="Popup" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="NinePatchRect" parent="Popup" instance=ExtResource( 1 )]
 margin_left = 40.0

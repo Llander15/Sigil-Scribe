@@ -84,7 +84,12 @@ func _on_Area2D_body_exited(body):
 func _on_player_interacted():
 	print("Player touched the terminal!")
 	
+	#Freeze the world
+	get_tree().paused = true
+	
 	$Popup.visible = true
+	
+	
 	
 	target_player.get_node("Control/TouchScreen").visible = false
 
@@ -95,6 +100,10 @@ func _on_exit_released():
 
 func exit_puzzle():
 	$Popup.visible = false
+	
+	#Unfreeze the world
+	get_tree().paused = false
+	
 	if not target_player:
 		pass
 	else:

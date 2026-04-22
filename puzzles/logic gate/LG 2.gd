@@ -86,6 +86,9 @@ func _on_player_interacted():
 	
 	$Popup.visible = true
 	
+	#freezes the world
+	get_tree().paused = true
+	
 	target_player.get_node("Control/TouchScreen").visible = false
 
 func _on_exit_released():
@@ -95,6 +98,10 @@ func _on_exit_released():
 
 func exit_puzzle():
 	$Popup.visible = false
+	
+	#Unfreeze the world
+	get_tree().paused = false
+	
 	if not target_player:
 		pass
 	else:
