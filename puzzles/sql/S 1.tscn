@@ -107,6 +107,48 @@ margin_right = 200.0
 
 [node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer/Q5" instance=ExtResource( 5 )]
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/NinePatchRect"]
+margin_left = 29.0
+margin_top = 110.0
+margin_right = 329.0
+margin_bottom = 110.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Q1" type="Control" parent="Popup/NinePatchRect/HBoxContainer2"]
+margin_left = 100.0
+margin_right = 100.0
+
+[node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer2/Q1" instance=ExtResource( 5 )]
+sql_text = "FROM"
+
+[node name="Q2" type="Control" parent="Popup/NinePatchRect/HBoxContainer2"]
+margin_left = 125.0
+margin_right = 125.0
+
+[node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer2/Q2" instance=ExtResource( 5 )]
+sql_text = ";"
+
+[node name="Q3" type="Control" parent="Popup/NinePatchRect/HBoxContainer2"]
+margin_left = 150.0
+margin_right = 150.0
+
+[node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer2/Q3" instance=ExtResource( 5 )]
+sql_text = "*"
+
+[node name="Q4" type="Control" parent="Popup/NinePatchRect/HBoxContainer2"]
+margin_left = 175.0
+margin_right = 175.0
+
+[node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer2/Q4" instance=ExtResource( 5 )]
+sql_text = "doors"
+
+[node name="Q5" type="Control" parent="Popup/NinePatchRect/HBoxContainer2"]
+margin_left = 200.0
+margin_right = 200.0
+
+[node name="SQLslot" parent="Popup/NinePatchRect/HBoxContainer2/Q5" instance=ExtResource( 5 )]
+
 [node name="exit" type="TouchScreenButton" parent="Popup"]
 position = Vector2( 545, 63 )
 normal = ExtResource( 3 )

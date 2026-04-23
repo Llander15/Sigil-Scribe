@@ -28,14 +28,35 @@ position = Vector2( 2011.69, -320 )
 [node name="Sprite" type="Sprite" parent="puzzles/LG 1"]
 texture = ExtResource( 3 )
 
+[node name="Label" type="Label" parent="puzzles/LG 1"]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 48.0
+margin_bottom = -18.0
+text = "Logic Gate"
+
 [node name="LG 2" parent="puzzles" instance=ExtResource( 6 )]
 position = Vector2( 2267.15, -320 )
 
 [node name="Sprite" type="Sprite" parent="puzzles/LG 2"]
 texture = ExtResource( 3 )
 
+[node name="Label2" type="Label" parent="puzzles/LG 2"]
+margin_left = -31.9335
+margin_top = -32.0
+margin_right = 47.0665
+margin_bottom = -18.0
+text = "Logic Gate"
+
 [node name="S 1" parent="puzzles" instance=ExtResource( 5 )]
 position = Vector2( 2522.6, -352 )
 
 [node name="Sprite" type="Sprite" parent="puzzles/S 1"]
 texture = ExtResource( 3 )
+
+[node name="Label3" type="Label" parent="puzzles/S 1"]
+margin_left = -16.0
+margin_top = -32.0
+margin_right = 16.0
+margin_bottom = -18.0
+text = "SQL"
