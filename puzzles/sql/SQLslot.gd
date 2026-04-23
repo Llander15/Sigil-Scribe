@@ -12,7 +12,41 @@ func _ready():
 
 func update_text_display():
 	if has_node("Label"):
-		$Label.text = sql_text
+		var label = $Label
+		label.text = sql_text
+		
+		# 1. Get the font being used by the label
+		# This looks for a custom font, otherwise uses the default
+		var font = label.get_font("font")
+		
+		# 2. Calculate the width of the string
+		var text_size = font.get_string_size(label.text)
+		
+		# 3. Add some "Padding" (e.g., 20 pixels on each side)
+		var padding = 40
+		var new_width = text_size.x + padding
+		var new_height = 50 # Keep height consistent for the row
+		
+		# 4. Apply the size to the Label AND the Panel
+		# We use min_size because we are inside a Container
+		label.rect_min_size = Vector2(new_width, new_height)
+		self.rect_min_size = Vector2(new_width, new_height)
+		
+		# Optional: Ensure the HBox updates its layout immediately
+# Check if the parent is actually a container before calling the function
+		var parent = get_parent()
+		if parent is Container:
+			parent.queue_sort() 
+		else:
+			# If the parent is a NinePatchRect, it doesn't sort. 
+			# You might need to reach one level higher to find the HBox.
+			var grand_parent = parent.get_parent()
+			if grand_parent is Container:
+				grand_parent.queue_sort()
+
+	var wrapper = get_parent()
+	if wrapper is Control and not wrapper is Container:
+		wrapper.rect_min_size = self.rect_min_size
 
 # --- DRAG LOGIC ---
 func get_drag_data(_position):
