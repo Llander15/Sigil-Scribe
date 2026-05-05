@@ -14,7 +14,7 @@
 [ext_resource path="res://minimap/minimap.gd" type="Script" id=12]
 [ext_resource path="res://background/Background World 1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://prolouge/Prolouge.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prologue/Prologue.tscn" type="PackedScene" id=15]
 [ext_resource path="res://npc/NPC.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=5]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://prolouge/Prolouge.gd" type="Script" id=2]
+[ext_resource path="res://prologue/Prologue.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -66,7 +66,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Prolouge" type="CanvasLayer"]
+[node name="Prologue" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 2 )
 

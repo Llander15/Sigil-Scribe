@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://player/jump.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/idle1.png" type="Texture" id=5]
 [ext_resource path="res://player/sfx_Footstepl.wav" type="AudioStream" id=6]
 [ext_resource path="res://player/jump_02.wav" type="AudioStream" id=7]
+[ext_resource path="res://player/Camera2D.gd" type="Script" id=8]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
@@ -84,8 +85,12 @@ margin_bottom = 40.0
 [node name="TouchScreen" parent="Control" instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -64 )
 current = true
 smoothing_enabled = true
+script = ExtResource( 8 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
 
 [node name="Run SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

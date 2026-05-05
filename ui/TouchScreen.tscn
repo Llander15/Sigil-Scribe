@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon32.png" type="Texture" id=1]
+[ext_resource path="res://ui/FPS.gd" type="Script" id=2]
 [ext_resource path="res://playericon.png" type="Texture" id=3]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+extra_spacing_char = 4
+font_data = ExtResource( 4 )
 
 [node name="TouchScreen" type="CanvasLayer"]
 
@@ -33,3 +39,13 @@ position = Vector2( 513, 124 )
 scale = Vector2( 2, 2 )
 normal = ExtResource( 1 )
 pressed = ExtResource( 3 )
+
+[node name="FPS" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 336.0
+margin_right = 64.0
+margin_bottom = 353.0
+custom_colors/font_color = Color( 0.776471, 0.768627, 0.156863, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "FPS: 0"
+script = ExtResource( 2 )
