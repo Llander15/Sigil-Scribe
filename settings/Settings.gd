@@ -24,4 +24,10 @@ func _on_Close_button_up():
 
 func _on_Delete_Player_Saved_File_button_up():
 	$"Delete Confirm Popup".visible = true
+	$NinePatchRect.visible = false
+	pass # Replace with function body.
+
+
+func _on_Back_button_up():
+	$NinePatchRect.visible = true
 	pass # Replace with function body.

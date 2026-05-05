@@ -67,11 +67,10 @@ custom_styles/normal = ExtResource( 4 )
 text = "Back"
 
 [node name="Delete Confirm Popup" type="NinePatchRect" parent="."]
-visible = false
 margin_left = 128.0
-margin_top = 96.0
+margin_top = 48.0
 margin_right = 512.0
-margin_bottom = 304.0
+margin_bottom = 320.0
 texture = ExtResource( 1 )
 patch_margin_left = 32
 patch_margin_top = 32
@@ -82,15 +81,15 @@ script = ExtResource( 6 )
 [node name="AlwayAtTop(blocks input)" type="Panel" parent="Delete Confirm Popup"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -128.0
-margin_top = -96.0
+margin_top = -48.0
 margin_right = 512.0
-margin_bottom = 264.0
+margin_bottom = 312.0
 rect_pivot_offset = Vector2( -352, 192 )
 
 [node name="Label" type="Label" parent="Delete Confirm Popup"]
 margin_top = 16.0
 margin_right = 384.0
-margin_bottom = 85.0
+margin_bottom = 133.0
 custom_fonts/font = SubResource( 3 )
 text = "Delete Player Saved File?"
 align = 1
@@ -99,9 +98,9 @@ autowrap = true
 
 [node name="Back" type="Button" parent="Delete Confirm Popup"]
 margin_left = 208.0
-margin_top = 112.0
+margin_top = 160.0
 margin_right = 352.0
-margin_bottom = 176.0
+margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
@@ -111,9 +110,9 @@ text = "Back"
 
 [node name="Confirm" type="Button" parent="Delete Confirm Popup"]
 margin_left = 32.0
-margin_top = 112.0
+margin_top = 160.0
 margin_right = 179.0
-margin_bottom = 176.0
+margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
@@ -123,4 +122,5 @@ text = "Confirm"
 
 [connection signal="button_up" from="NinePatchRect/Delete Player Saved File" to="." method="_on_Delete_Player_Saved_File_button_up"]
 [connection signal="button_up" from="NinePatchRect/Close" to="." method="_on_Close_button_up"]
+[connection signal="button_up" from="Delete Confirm Popup/Back" to="." method="_on_Back_button_up"]
 [connection signal="button_up" from="Delete Confirm Popup/Back" to="Delete Confirm Popup" method="_on_Back_button_up"]

@@ -176,6 +176,7 @@ shape = SubResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="Death Zones"]
 
 [node name="test" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="reset" type="TouchScreenButton" parent="test"]
 position = Vector2( 608, 0 )
