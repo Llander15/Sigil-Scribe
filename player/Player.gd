@@ -24,8 +24,8 @@ var coyote_timer = 0.0 # Tracks the "air time" for jumping
 
 func _ready():
 	randomize()
-	$Control/TouchScreen/Interact.visible = false
-	var interact_btn = get_node("Control/TouchScreen/Interact")
+	$Control/TouchScreen/ControlButtons/Interact.visible = false
+	var interact_btn = get_node("Control/TouchScreen/ControlButtons/Interact")
 	interact_btn.connect("released", self, "_on_Interact_pressed")
 
 func _on_Interact_pressed():

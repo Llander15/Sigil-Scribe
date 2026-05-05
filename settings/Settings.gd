@@ -19,8 +19,6 @@ func _ready():
 
 func _on_Close_button_up():
 	self.visible = false
-	if get_tree().paused:
-		get_tree().paused = false
 	pass # Replace with function body.
 
 

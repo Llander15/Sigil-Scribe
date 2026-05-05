@@ -25,6 +25,12 @@ font_data = ExtResource( 2 )
 pause_mode = 2
 script = ExtResource( 5 )
 
+[node name="AlwayAtTop(blocks input)" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( -352, 192 )
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 16.0
 margin_top = 16.0
@@ -72,6 +78,14 @@ patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
 script = ExtResource( 6 )
+
+[node name="AlwayAtTop(blocks input)" type="Panel" parent="Delete Confirm Popup"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -128.0
+margin_top = -96.0
+margin_right = 512.0
+margin_bottom = 264.0
+rect_pivot_offset = Vector2( -352, 192 )
 
 [node name="Label" type="Label" parent="Delete Confirm Popup"]
 margin_top = 16.0
