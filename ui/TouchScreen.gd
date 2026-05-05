@@ -39,6 +39,7 @@ func _on_Settings_button_up():
 
 
 func _on_Quit_button_up():
+	
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = true
 	pass # Replace with function body.
 
