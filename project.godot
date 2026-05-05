@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Sigil  Scribe"
-run/main_scene="res://world/World Test.tscn"
+run/main_scene="res://Welcome.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [display]
 

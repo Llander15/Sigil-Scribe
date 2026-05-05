@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/World1/World1.tscn" type="PackedScene" id=4]
+
+[node name="Minimap" type="Control"]
+
+[node name="World1" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+margin_right = 150.0
+margin_bottom = 150.0
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 150, 150 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="World1" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 4 )]
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/ViewportContainer/Viewport"]
+current = true

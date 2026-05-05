@@ -1,9 +1,12 @@
 extends Node2D
 
 var target_player = null
+var puzzle_start = false
+var solved = false
 
 var s1
 var s2 
+
 
 var w1
 var w2
@@ -35,8 +38,6 @@ func _ready():
 
 	pass
 
-
-
 func setup_handshakes():
 	# --- Connection Set 1: Top Path ---
 	# Source 1 (Violet) -> Gate 1 (Input A) and Wire 1 (Visual)
@@ -45,8 +46,7 @@ func setup_handshakes():
 	
 	# --- Connection Set 2: Bottom Path ---
 	# Source 2 (Violet) -> Gate 1 (Input B) and Wire 2 (Visual)
-	s2.connect("signal_updated", g1, "_on_input_b_received")
-	s2.connect("signal_updated", w2, "_on_signal_received")
+
 	
 	# --- Connection Set 3: Final Path ---
 	# Gate 1 (Middle) -> Final 1 (Huge Box) and Wire 3 (Visual)
@@ -56,7 +56,7 @@ func setup_handshakes():
 	# --- Refresh Initial States ---
 	# This forces the sources to 'shout' their start state once connected
 	s1.update_logic()
-	s2.update_logic()
+	
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
@@ -67,7 +67,6 @@ func _on_Area2D_body_entered(body):
 		
 		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
 			body.connect("interact_pressed", self, "_on_player_interacted")
-
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
@@ -85,6 +84,7 @@ func _on_player_interacted():
 	print("Player touched the terminal!")
 	
 	$Popup.visible = true
+	puzzle_start = true
 	
 	#freezes the world
 	get_tree().paused = true
@@ -95,9 +95,9 @@ func _on_exit_released():
 	exit_puzzle()
 	pass # Replace with function body.
 
-
 func exit_puzzle():
 	$Popup.visible = false
+	puzzle_start = false
 	
 	#Unfreeze the world
 	get_tree().paused = false
@@ -108,4 +108,13 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen").visible = true
 		target_player.get_node("Control/TouchScreen/Interact").visible = false
 
-
+func _on_confirm_released():
+	if puzzle_start:
+		if $"Popup/NinePatchRect/Final/Final 1".solved:
+			$Door/StaticBody2D/CollisionShape2D.disabled = true
+			$Door/Sprite.visible = false
+			$Area2D/before.visible = false
+			$Area2D/after.visible = true
+			$Area2D/CollisionShape2D.disabled = true
+			exit_puzzle()
+	pass # Replace with function body.

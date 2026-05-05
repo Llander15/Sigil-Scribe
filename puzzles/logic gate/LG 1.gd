@@ -1,6 +1,7 @@
 extends Node2D
 
 var target_player = null
+var puzzle_start = false
 
 var s1
 var s2 
@@ -32,7 +33,7 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
 	
-
+	$platform/AnimationPlayer.play("RESET")
 	pass
 
 
@@ -83,7 +84,8 @@ func _on_Area2D_body_exited(body):
 # This runs when the signal is received
 func _on_player_interacted():
 	print("Player touched the terminal!")
-	
+	puzzle_start = true
+	$"Popup/NinePatchRect/Final/Final 1".puzzle_start = true
 	#Freeze the world
 	get_tree().paused = true
 	
@@ -99,6 +101,7 @@ func _on_exit_released():
 
 
 func exit_puzzle():
+	puzzle_start = false
 	$Popup.visible = false
 	
 	#Unfreeze the world
@@ -111,3 +114,19 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen/Interact").visible = false
 
 
+
+
+func _on_confirm_released():
+	if puzzle_start:
+		if $"Popup/NinePatchRect/Final/Final 1".solved:
+			$Area2D/CollisionShape2D.disabled = true
+			$Area2D/before.visible = false
+			$Area2D/after.visible = true
+			$platform/AnimationPlayer.play("moving platform")
+			exit_puzzle()
+			pass
+		else:
+			#give player a hint
+			pass
+		pass
+	pass # Replace with function body.

@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Panel/Body/Headless.svg" type="Texture" id=1]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://settings/HoverBtn.tres" type="StyleBox" id=3]
+[ext_resource path="res://settings/NormalBtn.tres" type="StyleBox" id=4]
+[ext_resource path="res://settings/Settings.gd" type="Script" id=5]
+[ext_resource path="res://settings/Delete Confirm Popup.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+extra_spacing_char = 4
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+extra_spacing_char = 8
+font_data = ExtResource( 2 )
+
+[node name="Settings" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 5 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 624.0
+margin_bottom = 352.0
+texture = ExtResource( 1 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Delete Player Saved File" type="Button" parent="NinePatchRect"]
+margin_left = 128.0
+margin_top = 144.0
+margin_right = 480.0
+margin_bottom = 217.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Delete Player Saved File"
+
+[node name="Close" type="Button" parent="NinePatchRect"]
+margin_left = 240.0
+margin_top = 240.0
+margin_right = 368.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Back"
+
+[node name="Delete Confirm Popup" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 128.0
+margin_top = 96.0
+margin_right = 512.0
+margin_bottom = 304.0
+texture = ExtResource( 1 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Delete Confirm Popup"]
+margin_top = 16.0
+margin_right = 384.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 3 )
+text = "Delete Player Saved File?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Back" type="Button" parent="Delete Confirm Popup"]
+margin_left = 208.0
+margin_top = 112.0
+margin_right = 352.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Back"
+
+[node name="Confirm" type="Button" parent="Delete Confirm Popup"]
+margin_left = 32.0
+margin_top = 112.0
+margin_right = 179.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Confirm"
+
+[connection signal="button_up" from="NinePatchRect/Delete Player Saved File" to="." method="_on_Delete_Player_Saved_File_button_up"]
+[connection signal="button_up" from="NinePatchRect/Close" to="." method="_on_Close_button_up"]
+[connection signal="button_up" from="Delete Confirm Popup/Back" to="Delete Confirm Popup" method="_on_Back_button_up"]
