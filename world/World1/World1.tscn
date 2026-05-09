@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://tileset/dirt_tile.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://prologue/Prologue.tscn" type="PackedScene" id=15]
 [ext_resource path="res://npc/NPC.tscn" type="PackedScene" id=16]
+[ext_resource path="res://BGtileset.tres" type="TileSet" id=17]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
@@ -326,6 +327,14 @@ layer = 10
 
 [node name="NPC" parent="." instance=ExtResource( 16 )]
 position = Vector2( -24, -784 )
+
+[node name="BGtileset" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="BGtileset"]
+tile_set = ExtResource( 17 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1834962, 6, 0, -1769426, 5, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1572824, 1, 0, -1572823, 2, 0, -1572822, 2, 0, -1572821, 3, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1507295, 10, 0, -1507291, 8, 0, -1441764, 9, 0, -1441736, 7, 0, -1441734, 536870919, 0, -1376234, 0, 0, -1376231, 7, 0, -1376195, 536870920, 0, -1376192, 8, 0, -1376183, 0, 0 )
 
 [connection signal="body_entered" from="Death Zones/Area2D0" to="Death Zones" method="_on_Area2D0_body_entered"]
 [connection signal="body_entered" from="Death Zones/Area2D1" to="Death Zones" method="_on_Area2D1_body_entered"]

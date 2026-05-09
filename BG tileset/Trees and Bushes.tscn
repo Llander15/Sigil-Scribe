@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://BG tileset/bush.png" type="Texture" id=1]
+[ext_resource path="res://BG tileset/rocks1.png" type="Texture" id=2]
+[ext_resource path="res://BG tileset/treee.png" type="Texture" id=3]
+[ext_resource path="res://BG tileset/big_rocks2.png" type="Texture" id=4]
+[ext_resource path="res://BG tileset/rocks2.png" type="Texture" id=5]
+[ext_resource path="res://BG tileset/bushes.png" type="Texture" id=6]
+[ext_resource path="res://BG tileset/big_rocks1.png" type="Texture" id=7]
+
+[node name="BG tileset" type="Node2D"]
+
+[node name="01ShortBush" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="02LongBushLeft" type="Sprite" parent="."]
+position = Vector2( 64, 0 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="03LongBushCenter" type="Sprite" parent="."]
+position = Vector2( 128, 0 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="04LongBushRight" type="Sprite" parent="."]
+position = Vector2( 192, 0 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+
+[node name="05TreeBottom" type="Sprite" parent="."]
+position = Vector2( 192, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 32, 32 )
+
+[node name="06TreeCenter" type="Sprite" parent="."]
+position = Vector2( 256, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="07TreeTop" type="Sprite" parent="."]
+position = Vector2( 320, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="08SmallRock1" type="Sprite" parent="."]
+position = Vector2( 0, 56 )
+texture = ExtResource( 2 )
+
+[node name="09SmallRock2" type="Sprite" parent="."]
+position = Vector2( 0, 120 )
+texture = ExtResource( 5 )
+
+[node name="10BigRock1" type="Sprite" parent="."]
+position = Vector2( 80, 88 )
+texture = ExtResource( 7 )
+
+[node name="11BigRock2" type="Sprite" parent="."]
+position = Vector2( 168, 88 )
+texture = ExtResource( 4 )
