@@ -2,7 +2,7 @@ extends Camera2D
 
 # Adjust these to fit your 640x360 resolution
 export var look_ahead_distance = 100.0
-export var shift_duration = 1 # How many seconds the transition takes
+export var shift_duration = 4 # How many seconds the transition takes
 
 onready var player = get_parent() # Assumes Camera is a child of the Player
 
