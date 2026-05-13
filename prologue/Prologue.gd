@@ -19,6 +19,7 @@ func _ready():
 	# Ensure the Pause Mode of this CanvasLayer is set to "Process" 
 	# so it functions while the game is paused.
 	get_tree().paused = true 
+	self.visible = true
 	show_step()
 
 func _input(event):

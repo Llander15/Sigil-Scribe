@@ -12,6 +12,7 @@ func _ready():
 
 func _physics_process(delta):
 	mini_player.position = player.position
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+	if 1<0: # this statement is for removing the "delta" not used in debugger
+		print(delta)
+

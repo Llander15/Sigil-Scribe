@@ -21,10 +21,8 @@ func _ready():
 	$Popup.visible = false
 	
 	s1 = $"Popup/NinePatchRect/Sources/Source 1"
-	s2 = $"Popup/NinePatchRect/Sources/Source 2"
 	
 	w1 = $"Popup/NinePatchRect/Wires/Wire 1"
-	w2 = $"Popup/NinePatchRect/Wires/Wire 2"
 	w3 = $"Popup/NinePatchRect/Wires/Wire 3"
 	
 	g1 = $"Popup/NinePatchRect/Gates/Gate 1"

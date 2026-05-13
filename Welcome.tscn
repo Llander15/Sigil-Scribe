@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Welcome.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Rect-Medium/PlayText/Default.svg" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Rect-Medium/PlayText/Hover.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Panel/Body/Headless.svg" type="Texture" id=5]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=10]
+size = 56
+extra_spacing_char = 4
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -67,16 +72,30 @@ font_data = ExtResource( 3 )
 
 [node name="Welcome" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 328.0, 32.0 ],
+"_edit_vertical_guides_": [ 32.0, 608.0 ]
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 10 )
+text = "Sigil Scibe"
+align = 1
+valign = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
-margin_left = 160.0
-margin_top = 64.0
-margin_right = 480.0
-margin_bottom = 280.0
+margin_left = 208.0
+margin_top = 112.0
+margin_right = 432.0
+margin_bottom = 328.0
 custom_constants/separation = 12
 
 [node name="Play" type="Button" parent="Buttons"]
-margin_right = 320.0
+margin_right = 224.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
@@ -87,7 +106,7 @@ text = "PLAY"
 
 [node name="Settings" type="Button" parent="Buttons"]
 margin_top = 76.0
-margin_right = 320.0
+margin_right = 224.0
 margin_bottom = 140.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
@@ -98,7 +117,7 @@ text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="Buttons"]
 margin_top = 152.0
-margin_right = 320.0
+margin_right = 224.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )

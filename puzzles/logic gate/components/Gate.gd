@@ -37,7 +37,7 @@ func _on_input_b_received(state):
 
 # --- The Logic Brain ---
 func evaluate_logic():
-	var old_output = current_output
+	#var old_output = current_output
 	
 	# Logic math based on the string name
 	match LogicGate.to_upper():
@@ -68,6 +68,12 @@ func evaluate_logic():
 				current_output = null
 		_:
 			current_output = null
+	
+	if input_a == null:
+		current_output = null
+	
+	
+		
 	
 	# Only emit if the result actually changed to save performance
 	emit_signal("signal_updated", current_output)
