@@ -13,13 +13,14 @@
 [ext_resource path="res://minimap/minimap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://minimap/minimap.gd" type="Script" id=12]
 [ext_resource path="res://Background/Background_2.png" type="Texture" id=13]
-[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/Houses/house 1.png" type="Texture" id=14]
 [ext_resource path="res://prologue/Prologue.tscn" type="PackedScene" id=15]
 [ext_resource path="res://npc/NPC.tscn" type="PackedScene" id=16]
 [ext_resource path="res://BGtileset.tres" type="TileSet" id=17]
 [ext_resource path="res://Background/Background_1.png" type="Texture" id=18]
 [ext_resource path="res://world/World1/mid.gd" type="Script" id=19]
 [ext_resource path="res://world/World1/far.gd" type="Script" id=20]
+[ext_resource path="res://Assets/Houses/house 2.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
@@ -35,18 +36,13 @@ b = Vector2( 656, 40 )
 a = Vector2( -808, 0 )
 b = Vector2( 2032, 8 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 32
-extra_spacing_char = 1
-font_data = ExtResource( 14 )
-
 [node name="World1" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2( 0, -500 )
-scale = Vector2( 4, 4 )
-transform = Transform2D( 4, 0, 0, 4, 0, -500 )
+offset = Vector2( 0, -300 )
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, -300 )
 follow_viewport_scale = 0.1
 
 [node name="far" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -56,6 +52,7 @@ script = ExtResource( 20 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/far"]
 texture = ExtResource( 13 )
+centered = false
 
 [node name="mid" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0, 0 )
@@ -64,6 +61,7 @@ script = ExtResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/mid"]
 texture = ExtResource( 18 )
+centered = false
 
 [node name="Logic puzzles" type="Node2D" parent="."]
 position = Vector2( 1056, 1024 )
@@ -172,7 +170,7 @@ position = Vector2( 1056, 1024 )
 tile_set = ExtResource( 17 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -2621365, 6, 0, -2555867, 6, 0, -2555829, 5, 0, -2490331, 5, 0, -2490324, 6, 0, -2490293, 5, 0, -2424795, 5, 0, -2424788, 5, 0, -2424787, 536870921, 0, -2424757, 5, 0, -2424742, 536870918, 0, -2359261, 8, 0, -2359259, 4, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359252, 4, 0, -2359248, 6, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359221, 5, 0, -2359206, 5, 0, -2359202, 6, 0, -2293685, 5, 0, -2293670, 5, 0, -2293666, 536870917, 0, -2228164, 0, 0, -2228149, 5, 0, -2228134, 5, 0, -2228132, 6, 0, -2228130, 536870917, 0, -2228110, 10, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162615, 0, 0, -2162613, 4, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162599, 0, 0, -2162598, 4, 0, -2162596, 4, 0, -2162594, 536870916, 0, -2162593, 0, 0, -2162592, 8, 0, -1834962, 6, 0, -1769426, 5, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1572824, 1, 0, -1572823, 2, 0, -1572822, 2, 0, -1572821, 3, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1507295, 10, 0, -1507291, 8, 0, -1441764, 9, 0, -1441736, 7, 0, -1441734, 536870919, 0, -1376234, 0, 0, -1376231, 7, 0, -1376195, 536870920, 0, -1376192, 8, 0, -1376183, 0, 0 )
+tile_data = PoolIntArray( -2621365, 6, 0, -2555867, 6, 0, -2555829, 5, 0, -2490331, 5, 0, -2490324, 6, 0, -2490293, 5, 0, -2424795, 5, 0, -2424788, 5, 0, -2424787, 536870921, 0, -2424757, 5, 0, -2424742, 536870918, 0, -2359261, 8, 0, -2359259, 4, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359252, 4, 0, -2359248, 6, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359221, 5, 0, -2359206, 5, 0, -2359202, 6, 0, -2293685, 5, 0, -2293670, 5, 0, -2293666, 536870917, 0, -2228164, 0, 0, -2228149, 5, 0, -2228134, 5, 0, -2228132, 6, 0, -2228130, 536870917, 0, -2228110, 10, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162615, 0, 0, -2162613, 4, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162599, 0, 0, -2162598, 4, 0, -2162596, 4, 0, -2162594, 536870916, 0, -2162593, 0, 0, -2162592, 8, 0, -1769484, 9, 0, -1769475, 6, 0, -1834962, 6, 0, -1703939, 5, 0, -1703937, 536870918, 0, -1769426, 5, 0, -1638403, 5, 0, -1638401, 536870917, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1572867, 4, 0, -1572866, 536870920, 0, -1572865, 536870916, 0, -1638400, 1, 0, -1638399, 2, 0, -1638398, 2, 0, -1638397, 3, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1572824, 1, 0, -1572823, 2, 0, -1572822, 2, 0, -1572821, 3, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1507295, 10, 0, -1507291, 8, 0, -1441764, 9, 0, -1441736, 7, 0, -1441734, 536870919, 0, -1376234, 0, 0, -1376231, 7, 0, -1376195, 536870920, 0, -1376192, 8, 0, -1376183, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 944, 240 )
@@ -231,20 +229,10 @@ valign = 1
 [node name="Temporary Labels" type="Node2D" parent="."]
 position = Vector2( 1080, 1048 )
 
-[node name="Home" type="Label" parent="Temporary Labels"]
-margin_left = -208.0
-margin_top = -888.0
-margin_right = -144.0
-margin_bottom = -855.0
-custom_fonts/font = SubResource( 6 )
-text = "Home"
-align = 1
-valign = 1
-
 [node name="Logic Gauntlet chest" type="Label" parent="Temporary Labels"]
-margin_left = 40.0
+margin_left = 32.0
 margin_top = -848.0
-margin_right = 184.0
+margin_right = 176.0
 margin_bottom = -816.0
 text = "Logic Gauntlet chest"
 align = 1
@@ -401,6 +389,30 @@ visible = false
 
 [node name="NPC" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1080, 240 )
+z_index = 2
+
+[node name="Houses" type="Node2D" parent="."]
+
+[node name="House1" type="Sprite" parent="Houses"]
+position = Vector2( 920, 208 )
+texture = ExtResource( 14 )
+
+[node name="House2" type="Sprite" parent="Houses"]
+position = Vector2( 2384, 240 )
+texture = ExtResource( 21 )
+
+[node name="House3" type="Sprite" parent="Houses"]
+position = Vector2( 2752, 272 )
+texture = ExtResource( 21 )
+flip_h = true
+
+[node name="House4" type="Sprite" parent="Houses"]
+position = Vector2( 2568, 240 )
+texture = ExtResource( 14 )
+
+[node name="House5" type="Sprite" parent="Houses"]
+position = Vector2( 1976, 336 )
+texture = ExtResource( 21 )
 
 [connection signal="body_entered" from="Death Zones/Area2D0" to="Death Zones" method="_on_Area2D0_body_entered"]
 [connection signal="body_entered" from="Death Zones/Area2D1" to="Death Zones" method="_on_Area2D1_body_entered"]

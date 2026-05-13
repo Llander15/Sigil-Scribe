@@ -22,9 +22,9 @@ func update_logic():
 	
 	# Visual feedback: Violet for Active, Dark for Inactive
 	if is_active:
-		self.modulate = Color(1.5, 1.5, 2.0) # Bright Violet/Glow
+		self.modulate = Color(1.2, 2.0, 1.2)
 	else:
-		self.modulate = Color(0.3, 0.3, 0.3) # Dark Grey
+		self.modulate = Color(0.8, 0.0, 0.0)
 	
 	# Important for the Parallel System: Notify the chain!
 	yield(get_tree(), "idle_frame") # Ensures listeners are ready

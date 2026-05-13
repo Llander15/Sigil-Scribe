@@ -1,14 +1,15 @@
 extends Control
 
 # Colors for your theme
-export(Color) var color_on = Color("8a2be2") # Violet (Active)
-export(Color) var color_off = Color("444444") # Dark Grey (Inactive)
+export(Color) var color_on = Color("32ff32") 
+export(Color) var color_off = Color("8b0000") 
+export(Color) var color_null = Color("707070")
 
 onready var line = $Line2D
 
 func _ready():
 	# Set initial visual state to 'off'
-	update_visuals(false)
+	update_visuals(null)
 
 # This is the function called by the Signal Handshake in the Level script
 func _on_signal_received(state):
@@ -16,10 +17,13 @@ func _on_signal_received(state):
 
 func update_visuals(state):
 	if line:
-		if state:
+		if state == true:
 			line.default_color = color_on
 			# Optional: Add a subtle glow/width increase when active
 			line.width = 4.0
-		else:
+		elif state == false:
 			line.default_color = color_off
 			line.width = 3.0
+		else:
+			line.default_color = color_null
+			line.width = 2.5

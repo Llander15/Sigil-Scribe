@@ -40,6 +40,7 @@ func show_step():
 		end_prologue()
 
 func end_prologue():
+	get_tree().paused = false
 	# 1. Play the fade out animation
 	if anim_player.has_animation("ScreenFadeOut"):
 		anim_player.play("ScreenFadeOut")
@@ -48,5 +49,4 @@ func end_prologue():
 		yield(anim_player, "animation_finished")
 	
 	# 3. Resume the game and clean up
-	get_tree().paused = false 
 	self.queue_free()

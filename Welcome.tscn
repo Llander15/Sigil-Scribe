@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Welcome.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Rect-Medium/PlayText/Default.svg" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Buttons/Rect-Medium/PlayText/Hover.svg" type="Texture" id=4]
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Panel/Body/Headless.svg" type="Texture" id=5]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Background/Background_2.png" type="Texture" id=7]
+[ext_resource path="res://Background/Background_1.png" type="Texture" id=8]
+[ext_resource path="res://ParallaxLayer.gd" type="Script" id=9]
+[ext_resource path="res://ParallaxLayer2.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=10]
 size = 56
@@ -77,11 +81,12 @@ __meta__ = {
 "_edit_vertical_guides_": [ 32.0, 608.0 ]
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 608.0
 margin_bottom = 89.0
+custom_colors/font_color = Color( 0.282353, 0.0509804, 0.0509804, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Sigil Scibe"
 align = 1
@@ -168,10 +173,24 @@ custom_styles/normal = SubResource( 2 )
 text = "Cancel"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 496, 0 )
+script = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 496, 0 )
+script = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 8 )
+centered = false
 
 [node name="Settings" parent="." instance=ExtResource( 6 )]
 visible = false

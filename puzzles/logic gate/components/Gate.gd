@@ -42,17 +42,23 @@ func evaluate_logic():
 	# Logic math based on the string name
 	match LogicGate.to_upper():
 		"AND":
-			current_output = input_a and input_b
+			if input_a != null and input_b != null:
+				current_output = input_a and input_b
 		"OR":
-			current_output = input_a or input_b
+			if input_a != null and input_b != null:
+				current_output = input_a or input_b
 		"NAND":
-			current_output = not (input_a and input_b)
+			if input_a != null and input_b != null:
+				current_output = not (input_a and input_b)
 		"NOR":
-			current_output = not (input_a or input_b)
+			if input_a != null and input_b!= null:
+				current_output = not (input_a or input_b)
 		"XOR":
-			current_output = input_a != input_b
+			if input_a != null and input_b != null:
+				current_output = input_a != input_b
 		"XNOR":
-			current_output = input_a == input_b
+			if input_a != null and input_b != null:
+				current_output = input_a == input_b
 		"NOT":
 			# 1. Check if both inputs are connected (not null)
 			if input_a != null and input_b != null:
@@ -69,8 +75,8 @@ func evaluate_logic():
 		_:
 			current_output = null
 	
-	if input_a == null:
-		current_output = null
+#	if input_a == null:
+#		current_output = null
 	
 	
 		
