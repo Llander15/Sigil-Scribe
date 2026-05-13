@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://puzzles/logic gate/LG 1.gd" type="Script" id=2]
@@ -10,8 +10,13 @@
 [ext_resource path="res://puzzles/logic gate/components/Final.tscn" type="PackedScene" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
 [ext_resource path="res://tileset/grass_tiles.png" type="Texture" id=10]
+[ext_resource path="res://Assets/x.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 11 )
+region = Rect2( 8, 52, 32, 32 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -135,8 +140,7 @@ margin_bottom = 152.0
 
 [node name="exit" type="TouchScreenButton" parent="Popup"]
 position = Vector2( 545, 63 )
-normal = ExtResource( 3 )
-pressed = ExtResource( 4 )
+normal = SubResource( 5 )
 
 [node name="confirm" type="TouchScreenButton" parent="Popup"]
 position = Vector2( 504, 256 )

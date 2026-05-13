@@ -366,11 +366,12 @@ region_enabled = true
 region_rect = Rect2( 0, 32, 96, 8 )
 
 [node name="Control" type="Control" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.32549 )
-margin_left = -408.0
-margin_top = -960.0
-margin_right = -368.0
-margin_bottom = -920.0
+margin_left = -560.0
+margin_top = -816.0
+margin_right = -520.0
+margin_bottom = -776.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="Control"]
 margin_right = 150.0
@@ -381,7 +382,7 @@ stretch = true
 size = Vector2( 150, 150 )
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="Control/ViewportContainer/Viewport"]
 current = true
