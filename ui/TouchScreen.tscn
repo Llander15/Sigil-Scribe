@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://icon32.png" type="Texture" id=1]
+[ext_resource path="res://Assets/arrow.png" type="Texture" id=1]
 [ext_resource path="res://ui/FPS.gd" type="Script" id=2]
-[ext_resource path="res://playericon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/interact.png" type="Texture" id=3]
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/x.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Panel/Body/Headless.svg" type="Texture" id=6]
 [ext_resource path="res://ui/TouchScreen.gd" type="Script" id=7]
-[ext_resource path="res://settings/NormalBtn.tres" type="StyleBox" id=8]
-[ext_resource path="res://settings/HoverBtn.tres" type="StyleBox" id=9]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=11]
+[ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=12]
+[ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 extra_spacing_char = 4
@@ -25,6 +25,10 @@ size = 64
 extra_spacing_char = 4
 font_data = ExtResource( 4 )
 
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 80, 80 )
+
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 8, 8, 32, 32 )
@@ -37,7 +41,7 @@ region = Rect2( 52, 8, 32, 32 )
 layer = 5
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 328.0 ],
+"_edit_horizontal_guides_": [ 328.0, 296.0 ],
 "_edit_vertical_guides_": [ 32.0, 608.0 ]
 }
 
@@ -51,18 +55,23 @@ custom_fonts/font = SubResource( 1 )
 text = "FPS: 0"
 script = ExtResource( 2 )
 
-[node name="PausePopup" type="NinePatchRect" parent="."]
+[node name="PausePopup" type="ColorRect" parent="."]
 pause_mode = 2
-visible = false
 margin_left = 216.0
-margin_top = 64.0
+margin_top = 72.0
 margin_right = 424.0
-margin_bottom = 312.0
-texture = ExtResource( 6 )
-patch_margin_left = 16
-patch_margin_top = 1
-patch_margin_right = 16
-patch_margin_bottom = 16
+margin_bottom = 280.0
+color = Color( 0.317647, 0.415686, 0.494118, 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PausePopup"]
+self_modulate = Color( 0.666667, 0.666667, 0.666667, 1 )
+margin_right = 208.0
+margin_bottom = 208.0
+texture = ExtResource( 11 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="AlwayAtTop(blocks input)" type="Panel" parent="PausePopup"]
 modulate = Color( 1, 1, 1, 0 )
@@ -75,28 +84,28 @@ margin_bottom = 296.0
 margin_left = 24.0
 margin_top = 24.0
 margin_right = 184.0
-margin_bottom = 227.0
+margin_bottom = 179.0
 custom_constants/separation = 16
 
 [node name="Resume" type="Button" parent="PausePopup/HBoxContainer"]
 margin_right = 160.0
-margin_bottom = 57.0
+margin_bottom = 41.0
 custom_fonts/font = SubResource( 2 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 8 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 text = "Resume"
 
 [node name="Settings" type="Button" parent="PausePopup/HBoxContainer"]
-margin_top = 73.0
+margin_top = 57.0
 margin_right = 160.0
-margin_bottom = 130.0
+margin_bottom = 98.0
 custom_fonts/font = SubResource( 2 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 8 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 text = "Settings"
 
 [node name="Settings" parent="PausePopup/HBoxContainer/Settings" instance=ExtResource( 10 )]
@@ -104,31 +113,38 @@ layer = 10
 visible = false
 
 [node name="Quit" type="Button" parent="PausePopup/HBoxContainer"]
-margin_top = 146.0
+margin_top = 114.0
 margin_right = 160.0
-margin_bottom = 203.0
+margin_bottom = 155.0
 custom_fonts/font = SubResource( 2 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 8 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 text = "Quit"
 
-[node name="QuitConfirmationPopup" type="NinePatchRect" parent="PausePopup/HBoxContainer/Quit"]
+[node name="QuitConfirmationPopup" type="ColorRect" parent="PausePopup/HBoxContainer/Quit"]
 pause_mode = 2
 margin_left = -176.0
-margin_top = -170.0
+margin_top = -162.0
 margin_right = 336.0
-margin_bottom = 86.0
-texture = ExtResource( 6 )
-patch_margin_left = 16
-patch_margin_top = 1
-patch_margin_right = 16
-patch_margin_bottom = 16
+margin_bottom = 78.0
+color = Color( 0.317647, 0.415686, 0.494118, 1 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup"]
+self_modulate = Color( 0.666667, 0.666667, 0.666667, 1 )
+margin_right = 512.0
+margin_bottom = 240.0
+texture = ExtResource( 11 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
 
 [node name="Label" type="Label" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup"]
+margin_top = 8.0
 margin_right = 512.0
-margin_bottom = 128.0
+margin_bottom = 136.0
 custom_fonts/font = SubResource( 3 )
 text = "Quit Game?"
 align = 1
@@ -136,58 +152,60 @@ valign = 1
 
 [node name="Confirm" type="Button" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup"]
 margin_left = 64.0
-margin_top = 128.0
+margin_top = 136.0
 margin_right = 224.0
-margin_bottom = 193.0
+margin_bottom = 201.0
 custom_fonts/font = SubResource( 2 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 8 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 text = "Confirm"
 
 [node name="Cancel" type="Button" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup"]
 margin_left = 288.0
-margin_top = 128.0
+margin_top = 136.0
 margin_right = 448.0
-margin_bottom = 192.0
+margin_bottom = 200.0
 custom_fonts/font = SubResource( 2 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/normal = ExtResource( 8 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
 text = "Cancel"
 
 [node name="ControlButtons" type="Node2D" parent="."]
 
 [node name="Left" type="TouchScreenButton" parent="ControlButtons"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 32, 264 )
-scale = Vector2( 2, 2 )
-normal = ExtResource( 1 )
-pressed = ExtResource( 3 )
+scale = Vector2( 0.761905, 0.761905 )
+normal = SubResource( 6 )
 passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="ControlButtons"]
-position = Vector2( 112, 264 )
-scale = Vector2( 2, 2 )
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 176, 328 )
+rotation = 3.14159
+scale = Vector2( 0.761905, 0.761905 )
 normal = ExtResource( 1 )
-pressed = ExtResource( 3 )
 passby_press = true
 action = "ui_right"
 
 [node name="Jump" type="TouchScreenButton" parent="ControlButtons"]
-position = Vector2( 544, 232 )
-scale = Vector2( 2, 2 )
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 608, 232 )
+rotation = 1.5708
+scale = Vector2( 0.761905, 0.761905 )
 normal = ExtResource( 1 )
-pressed = ExtResource( 3 )
 action = "ui_up"
 
 [node name="Interact" type="TouchScreenButton" parent="ControlButtons"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 544, 136 )
-scale = Vector2( 2, 2 )
-normal = ExtResource( 1 )
-pressed = ExtResource( 3 )
+scale = Vector2( 0.761905, 0.761905 )
+normal = ExtResource( 3 )
 
 [node name="Pause" type="TouchScreenButton" parent="ControlButtons"]
 position = Vector2( 608, 0 )
