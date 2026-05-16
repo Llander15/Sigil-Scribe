@@ -29,11 +29,11 @@ font_data = ExtResource( 4 )
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 80, 80 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 5 )
 region = Rect2( 8, 8, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 5 )
 region = Rect2( 52, 8, 32, 32 )
 
@@ -208,17 +208,21 @@ position = Vector2( 544, 136 )
 scale = Vector2( 0.761905, 0.761905 )
 normal = ExtResource( 3 )
 
-[node name="Pause" type="TouchScreenButton" parent="ControlButtons"]
-position = Vector2( 608, 0 )
-normal = SubResource( 4 )
+[node name="Pause" type="TextureButton" parent="ControlButtons"]
+margin_left = 608.0
+margin_right = 640.0
+margin_bottom = 32.0
+texture_normal = SubResource( 7 )
 
-[node name="Book" type="TouchScreenButton" parent="ControlButtons"]
-position = Vector2( 560, 0 )
-normal = SubResource( 5 )
+[node name="Book" type="TextureButton" parent="ControlButtons"]
+margin_left = 560.0
+margin_right = 592.0
+margin_bottom = 32.0
+texture_normal = SubResource( 8 )
 
 [connection signal="button_up" from="PausePopup/HBoxContainer/Resume" to="." method="_on_Resume_button_up"]
 [connection signal="button_up" from="PausePopup/HBoxContainer/Settings" to="." method="_on_Settings_button_up"]
 [connection signal="button_up" from="PausePopup/HBoxContainer/Quit" to="." method="_on_Quit_button_up"]
 [connection signal="button_up" from="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup/Confirm" to="." method="_on_Confirm_button_up"]
 [connection signal="button_up" from="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup/Cancel" to="." method="_on_Cancel_button_up"]
-[connection signal="released" from="ControlButtons/Pause" to="." method="_on_Pause_released"]
+[connection signal="pressed" from="ControlButtons/Pause" to="." method="_on_Pause_pressed"]

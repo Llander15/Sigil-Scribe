@@ -18,27 +18,52 @@ func _ready():
 
 
 func _on_Play_button_up():
-	get_tree().change_scene("res://world/World1/World1.tscn")
+#	get_tree().change_scene("res://world/World1/World1.tscn")
 	pass # Replace with function body.
 
 
 func _on_Settings_button_up():
-	$Settings.visible = true
+	#$Settings.visible = true
 	pass # Replace with function body.
 
 
 func _on_Quit_button_up():
-	$"Quit Confirmation".visible = true
+	#$"Quit Confirmation".visible = true
 	pass # Replace with function body.
 
 
 func _on_Confirm_button_up():
-	get_tree().quit()
+#	get_tree().quit()
 	pass # Replace with function body.
 
 
 func _on_Cancel_button_up():
+#	$"Quit Confirmation".visible = false
+	pass # Replace with function body.
+
+
+
+
+func _on_Play_pressed():
+	get_tree().change_scene("res://world/World1/World1.tscn")
+	pass # Replace with function body.
+
+
+func _on_Settings_pressed():
+	$Settings.visible = true
+	pass # Replace with function body.
+
+
+func _on_Quit_pressed():
+	$"Quit Confirmation".visible = true
+	pass # Replace with function body.
+
+
+func _on_Cancel_pressed():
 	$"Quit Confirmation".visible = false
 	pass # Replace with function body.
 
 
+func _on_Confirm_pressed():
+	get_tree().quit()
+	pass # Replace with function body.

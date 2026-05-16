@@ -75,7 +75,6 @@ margin_bottom = 281.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 8 )
 text = "Reset"
 
@@ -87,7 +86,6 @@ margin_bottom = 281.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 8 )
 text = "Back"
 
@@ -99,7 +97,6 @@ margin_bottom = 208.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 8 )
 text = "Credits"
 
@@ -173,7 +170,6 @@ margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 8 )
 text = "Back"
 
@@ -185,12 +181,13 @@ margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 9 )
 custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
 custom_styles/normal = ExtResource( 8 )
 text = "Confirm"
 
 [connection signal="button_up" from="NinePatchRect/Delete Player Saved File" to="." method="_on_Delete_Player_Saved_File_button_up"]
+[connection signal="pressed" from="NinePatchRect/Delete Player Saved File" to="." method="_on_Delete_Player_Saved_File_pressed"]
 [connection signal="button_up" from="NinePatchRect/Close" to="." method="_on_Close_button_up"]
-[connection signal="button_up" from="Delete Confirm Popup/Back" to="." method="_on_Back_button_up"]
-[connection signal="button_up" from="Delete Confirm Popup/Back" to="Delete Confirm Popup" method="_on_Back_button_up"]
+[connection signal="pressed" from="NinePatchRect/Close" to="." method="_on_Close_pressed"]
+[connection signal="pressed" from="Delete Confirm Popup/Back" to="Delete Confirm Popup" method="_on_Back_pressed"]
 [connection signal="button_up" from="Delete Confirm Popup/Confirm" to="." method="_on_Confirm_button_up"]
+[connection signal="pressed" from="Delete Confirm Popup/Confirm" to="." method="_on_Confirm_pressed"]

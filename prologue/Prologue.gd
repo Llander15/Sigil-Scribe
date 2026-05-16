@@ -23,6 +23,8 @@ func _ready():
 		get_tree().paused = true 
 		self.visible = true
 		show_step()
+	else:
+		self.queue_free()
 
 func _input(event):
 	# Progress on click, tap, or pressing Enter/Space

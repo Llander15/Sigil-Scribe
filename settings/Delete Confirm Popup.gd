@@ -16,7 +16,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_Back_button_up():
+func _on_Back_pressed():
 	self.visible = false
+	get_parent().get_node("NinePatchRect").visible = true
 	pass # Replace with function body.

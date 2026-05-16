@@ -57,8 +57,8 @@ margin_bottom = 48.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
 text = "PLAY"
 
 [node name="Settings" type="Button" parent="Buttons"]
@@ -68,8 +68,8 @@ margin_bottom = 108.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
 text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="Buttons"]
@@ -79,11 +79,11 @@ margin_bottom = 168.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 12 )
 text = "QUIT"
 
 [node name="Quit Confirmation" type="ColorRect" parent="."]
+visible = false
 margin_left = 96.0
 margin_top = 48.0
 margin_right = 544.0
@@ -106,7 +106,6 @@ margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 12 )
 text = "Confirm"
 
@@ -118,7 +117,6 @@ margin_bottom = 224.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
 custom_styles/normal = ExtResource( 12 )
 text = "Cancel"
 
@@ -160,7 +158,12 @@ __meta__ = {
 }
 
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_Play_button_up"]
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="button_up" from="Buttons/Settings" to="." method="_on_Settings_button_up"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="button_up" from="Buttons/Quit" to="." method="_on_Quit_button_up"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="button_up" from="Quit Confirmation/Confirm" to="." method="_on_Confirm_button_up"]
+[connection signal="pressed" from="Quit Confirmation/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="button_up" from="Quit Confirmation/Cancel" to="." method="_on_Cancel_button_up"]
+[connection signal="pressed" from="Quit Confirmation/Cancel" to="." method="_on_Cancel_pressed"]

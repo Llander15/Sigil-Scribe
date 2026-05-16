@@ -52,25 +52,40 @@ func set_bus_volume(value: float):
 
 
 func _on_Close_button_up():
-	self.visible = false
+#	self.visible = false
 	pass # Replace with function body.
 
 
 func _on_Delete_Player_Saved_File_button_up():
+#	$"Delete Confirm Popup".visible = true
+#	$NinePatchRect.visible = false
+	pass # Replace with function body.
+
+
+func _on_Confirm_button_up():
+#	print("confirm reset pressed")
+#	Data.reset_to_defaults()
+#	get_tree().change_scene("res://Welcome.tscn")
+#	if get_tree().paused:
+#		get_tree().paused = false
+	pass # Replace with function body.
+
+
+func _on_Delete_Player_Saved_File_pressed():
 	$"Delete Confirm Popup".visible = true
 	$NinePatchRect.visible = false
 	pass # Replace with function body.
 
 
-func _on_Back_button_up():
-	$NinePatchRect.visible = true
+func _on_Close_pressed():
+	self.visible = false
 	pass # Replace with function body.
 
 
-func _on_Confirm_button_up():
+func _on_Confirm_pressed():
 	print("confirm reset pressed")
 	Data.reset_to_defaults()
 	get_tree().change_scene("res://Welcome.tscn")
 	if get_tree().paused:
 		get_tree().paused = false
-	pass # Replace with function body.
+		pass # Replace with function body.

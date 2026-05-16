@@ -19,8 +19,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_Pause_released():
+func _on_Pause_pressed():
 	get_tree().paused = true
 	$ControlButtons.visible = false
 	$PausePopup.visible = true
@@ -80,3 +79,5 @@ func _notification(what):
 	elif what == NOTIFICATION_UNPAUSED:
 		print("The game was resumed!")
 		# Example: Restore music volume
+
+
