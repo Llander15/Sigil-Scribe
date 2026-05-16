@@ -27,6 +27,11 @@ func _ready():
 	$Control/TouchScreen/ControlButtons/Interact.visible = false
 	var interact_btn = get_node("Control/TouchScreen/ControlButtons/Interact")
 	interact_btn.connect("released", self, "_on_Interact_pressed")
+	
+	#update player position
+	if Data.save_data["player_position"]["x"] and Data.save_data["player_position"]["y"]:
+		self.global_position.x = Data.save_data["player_position"]["x"]
+		self.global_position.y = Data.save_data["player_position"]["y"]
 
 func _on_Interact_pressed():
 	if is_on_floor():

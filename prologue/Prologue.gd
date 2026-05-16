@@ -16,11 +16,13 @@ var story_data = [
 onready var label = $ColorRect/Label
 
 func _ready():
-	# Ensure the Pause Mode of this CanvasLayer is set to "Process" 
-	# so it functions while the game is paused.
-	get_tree().paused = true 
-	self.visible = true
-	show_step()
+	if not Data.save_data.has("ach"):
+		Data.save_data["ach"] = []
+		Data.save_game()
+	if not "Prologue" in Data.save_data["ach"]:
+		get_tree().paused = true 
+		self.visible = true
+		show_step()
 
 func _input(event):
 	# Progress on click, tap, or pressing Enter/Space
@@ -40,6 +42,9 @@ func show_step():
 		end_prologue()
 
 func end_prologue():
+	if not "Prologue" in Data.save_data["ach"]:
+		Data.save_data["ach"].append("Prologue")
+		print("Prolouge seen")
 	get_tree().paused = false
 	# 1. Play the fade out animation
 	if anim_player.has_animation("ScreenFadeOut"):

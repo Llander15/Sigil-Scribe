@@ -38,6 +38,7 @@ atlas = ExtResource( 5 )
 region = Rect2( 52, 8, 32, 32 )
 
 [node name="TouchScreen" type="CanvasLayer"]
+pause_mode = 2
 layer = 5
 script = ExtResource( 7 )
 __meta__ = {

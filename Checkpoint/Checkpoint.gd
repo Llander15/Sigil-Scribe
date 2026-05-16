@@ -20,5 +20,10 @@ func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		Global.last_safe_position = self.global_position
 		print("Checkpoint Saved!")
+		
+		#update player last position
+		Data.save_data["player_position"]["x"] = self.global_position.x
+		Data.save_data["player_position"]["y"] = self.global_position.y
+		print("updated player last position")
 		# You can change the flag color or play an animation here
 	pass # Replace with function body.

@@ -235,6 +235,7 @@ align = 1
 valign = 1
 
 [node name="Temporary Labels" type="Node2D" parent="."]
+visible = false
 position = Vector2( 1080, 1048 )
 
 [node name="Logic Gauntlet chest" type="Label" parent="Temporary Labels"]

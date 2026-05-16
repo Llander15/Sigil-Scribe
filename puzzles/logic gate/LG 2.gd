@@ -33,8 +33,12 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
 	
-
-	pass
+	if "LG 2" in Data.save_data["ach"]:
+		$Door/StaticBody2D/CollisionShape2D.disabled = true
+		$Door/Sprite.visible = false
+		$Area2D/before.visible = false
+		$Area2D/after.visible = true
+		$Area2D/CollisionShape2D.disabled = true
 
 func setup_handshakes():
 	# --- Connection Set 1: Top Path ---
@@ -114,5 +118,9 @@ func _on_confirm_released():
 			$Area2D/before.visible = false
 			$Area2D/after.visible = true
 			$Area2D/CollisionShape2D.disabled = true
+			
+			if not "LG 2" in Data.save_data["ach"]:
+				Data.save_data["ach"].append("LG 2")
+			
 			exit_puzzle()
 	pass # Replace with function body.
