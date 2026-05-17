@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://icon32.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Panel.png" type="Texture" id=1]
 
 [node name="NinePatchRect" type="NinePatchRect"]
 margin_left = 121.0

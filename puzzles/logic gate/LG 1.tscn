@@ -118,17 +118,17 @@ LogicGate = "OR"
 [node name="Sources" type="Node2D" parent="Popup/NinePatchRect"]
 
 [node name="Source 2" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
-margin_left = 88.0
-margin_top = 136.0
+margin_left = 104.0
+margin_top = 144.0
 margin_right = 120.0
-margin_bottom = 168.0
+margin_bottom = 160.0
 SourceType = "NEGATIVE"
 
 [node name="Source 1" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
-margin_left = 88.0
-margin_top = 72.0
-margin_right = 120.0
-margin_bottom = 104.0
+margin_left = 104.0
+margin_top = 80.0
+margin_right = 136.0
+margin_bottom = 112.0
 
 [node name="Final" type="Node2D" parent="Popup/NinePatchRect"]
 

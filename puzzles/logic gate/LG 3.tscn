@@ -51,7 +51,7 @@ margin_bottom = 169.0
 
 [node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 1" index="0"]
 position = Vector2( 204, -81 )
-points = PoolVector2Array( -32, -16, -16, -16, 0, 0, 24, 0 )
+points = PoolVector2Array( -48, -16, -16, -16, 0, 0, 24, 0 )
 
 [node name="Wire 2" parent="Popup/NinePatchRect/Wires" instance=ExtResource( 5 )]
 margin_left = -88.0
@@ -61,7 +61,7 @@ margin_bottom = 216.0
 
 [node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 2" index="0"]
 position = Vector2( 204, -81 )
-points = PoolVector2Array( -28, -15, -12, -15, 4, -31, 28, -31 )
+points = PoolVector2Array( -44, -15, -12, -15, 4, -31, 28, -31 )
 
 [node name="Wire 3" parent="Popup/NinePatchRect/Wires" instance=ExtResource( 5 )]
 margin_left = 24.0
@@ -118,6 +118,7 @@ margin_top = 152.0
 margin_right = 168.0
 margin_bottom = 184.0
 texture = ExtResource( 3 )
+SingleInput = true
 
 [node name="Gate 3" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
 margin_left = 232.0
@@ -151,22 +152,22 @@ LogicGate = "OR"
 
 [node name="Source 2" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
 margin_left = 56.0
-margin_top = 104.0
+margin_top = 112.0
 margin_right = 88.0
-margin_bottom = 136.0
+margin_bottom = 144.0
 
 [node name="Source 3" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
 margin_left = 56.0
-margin_top = 152.0
+margin_top = 160.0
 margin_right = 88.0
-margin_bottom = 184.0
+margin_bottom = 192.0
 SourceType = "NEGATIVE"
 
 [node name="Source 1" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
 margin_left = 56.0
-margin_top = 56.0
+margin_top = 64.0
 margin_right = 88.0
-margin_bottom = 88.0
+margin_bottom = 96.0
 SourceType = "Negative"
 
 [node name="Final" type="Node2D" parent="Popup/NinePatchRect"]

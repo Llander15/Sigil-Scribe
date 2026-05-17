@@ -39,7 +39,15 @@ func _ready():
 		$Area2D/before.visible = false
 		$Area2D/after.visible = true
 		$Area2D/CollisionShape2D.disabled = true
-
+		
+	if not $"Popup/NinePatchRect/Final/Final 1".solved:
+		# A hex color string wrapped in Color() to make it a light gray/disabled look
+		$Popup/confirm.self_modulate = Color("aaaaaa") 
+		$Popup/confirm.disabled = true
+	else:
+		# White (1, 1, 1) represents 100% normal, untinted color in Godot
+		$Popup/confirm.self_modulate = Color(1, 1, 1)
+		$Popup/confirm.disabled = false
 func setup_handshakes():
 	# --- Connection Set 1: Top Path ---
 	# Source 1 (Violet) -> Gate 1 (Input A) and Wire 1 (Visual)
@@ -110,7 +118,23 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen").visible = true
 		target_player.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 
-func _on_confirm_released():
+#func _on_confirm_released():
+#	if puzzle_start:
+#		if $"Popup/NinePatchRect/Final/Final 1".solved:
+#			$Door/StaticBody2D/CollisionShape2D.disabled = true
+#			$Door/Sprite.visible = false
+#			$Area2D/before.visible = false
+#			$Area2D/after.visible = true
+#			$Area2D/CollisionShape2D.disabled = true
+#
+#			if not "LG 2" in Data.save_data["ach"]:
+#				Data.save_data["ach"].append("LG 2")
+#
+#			exit_puzzle()
+#	pass # Replace with function body.
+
+
+func _on_confirm_pressed():
 	if puzzle_start:
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Door/StaticBody2D/CollisionShape2D.disabled = true
@@ -124,3 +148,15 @@ func _on_confirm_released():
 			
 			exit_puzzle()
 	pass # Replace with function body.
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END:
+		if not $"Popup/NinePatchRect/Final/Final 1".solved:
+			# A hex color string wrapped in Color() to make it a light gray/disabled look
+			$Popup/confirm.self_modulate = Color("aaaaaa") 
+			$Popup/confirm.disabled = true
+		else:
+			# White (1, 1, 1) represents 100% normal, untinted color in Godot
+			$Popup/confirm.self_modulate = Color(1, 1, 1)
+			$Popup/confirm.disabled = false

@@ -22,7 +22,7 @@ func update_logic():
 	
 	# Visual feedback: Violet for Active, Dark for Inactive
 	if is_active:
-		self.modulate = Color(1.2, 2.0, 1.2)
+		self.modulate = Color(0.0, 1.0, 0.0)
 	else:
 		self.modulate = Color(0.8, 0.0, 0.0)
 	

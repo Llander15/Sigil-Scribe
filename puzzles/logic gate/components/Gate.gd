@@ -4,6 +4,7 @@ extends TextureRect
 signal signal_updated(state)
 
 export(String) var LogicGate = ""
+export var SingleInput: bool = false
 export(Vector2) var drag_offset = Vector2(-32, -100)
 export(float, 0, 1.0) var drag_opacity = 0.7
 
@@ -14,6 +15,8 @@ var draggable = false
 
 func _ready():
 	updateText()
+	updateSprite()
+	
 
 func updateText():
 	if has_node("RichTextLabel"):
@@ -24,7 +27,25 @@ func updateText():
 	else:
 		draggable = false
 	evaluate_logic()
-	
+
+func updateSprite():
+	match LogicGate.to_upper():
+		"AND":
+			self.texture = load("res://Assets/logicGates/and.png") 
+		"OR":
+			self.texture = load("res://Assets/logicGates/or.png")
+		"NAND":
+			self.texture = load("res://Assets/logicGates/nand.png")
+		"NOR":
+			self.texture = load("res://Assets/logicGates/nor.png")
+		"XOR":
+			self.texture = load("res://Assets/logicGates/xor.png")
+		"XNOR":
+			self.texture = load("res://Assets/logicGates/xnor.png")
+		"NOT":
+			self.texture = load("res://Assets/logicGates/not.png")
+		_:
+			self.texture = load("res://Assets/logicGates/blank.png")
 
 # --- Signal Catching ---
 func _on_input_a_received(state):
@@ -42,34 +63,26 @@ func evaluate_logic():
 	# Logic math based on the string name
 	match LogicGate.to_upper():
 		"AND":
-			if input_a != null and input_b != null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = input_a and input_b
 		"OR":
-			if input_a != null and input_b != null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = input_a or input_b
 		"NAND":
-			if input_a != null and input_b != null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = not (input_a and input_b)
 		"NOR":
-			if input_a != null and input_b!= null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = not (input_a or input_b)
 		"XOR":
-			if input_a != null and input_b != null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = input_a != input_b
 		"XNOR":
-			if input_a != null and input_b != null:
+			if input_a != null and input_b != null and not SingleInput:
 				current_output = input_a == input_b
 		"NOT":
-			# 1. Check if both inputs are connected (not null)
-			if input_a != null and input_b != null:
-				current_output = null # Invalid state: Both pins are occupied
-				print("Logic Error: NOT gate cannot have two inputs!")
-			
-			# 2. Check if only the primary input is connected
-			elif input_a != null:
+			if SingleInput:
 				current_output = not input_a
-				
-			# 3. Otherwise, it's either empty or only input_b is connected (also invalid)
 			else:
 				current_output = null
 		_:
