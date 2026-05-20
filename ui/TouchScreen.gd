@@ -11,8 +11,13 @@ func _ready():
 	$PausePopup.visible = false
 	$PausePopup/HBoxContainer/Settings/Settings.visible = false
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = false
+	$DataCodexPopup.visible = false
 	
-	pass # Replace with function body.
+#	if "Data Codex" in Data.save_data["ach"]:
+#		$"ControlButtons/Data Codex".visible = true
+#	else:
+#		$"ControlButtons/Data Codex".visible = false
+#	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,23 +37,19 @@ func _on_Resume_button_up():
 	$PausePopup.visible = false
 	pass # Replace with function body.
 
-
 func _on_Settings_button_up():
 	$PausePopup/HBoxContainer/Settings/Settings.visible = true
 	pass # Replace with function body.
-
 
 func _on_Quit_button_up():
 	
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = true
 	pass # Replace with function body.
 
-
 func _on_Confirm_button_up():
 	get_tree().paused = false
 	get_tree().change_scene("res://Welcome.tscn")
 	pass # Replace with function body.
-
 
 func _on_Cancel_button_up():
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = false
@@ -80,4 +81,9 @@ func _notification(what):
 		print("The game was resumed!")
 		# Example: Restore music volume
 
-
+func _on_Book_pressed():
+	if "Data Codex" in Data.save_data["ach"]:
+		$DataCodexPopup.visible = true
+		get_tree().paused = true
+		pass
+	pass # Replace with function body.

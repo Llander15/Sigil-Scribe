@@ -22,6 +22,14 @@ func _ready():
 	
 	updateAns()
 	
+	#tutorial start
+	$Popup/tutorial/t1.visible = true
+	$Popup/tutorial/t2.visible = false
+	$Popup/tutorial/t3.visible = false
+	$Popup/tutorial/t4.visible = false
+	
+	$Popup/exit.hide()
+	
 	if "S 1" in Data.save_data["ach"]:
 		puzzleSolved = true
 		pass
@@ -50,7 +58,6 @@ func _on_Area2D_body_exited(body):
 			body.disconnect("interact_pressed", self, "_on_player_interacted")
 		pass
 
-# This runs when the signal is received
 func _on_player_interacted():
 	print("Player touched the terminal!")
 	
@@ -82,6 +89,10 @@ func _on_Table_pressed():
 	$Popup/Table. visible = false
 	$Popup/Confirm.visible = false
 	$Popup/NinePatchRect/Terminal.visible = false
+	
+	#tutorial 3
+	$Popup/tutorial/t2.visible = false
+	$Popup/tutorial/t3.visible = true
 	pass # Replace with function body.
 
 func _on_Back_pressed():
@@ -91,6 +102,9 @@ func _on_Back_pressed():
 	$Popup/Table. visible = true
 	$Popup/Confirm.visible = true
 	$Popup/NinePatchRect/Terminal.visible = true
+	
+	#tutorial 4
+	$Popup/tutorial/t4.visible = true
 	pass # Replace with function body.
 
 func _notification(what: int) -> void:
@@ -107,6 +121,11 @@ func updateAns():
 	
 	if currentAns == tableSyntax:
 		tableUnlocked = true
+		
+		#tutorial 2
+		$Popup/tutorial/t1.visible = false
+		$Popup/tutorial/t2.visible = true
+		
 	
 	if tableUnlocked:
 		$Popup/Table.disabled = false
@@ -115,16 +134,44 @@ func updateAns():
 	
 	print(currentAns)
 
-
 func puzzleSolved():
 	if not "S 1" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("S 1")
-	
-
 
 func _on_Confirm_pressed():
 	puzzleSolved()
 	puzzleSolved = true
-	exit_puzzle()
 	
+	#end of tutorial
+	if $Popup/tutorial/t4.visible:
+		$Popup.visible = false
+		$Popup/tutorial/t4.visible = false
+		$Popup2.visible = true
+		$"Popup2/Logic Gauntlet".visible = true
+		$"Popup2/Data Codex".visible = false
+		
+	
+#	exit_puzzle()
+	pass # Replace with function body.
+
+func _on_t3Button_pressed():
+	#tutorial 3
+		if $Popup/tutorial/t3.visible:
+			$Popup/tutorial/t3.visible = false
+
+
+func _on_LG_Confirm_pressed():
+	$"Popup2/Logic Gauntlet".visible = false
+	$"Popup2/Data Codex".visible = true
+	pass # Replace with function body.
+
+
+func _on_DC_Confirm_pressed():
+	if not "Logic Gauntlet" in Data.save_data["ach"]:
+		Data.save_data["ach"].append("Logic Gauntlet")
+	if not "Data Codex" in Data.save_data["ach"]:
+		Data.save_data["ach"].append("Data Codex")
+	
+	exit_puzzle()
+	$Popup2.visible = false
 	pass # Replace with function body.

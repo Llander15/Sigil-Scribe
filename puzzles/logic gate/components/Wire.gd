@@ -2,7 +2,7 @@ extends Control
 
 # Colors for your theme
 export(Color) var color_on = Color("32ff32") 
-export(Color) var color_off = Color("8b0000") 
+export(Color) var color_off = Color("ff0000") 
 export(Color) var color_null = Color("707070")
 
 onready var line = $Line2D
