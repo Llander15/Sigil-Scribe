@@ -8,4 +8,4 @@ region = Rect2( 428, 12, 190, 52 )
 
 [resource]
 texture = SubResource( 1 )
-region_rect = Rect2( 0, 0, 190, 50 )
+region_rect = Rect2( 0, 0, 190, 52 )
