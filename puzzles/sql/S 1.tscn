@@ -390,10 +390,15 @@ custom_styles/panel = SubResource( 6 )
 margin_right = 544.0
 margin_bottom = 124.0
 custom_fonts/font = SubResource( 5 )
-text = "Let's drag these blocks in correct order to unlock the table \"chest\""
+text = "In SQL puzzles, you are introduced to these blocks that represents real SQL syntaxes."
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Popup/tutorial/t1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 656.0
+margin_bottom = 432.0
 
 [node name="t2" type="Node2D" parent="Popup/tutorial"]
 visible = false
@@ -427,20 +432,20 @@ margin_bottom = 313.0
 margin_left = 48.0
 margin_top = 48.0
 margin_right = 592.0
-margin_bottom = 172.0
+margin_bottom = 192.0
 custom_styles/panel = SubResource( 6 )
 
 [node name="Label" type="Label" parent="Popup/tutorial/t2/Panel5"]
 margin_right = 544.0
 margin_bottom = 124.0
 custom_fonts/font = SubResource( 5 )
-text = "Table is now unlocked! 
-Let's see what the contents are"
+text = "Before we start solving, first we look at the table to give us more information on what we are working on."
 align = 1
 valign = 1
 autowrap = true
 
 [node name="t3" type="Node2D" parent="Popup/tutorial"]
+visible = false
 
 [node name="Panel" type="Panel" parent="Popup/tutorial/t3"]
 modulate = Color( 1, 1, 1, 0.654902 )
@@ -449,7 +454,7 @@ margin_bottom = 64.0
 
 [node name="Panel2" type="Panel" parent="Popup/tutorial/t3"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 313.0
+margin_top = 176.0
 margin_right = 656.0
 margin_bottom = 432.0
 
@@ -458,18 +463,18 @@ modulate = Color( 1, 1, 1, 0.654902 )
 margin_left = -576.0
 margin_top = 64.0
 margin_right = 64.0
-margin_bottom = 313.0
+margin_bottom = 176.0
 
 [node name="Panel4" type="Panel" parent="Popup/tutorial/t3"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 548.0
+margin_left = 544.0
 margin_top = 64.0
-margin_right = 868.0
-margin_bottom = 313.0
+margin_right = 1204.0
+margin_bottom = 176.0
 
 [node name="Panel5" type="Panel" parent="Popup/tutorial/t3"]
 margin_left = 48.0
-margin_top = 196.0
+margin_top = 176.0
 margin_right = 592.0
 margin_bottom = 320.0
 custom_styles/panel = SubResource( 6 )
@@ -478,14 +483,14 @@ custom_styles/panel = SubResource( 6 )
 margin_right = 544.0
 margin_bottom = 124.0
 custom_fonts/font = SubResource( 5 )
-text = "Opening the table gives you information needed to unlock SQL puzzles!"
+text = "The table shows the contents of the puzzle. Make sure to open it as it will help you solve future SQL puzzles."
 align = 1
 valign = 1
 autowrap = true
 
-[node name="t3Button" type="Button" parent="Popup/tutorial/t3"]
+[node name="t3button" type="Button" parent="Popup/tutorial/t3"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 640.0
+margin_right = 656.0
 margin_bottom = 368.0
 
 [node name="t4" type="Node2D" parent="Popup/tutorial"]
@@ -493,41 +498,85 @@ visible = false
 
 [node name="Panel" type="Panel" parent="Popup/tutorial/t4"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 432.0
-margin_right = 576.0
-margin_bottom = 272.0
+margin_right = 656.0
+margin_bottom = 128.0
 
 [node name="Panel2" type="Panel" parent="Popup/tutorial/t4"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 313.0
+margin_top = 192.0
 margin_right = 656.0
 margin_bottom = 432.0
 
 [node name="Panel3" type="Panel" parent="Popup/tutorial/t4"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -576.0
-margin_right = 432.0
-margin_bottom = 313.0
+margin_left = -560.0
+margin_top = 128.0
+margin_right = 80.0
+margin_bottom = 192.0
 
 [node name="Panel4" type="Panel" parent="Popup/tutorial/t4"]
 modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 576.0
-margin_right = 868.0
-margin_bottom = 313.0
+margin_left = 496.0
+margin_top = 128.0
+margin_right = 1156.0
+margin_bottom = 192.0
 
 [node name="Panel5" type="Panel" parent="Popup/tutorial/t4"]
 margin_left = 48.0
-margin_top = 48.0
+margin_top = 208.0
 margin_right = 592.0
-margin_bottom = 208.0
+margin_bottom = 320.0
 custom_styles/panel = SubResource( 6 )
 
 [node name="Label" type="Label" parent="Popup/tutorial/t4/Panel5"]
 margin_right = 544.0
-margin_bottom = 160.0
+margin_bottom = 108.0
 custom_fonts/font = SubResource( 5 )
-text = "You can confirm your answer when SQL blocks is in correct sequence! 
-Press it to get your Tools!"
+text = "Now Let us solve the puzzle by dragging the blocks in correct order."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="t5" type="Node2D" parent="Popup/tutorial"]
+visible = false
+
+[node name="Panel" type="Panel" parent="Popup/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_right = 656.0
+margin_bottom = 272.0
+
+[node name="Panel2" type="Panel" parent="Popup/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_top = 313.0
+margin_right = 656.0
+margin_bottom = 432.0
+
+[node name="Panel3" type="Panel" parent="Popup/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -208.0
+margin_top = 272.0
+margin_right = 432.0
+margin_bottom = 313.0
+
+[node name="Panel4" type="Panel" parent="Popup/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 576.0
+margin_top = 272.0
+margin_right = 1236.0
+margin_bottom = 313.0
+
+[node name="Panel5" type="Panel" parent="Popup/tutorial/t5"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 592.0
+margin_bottom = 160.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Popup/tutorial/t5/Panel5"]
+margin_right = 544.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 5 )
+text = "You have succesfully solved the puzzle and unlocked the confirm button."
 align = 1
 valign = 1
 autowrap = true
@@ -596,6 +645,7 @@ custom_styles/normal = ExtResource( 5 )
 text = "Confirm"
 
 [node name="Data Codex" type="NinePatchRect" parent="Popup2"]
+visible = false
 margin_left = 112.0
 margin_top = 16.0
 margin_right = 528.0
@@ -660,6 +710,7 @@ text = "Confirm"
 [connection signal="pressed" from="Popup/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Popup/Table" to="." method="_on_Table_pressed"]
 [connection signal="pressed" from="Popup/Back" to="." method="_on_Back_pressed"]
-[connection signal="pressed" from="Popup/tutorial/t3/t3Button" to="." method="_on_t3Button_pressed"]
+[connection signal="pressed" from="Popup/tutorial/t1/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Popup/tutorial/t3/t3button" to="." method="_on_t3button_pressed"]
 [connection signal="pressed" from="Popup2/Logic Gauntlet/LG Confirm" to="." method="_on_LG_Confirm_pressed"]
 [connection signal="pressed" from="Popup2/Data Codex/DC Confirm" to="." method="_on_DC_Confirm_pressed"]

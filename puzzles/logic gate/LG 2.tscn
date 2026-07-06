@@ -96,6 +96,7 @@ margin_bottom = 184.0
 
 [node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 3" index="0"]
 position = Vector2( 172, -51 )
+scale = Vector2( 1.15, 1 )
 points = PoolVector2Array( 4, 17, 76, 17 )
 
 [node name="Gates" type="Node2D" parent="Popup/NinePatchRect"]

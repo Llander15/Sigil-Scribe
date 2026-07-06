@@ -3,7 +3,6 @@ extends Node2D
 var puzzleSolved = false
 var target_player = null
 
-var tableUnlocked = false
 var currentAns
 
 var tableSyntax = "SELECT * FROM chest ;"
@@ -24,9 +23,6 @@ func _ready():
 	
 	#tutorial start
 	$Popup/tutorial/t1.visible = true
-	$Popup/tutorial/t2.visible = false
-	$Popup/tutorial/t3.visible = false
-	$Popup/tutorial/t4.visible = false
 	
 	$Popup/exit.hide()
 	
@@ -90,10 +86,9 @@ func _on_Table_pressed():
 	$Popup/Confirm.visible = false
 	$Popup/NinePatchRect/Terminal.visible = false
 	
-	#tutorial 3
-	$Popup/tutorial/t2.visible = false
-	$Popup/tutorial/t3.visible = true
-	pass # Replace with function body.
+	if $Popup/tutorial/t2.visible:
+		$Popup/tutorial/t2.visible = false
+		$Popup/tutorial/t3.visible = true
 
 func _on_Back_pressed():
 	$Popup/NinePatchRect/Table.visible = false
@@ -103,9 +98,7 @@ func _on_Back_pressed():
 	$Popup/Confirm.visible = true
 	$Popup/NinePatchRect/Terminal.visible = true
 	
-	#tutorial 4
 	$Popup/tutorial/t4.visible = true
-	pass # Replace with function body.
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
@@ -116,55 +109,35 @@ func updateAns():
 	currentAns = str(S1.sql_text) + " " + str(S2.sql_text) + " " + str(S3.sql_text) + " " + str(S4.sql_text) + " " + str(S5.sql_text)
 	if currentAns == correctAns:
 		$Popup/Confirm.disabled = false
+		
+		if $Popup/tutorial/t4.visible:
+			$Popup/tutorial/t4.visible = false
+			$Popup/tutorial/t5.visible = true
 	else:
 		$Popup/Confirm.disabled = true
-	
-	if currentAns == tableSyntax:
-		tableUnlocked = true
-		
-		#tutorial 2
-		$Popup/tutorial/t1.visible = false
-		$Popup/tutorial/t2.visible = true
-		
-	
-	if tableUnlocked:
-		$Popup/Table.disabled = false
-	else:
-		$Popup/Table.disabled = true
-	
 	print(currentAns)
 
-func puzzleSolved():
+func puzzleSolve():
 	if not "S 1" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("S 1")
 
 func _on_Confirm_pressed():
-	puzzleSolved()
+	puzzleSolve()
 	puzzleSolved = true
 	
-	#end of tutorial
-	if $Popup/tutorial/t4.visible:
-		$Popup.visible = false
-		$Popup/tutorial/t4.visible = false
-		$Popup2.visible = true
-		$"Popup2/Logic Gauntlet".visible = true
-		$"Popup2/Data Codex".visible = false
-		
+	$Popup.visible = false
+	$Popup2.visible = true
 	
-#	exit_puzzle()
-	pass # Replace with function body.
 
 func _on_t3Button_pressed():
 	#tutorial 3
 		if $Popup/tutorial/t3.visible:
 			$Popup/tutorial/t3.visible = false
 
-
 func _on_LG_Confirm_pressed():
 	$"Popup2/Logic Gauntlet".visible = false
 	$"Popup2/Data Codex".visible = true
 	pass # Replace with function body.
-
 
 func _on_DC_Confirm_pressed():
 	if not "Logic Gauntlet" in Data.save_data["ach"]:
@@ -174,4 +147,19 @@ func _on_DC_Confirm_pressed():
 	
 	exit_puzzle()
 	$Popup2.visible = false
+	
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+#tutorial
+
+
+func _on_Button_pressed():
+	$Popup/tutorial/t1.visible = false
+	$Popup/tutorial/t2.visible = true
+	pass # Replace with function body.
+
+
+func _on_t3button_pressed():
+	$Popup/tutorial/t3.visible = false
 	pass # Replace with function body.

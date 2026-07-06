@@ -48,6 +48,7 @@ func _ready():
 		# White (1, 1, 1) represents 100% normal, untinted color in Godot
 		$Popup/confirm.self_modulate = Color(1, 1, 1)
 		$Popup/confirm.disabled = false
+
 func setup_handshakes():
 	# --- Connection Set 1: Top Path ---
 	# Source 1 (Violet) -> Gate 1 (Input A) and Wire 1 (Visual)

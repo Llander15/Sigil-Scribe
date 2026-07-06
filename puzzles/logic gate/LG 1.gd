@@ -33,8 +33,24 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
 	
-	$platform/AnimationPlayer.play("RESET")
-	pass
+	if "LG 1" in Data.save_data["ach"]:
+		$Area2D/CollisionShape2D.disabled = true
+		$Area2D/before.visible = false
+		$Area2D/after.visible = true
+		$platform/AnimationPlayer.play("moving platform")
+	else:
+		$platform/AnimationPlayer.play("RESET")
+	
+	if not $"Popup/NinePatchRect/Final/Final 1".solved:
+		# A hex color string wrapped in Color() to make it a light gray/disabled look
+		$Popup/confirm.self_modulate = Color("aaaaaa") 
+		$Popup/confirm.disabled = true
+	else:
+		# White (1, 1, 1) represents 100% normal, untinted color in Godot
+		$Popup/confirm.self_modulate = Color(1, 1, 1)
+		$Popup/confirm.disabled = false
+	
+	
 
 
 
@@ -130,3 +146,28 @@ func _on_confirm_released():
 			pass
 		pass
 	pass # Replace with function body.
+
+
+func _on_confirm_pressed():
+	if puzzle_start:
+		if $"Popup/NinePatchRect/Final/Final 1".solved:
+			$Area2D/CollisionShape2D.disabled = true
+			$Area2D/before.visible = false
+			$Area2D/after.visible = true
+			$platform/AnimationPlayer.play("moving platform")
+			
+			if not "LG 1" in Data.save_data["ach"]:
+				Data.save_data["ach"].append("LG 1")
+			
+			exit_puzzle()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END:
+		if not $"Popup/NinePatchRect/Final/Final 1".solved:
+			# A hex color string wrapped in Color() to make it a light gray/disabled look
+			$Popup/confirm.self_modulate = Color("aaaaaa") 
+			$Popup/confirm.disabled = true
+		else:
+			# White (1, 1, 1) represents 100% normal, untinted color in Godot
+			$Popup/confirm.self_modulate = Color(1, 1, 1)
+			$Popup/confirm.disabled = false

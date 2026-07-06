@@ -13,11 +13,11 @@ func _ready():
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = false
 	$DataCodexPopup.visible = false
 	
-#	if "Data Codex" in Data.save_data["ach"]:
-#		$"ControlButtons/Data Codex".visible = true
-#	else:
-#		$"ControlButtons/Data Codex".visible = false
-#	pass # Replace with function body.
+	$"ControlButtons/Data Codex".visible = false
+	if Data.save_data.get("ach") and "Data Codex" in Data.save_data["ach"]:
+		$"ControlButtons/Data Codex".visible = true
+
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

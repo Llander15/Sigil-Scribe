@@ -46,6 +46,23 @@ func _ready():
 	setup_handshakes()
 	$Bridge/Sprite.visible = false
 	$Bridge/StaticBody2D/CollisionShape2D.disabled = true
+	
+	if "LG 3" in Data.save_data["ach"]:
+		$Bridge/StaticBody2D/CollisionShape2D.disabled = false
+		$Bridge/Sprite.visible = true
+		$Area2D/before.visible = false
+		$Area2D/after.visible = true
+		$Area2D/CollisionShape2D.disabled = true
+	
+	if not $"Popup/NinePatchRect/Final/Final 1".solved:
+		# A hex color string wrapped in Color() to make it a light gray/disabled look
+		$Popup/confirm.self_modulate = Color("aaaaaa") 
+		$Popup/confirm.disabled = true
+	else:
+		# White (1, 1, 1) represents 100% normal, untinted color in Godot
+		$Popup/confirm.self_modulate = Color(1, 1, 1)
+		$Popup/confirm.disabled = false
+	
 	pass
 
 func setup_handshakes():
@@ -134,3 +151,30 @@ func _on_confirm_released():
 			$Area2D/CollisionShape2D.disabled = true
 			exit_puzzle()
 	pass # Replace with function body.
+
+
+func _on_confirm_pressed():
+	if puzzle_start:
+		if $"Popup/NinePatchRect/Final/Final 1".solved:
+			$Bridge/StaticBody2D/CollisionShape2D.disabled = false
+			$Bridge/Sprite.visible = true
+			$Area2D/before.visible = false
+			$Area2D/after.visible = true
+			$Area2D/CollisionShape2D.disabled = true
+			
+			if not "LG 3" in Data.save_data["ach"]:
+				Data.save_data["ach"].append("LG 3")
+			
+			exit_puzzle()
+	pass # Replace with function body.
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END:
+		if not $"Popup/NinePatchRect/Final/Final 1".solved:
+			# A hex color string wrapped in Color() to make it a light gray/disabled look
+			$Popup/confirm.self_modulate = Color("aaaaaa") 
+			$Popup/confirm.disabled = true
+		else:
+			# White (1, 1, 1) represents 100% normal, untinted color in Godot
+			$Popup/confirm.self_modulate = Color(1, 1, 1)
+			$Popup/confirm.disabled = false

@@ -58,7 +58,7 @@ func _on_input_b_received(state):
 
 # --- The Logic Brain ---
 func evaluate_logic():
-	#var old_output = current_output
+	current_output = null #back to default, the match default doesnt work for sum reas
 	
 	# Logic math based on the string name
 	match LogicGate.to_upper():
