@@ -70,6 +70,13 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 11 )
 
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -72.0
+margin_top = -44.0
+margin_right = 744.0
+margin_bottom = 420.0
+
 [node name="SQL" type="NinePatchRect" parent="."]
 margin_left = 32.0
 margin_top = 32.0
