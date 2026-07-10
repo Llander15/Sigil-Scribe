@@ -48,6 +48,9 @@ func _ready():
 		# White (1, 1, 1) represents 100% normal, untinted color in Godot
 		$Popup/confirm.self_modulate = Color(1, 1, 1)
 		$Popup/confirm.disabled = false
+		
+	#Tutorial start
+	$Popup/Tutorial/t1.visible = true
 
 func setup_handshakes():
 	# --- Connection Set 1: Top Path ---
@@ -70,6 +73,8 @@ func setup_handshakes():
 	
 
 func _on_Area2D_body_entered(body):
+	if not "Logic Gauntlet" in Data.save_data["ach"]:
+		return
 	if body.name == "Player":
 		
 		target_player = body
@@ -96,6 +101,17 @@ func _on_player_interacted():
 	
 	$Popup.visible = true
 	puzzle_start = true
+	
+	#tutorial, going back to start
+	$Popup/Tutorial/t1.visible = true
+	$Popup/Tutorial/t2.visible = false
+	$Popup/Tutorial/t3.visible = false
+	$Popup/Tutorial/t4.visible = false
+	$Popup/Tutorial/t5.visible = false
+	$Popup/Tutorial/t6.visible = false
+	$Popup/Tutorial/t7.visible = false
+	$Popup/Tutorial/t8.visible = false
+	$Popup/Tutorial/t9.visible = false
 	
 	#freezes the world
 	get_tree().paused = true
@@ -157,7 +173,56 @@ func _notification(what: int) -> void:
 			# A hex color string wrapped in Color() to make it a light gray/disabled look
 			$Popup/confirm.self_modulate = Color("aaaaaa") 
 			$Popup/confirm.disabled = true
+			
+			#tutorial
+			$Popup/Tutorial/t8.visible = true
+			$Popup/Tutorial/t9.visible = false
 		else:
 			# White (1, 1, 1) represents 100% normal, untinted color in Godot
 			$Popup/confirm.self_modulate = Color(1, 1, 1)
 			$Popup/confirm.disabled = false
+			
+			#tutorial going back
+			$Popup/Tutorial/t9.visible = true
+			$Popup/Tutorial/t8.visible = false
+
+
+
+
+func _on_t1alpha0Btn_pressed():
+	$Popup/Tutorial/t1.visible= false
+	$Popup/Tutorial/t2.visible = true
+	pass # Replace with function body.
+
+func _on_t2alpha0Btn_pressed():
+	$Popup/Tutorial/t2.visible = false
+	$Popup/Tutorial/t3.visible = true
+	pass # Replace with function body.
+
+func _on_t3alpha0Btn_pressed():
+	$Popup/Tutorial/t3.visible = false
+	$Popup/Tutorial/t4.visible = true
+	pass # Replace with function body.
+
+func _on_t4alpha0Btn_pressed():
+	$Popup/Tutorial/t4.visible = false
+	$Popup/Tutorial/t5.visible = true
+	pass # Replace with function body.
+
+func _on_t5alpha0Btn_pressed():
+	$Popup/Tutorial/t5.visible = false
+	$Popup/Tutorial/t6.visible = true
+	pass # Replace with function body.
+
+
+func _on_t6alpha0Btn_pressed():
+	$Popup/Tutorial/t6.visible = false
+	$Popup/Tutorial/t7.visible = true
+	pass # Replace with function body.
+
+
+func _on_t7alpha0Btn_pressed():
+	$Popup/Tutorial/t7.visible = false
+	$Popup/Tutorial/t8.visible = true
+	pass # Replace with function body.
+
