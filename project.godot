@@ -20,6 +20,10 @@ config/icon="res://logo.png"
 Global="*res://Global.gd"
 Data="*res://data.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=640
