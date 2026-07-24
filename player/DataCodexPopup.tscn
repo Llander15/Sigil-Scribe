@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/Panel.png" type="Texture" id=1]
 [ext_resource path="res://Assets/x.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://player/SQL.gd" type="Script" id=12]
 [ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=13]
 [ext_resource path="res://ui/selectedBtn.tres" type="StyleBox" id=14]
+[ext_resource path="res://player/DL.gd" type="Script" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -22,17 +23,6 @@ region = Rect2( 8, 52, 32, 32 )
 [sub_resource type="DynamicFont" id=2]
 size = 24
 extra_spacing_char = 4
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 24
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 24
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -65,6 +55,17 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 4 )
+
 [node name="DataCodexPopup" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -76,319 +77,6 @@ margin_left = -72.0
 margin_top = -44.0
 margin_right = 744.0
 margin_bottom = 420.0
-
-[node name="SQL" type="NinePatchRect" parent="."]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 608.0
-margin_bottom = 336.0
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 64, 64 )
-patch_margin_left = 18
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 28
-script = ExtResource( 12 )
-
-[node name="close" type="TextureButton" parent="SQL"]
-margin_left = 528.0
-margin_top = 16.0
-margin_right = 560.0
-margin_bottom = 48.0
-texture_normal = SubResource( 1 )
-
-[node name="SQL banner" type="NinePatchRect" parent="SQL"]
-margin_left = 32.0
-margin_top = 16.0
-margin_right = 512.0
-margin_bottom = 48.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
-patch_margin_left = 12
-patch_margin_top = 13
-patch_margin_right = 10
-patch_margin_bottom = 12
-
-[node name="Label" type="Label" parent="SQL/SQL banner"]
-margin_right = 480.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 2 )
-text = "SQL"
-align = 1
-valign = 1
-
-[node name="Content panel" type="NinePatchRect" parent="SQL"]
-margin_left = 32.0
-margin_top = 64.0
-margin_right = 544.0
-margin_bottom = 272.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 32, 32 )
-patch_margin_left = 12
-patch_margin_top = 13
-patch_margin_right = 10
-patch_margin_bottom = 12
-
-[node name="Chapters" type="ScrollContainer" parent="SQL/Content panel"]
-margin_left = 8.0
-margin_top = 12.0
-margin_right = 156.0
-margin_bottom = 196.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SQL/Content panel/Chapters"]
-margin_right = 128.0
-margin_bottom = 675.0
-
-[node name="Button1" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_right = 128.0
-margin_bottom = 33.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "SQL"
-
-[node name="Button2" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 37.0
-margin_right = 128.0
-margin_bottom = 70.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "Database"
-
-[node name="Button3" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 74.0
-margin_right = 128.0
-margin_bottom = 107.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "SQL Syntax"
-
-[node name="Button4" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 111.0
-margin_right = 128.0
-margin_bottom = 144.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "SELECT"
-
-[node name="Button5" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 148.0
-margin_right = 128.0
-margin_bottom = 181.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "FROM"
-
-[node name="Button6" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 185.0
-margin_right = 128.0
-margin_bottom = 218.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "WHERE"
-
-[node name="Button7" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 222.0
-margin_right = 128.0
-margin_bottom = 280.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "Logical
-Operators"
-
-[node name="Button8" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 284.0
-margin_right = 128.0
-margin_bottom = 317.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "ORDER BY"
-
-[node name="Button9" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 321.0
-margin_right = 128.0
-margin_bottom = 354.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "DISTINCT"
-
-[node name="Button10" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 358.0
-margin_right = 128.0
-margin_bottom = 416.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "Aggregate
-Functions"
-
-[node name="Button11" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 420.0
-margin_right = 128.0
-margin_bottom = 453.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "GROUP BY"
-
-[node name="Button12" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 457.0
-margin_right = 128.0
-margin_bottom = 490.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "HAVING"
-
-[node name="Button13" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 494.0
-margin_right = 128.0
-margin_bottom = 527.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "JOIN"
-
-[node name="Button14" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 531.0
-margin_right = 128.0
-margin_bottom = 564.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "LIKE"
-
-[node name="Button15" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 568.0
-margin_right = 128.0
-margin_bottom = 601.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "BETWEEN & IN"
-
-[node name="Button16" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 605.0
-margin_right = 128.0
-margin_bottom = 638.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "Subueries"
-
-[node name="Button17" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
-margin_top = 642.0
-margin_right = 128.0
-margin_bottom = 675.0
-mouse_filter = 1
-custom_fonts/font = SubResource( 7 )
-custom_styles/hover = ExtResource( 14 )
-custom_styles/pressed = ExtResource( 14 )
-custom_styles/focus = ExtResource( 14 )
-custom_styles/disabled = ExtResource( 13 )
-custom_styles/normal = ExtResource( 13 )
-text = "LIMIT"
-
-[node name="Contents" type="ScrollContainer" parent="SQL/Content panel"]
-margin_left = 168.0
-margin_top = 12.0
-margin_right = 504.0
-margin_bottom = 196.0
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SQL/Content panel/Contents"]
-margin_right = 336.0
-margin_bottom = 178.0
-size_flags_horizontal = 3
-custom_constants/separation = 16
-
-[node name="Title" type="Label" parent="SQL/Content panel/Contents/VBoxContainer"]
-margin_right = 336.0
-margin_bottom = 25.0
-custom_fonts/font = SubResource( 8 )
-text = "What is SQL?"
-autowrap = true
-
-[node name="Description" type="Label" parent="SQL/Content panel/Contents/VBoxContainer"]
-margin_top = 41.0
-margin_right = 336.0
-margin_bottom = 178.0
-custom_fonts/font = SubResource( 9 )
-text = "Structured Query Language (SQL) is the standard programming language specifically engineered to communicate with and manipulate relational databases. Imagine it as a standardized bridge allowing users, applications, and frameworks to directly interface with complex collections of structured data.
-"
-autowrap = true
 
 [node name="Main" type="NinePatchRect" parent="."]
 margin_left = 32.0
@@ -618,8 +306,7 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 6 )
 
-[node name="DL" type="NinePatchRect" parent="."]
-visible = false
+[node name="SQL" type="NinePatchRect" parent="."]
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 608.0
@@ -630,6 +317,326 @@ patch_margin_left = 18
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 28
+script = ExtResource( 12 )
+
+[node name="close" type="TextureButton" parent="SQL"]
+margin_left = 528.0
+margin_top = 16.0
+margin_right = 560.0
+margin_bottom = 48.0
+texture_normal = SubResource( 1 )
+
+[node name="SQL banner" type="NinePatchRect" parent="SQL"]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 512.0
+margin_bottom = 48.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 13
+patch_margin_right = 10
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="SQL/SQL banner"]
+margin_right = 480.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 2 )
+text = "SQL"
+align = 1
+valign = 1
+
+[node name="Content panel" type="NinePatchRect" parent="SQL"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 544.0
+margin_bottom = 272.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 13
+patch_margin_right = 10
+patch_margin_bottom = 12
+
+[node name="Chapters" type="ScrollContainer" parent="SQL/Content panel"]
+margin_left = 8.0
+margin_top = 12.0
+margin_right = 156.0
+margin_bottom = 196.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SQL/Content panel/Chapters"]
+margin_right = 128.0
+margin_bottom = 729.0
+
+[node name="Button1" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 33.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "SQL"
+
+[node name="Button2" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 37.0
+margin_right = 128.0
+margin_bottom = 70.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Database"
+
+[node name="Button3" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 74.0
+margin_right = 128.0
+margin_bottom = 107.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "SQL Syntax"
+
+[node name="Button4" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 111.0
+margin_right = 128.0
+margin_bottom = 144.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "SELECT"
+
+[node name="Button5" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 148.0
+margin_right = 128.0
+margin_bottom = 181.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "FROM"
+
+[node name="Button6" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 185.0
+margin_right = 128.0
+margin_bottom = 218.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "WHERE"
+
+[node name="Button7" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 222.0
+margin_right = 128.0
+margin_bottom = 280.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Logical
+Operators"
+
+[node name="Button8" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 284.0
+margin_right = 128.0
+margin_bottom = 317.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "ORDER BY"
+
+[node name="Button9" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 321.0
+margin_right = 128.0
+margin_bottom = 354.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "DISTINCT"
+
+[node name="Button10" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 358.0
+margin_right = 128.0
+margin_bottom = 416.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Aggregate
+Functions"
+
+[node name="Button11" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 420.0
+margin_right = 128.0
+margin_bottom = 453.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "GROUP BY"
+
+[node name="Button12" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 457.0
+margin_right = 128.0
+margin_bottom = 490.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "HAVING"
+
+[node name="Button13" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 494.0
+margin_right = 128.0
+margin_bottom = 527.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "JOIN"
+
+[node name="Button14" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 531.0
+margin_right = 128.0
+margin_bottom = 564.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "LIKE"
+
+[node name="Button15" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 568.0
+margin_right = 128.0
+margin_bottom = 601.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "BETWEEN & IN"
+
+[node name="Button16" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 605.0
+margin_right = 128.0
+margin_bottom = 638.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Subueries"
+
+[node name="Button17" type="Button" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 642.0
+margin_right = 128.0
+margin_bottom = 675.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "LIMIT"
+
+[node name="Bottom Space" type="Control" parent="SQL/Content panel/Chapters/VBoxContainer"]
+margin_top = 679.0
+margin_right = 128.0
+margin_bottom = 729.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Contents" type="ScrollContainer" parent="SQL/Content panel"]
+margin_left = 168.0
+margin_top = 12.0
+margin_right = 504.0
+margin_bottom = 196.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SQL/Content panel/Contents"]
+margin_right = 336.0
+margin_bottom = 178.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="SQL/Content panel/Contents/VBoxContainer"]
+margin_right = 336.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 8 )
+text = "What is SQL?"
+autowrap = true
+
+[node name="Description" type="Label" parent="SQL/Content panel/Contents/VBoxContainer"]
+margin_top = 41.0
+margin_right = 336.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 9 )
+text = "Structured Query Language (SQL) is the standard programming language specifically engineered to communicate with and manipulate relational databases. Imagine it as a standardized bridge allowing users, applications, and frameworks to directly interface with complex collections of structured data.
+"
+autowrap = true
+
+[node name="DL" type="NinePatchRect" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 336.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 64, 64 )
+patch_margin_left = 18
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 28
+script = ExtResource( 15 )
 
 [node name="close" type="TextureButton" parent="DL"]
 margin_left = 528.0
@@ -670,6 +677,157 @@ patch_margin_top = 13
 patch_margin_right = 10
 patch_margin_bottom = 12
 
+[node name="Chapters" type="ScrollContainer" parent="DL/Content panel"]
+margin_left = 8.0
+margin_top = 12.0
+margin_right = 160.0
+margin_bottom = 196.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DL/Content panel/Chapters"]
+margin_right = 138.0
+margin_bottom = 346.0
+
+[node name="Button1" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_right = 138.0
+margin_bottom = 33.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "Digital Logic"
+
+[node name="Button2" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 37.0
+margin_right = 138.0
+margin_bottom = 70.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "AND Gate"
+
+[node name="Button3" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 74.0
+margin_right = 138.0
+margin_bottom = 107.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "OR Gate"
+
+[node name="Button4" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 111.0
+margin_right = 138.0
+margin_bottom = 144.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "NOT Gate"
+
+[node name="Button5" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 148.0
+margin_right = 138.0
+margin_bottom = 181.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "NAND Gate"
+
+[node name="Button6" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 185.0
+margin_right = 138.0
+margin_bottom = 218.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "NOR Gate"
+
+[node name="Button7" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 222.0
+margin_right = 138.0
+margin_bottom = 255.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "XOR Gate"
+
+[node name="Button8" type="Button" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 259.0
+margin_right = 138.0
+margin_bottom = 292.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = ExtResource( 14 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 14 )
+custom_styles/disabled = ExtResource( 13 )
+custom_styles/normal = ExtResource( 13 )
+text = "XNOR Gate"
+
+[node name="Bottom Space" type="Control" parent="DL/Content panel/Chapters/VBoxContainer"]
+margin_top = 296.0
+margin_right = 138.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Contents" type="ScrollContainer" parent="DL/Content panel"]
+margin_left = 172.0
+margin_top = 12.0
+margin_right = 504.0
+margin_bottom = 196.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DL/Content panel/Contents"]
+margin_right = 332.0
+margin_bottom = 178.0
+size_flags_horizontal = 3
+custom_constants/separation = 16
+
+[node name="Title" type="Label" parent="DL/Content panel/Contents/VBoxContainer"]
+margin_right = 332.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 8 )
+text = "What is SQL?"
+autowrap = true
+
+[node name="Description" type="Label" parent="DL/Content panel/Contents/VBoxContainer"]
+margin_top = 41.0
+margin_right = 332.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 9 )
+text = "Structured Query Language (SQL) is the standard programming language specifically engineered to communicate with and manipulate relational databases. Imagine it as a standardized bridge allowing users, applications, and frameworks to directly interface with complex collections of structured data.
+"
+autowrap = true
+
+[connection signal="pressed" from="Main/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Main/DL or SQL panel/Digital Logic/DLBtn" to="." method="_on_DLBtn_pressed"]
+[connection signal="pressed" from="Main/DL or SQL panel/SQL/SQLBtn" to="." method="_on_SQLBtn_pressed"]
 [connection signal="pressed" from="SQL/close" to="." method="_on_sqlclose_pressed"]
 [connection signal="pressed" from="SQL/Content panel/Chapters/VBoxContainer/Button1" to="SQL" method="_on_Button1_pressed"]
 [connection signal="pressed" from="SQL/Content panel/Chapters/VBoxContainer/Button2" to="SQL" method="_on_Button2_pressed"]
@@ -688,7 +846,12 @@ patch_margin_bottom = 12
 [connection signal="pressed" from="SQL/Content panel/Chapters/VBoxContainer/Button15" to="SQL" method="_on_Button15_pressed"]
 [connection signal="pressed" from="SQL/Content panel/Chapters/VBoxContainer/Button16" to="SQL" method="_on_Button16_pressed"]
 [connection signal="pressed" from="SQL/Content panel/Chapters/VBoxContainer/Button17" to="SQL" method="_on_Button17_pressed"]
-[connection signal="pressed" from="Main/close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="Main/DL or SQL panel/Digital Logic/DLBtn" to="." method="_on_DLBtn_pressed"]
-[connection signal="pressed" from="Main/DL or SQL panel/SQL/SQLBtn" to="." method="_on_SQLBtn_pressed"]
 [connection signal="pressed" from="DL/close" to="." method="_on_dlclose_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button1" to="DL" method="_on_Button1_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button2" to="DL" method="_on_Button2_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button3" to="DL" method="_on_Button3_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button4" to="DL" method="_on_Button4_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button5" to="DL" method="_on_Button5_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button6" to="DL" method="_on_Button6_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button7" to="DL" method="_on_Button7_pressed"]
+[connection signal="pressed" from="DL/Content panel/Chapters/VBoxContainer/Button8" to="DL" method="_on_Button8_pressed"]

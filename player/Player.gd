@@ -32,6 +32,12 @@ func _ready():
 	if Data.save_data["player_position"]["x"] and Data.save_data["player_position"]["y"]:
 		self.global_position.x = Data.save_data["player_position"]["x"]
 		self.global_position.y = Data.save_data["player_position"]["y"]
+	
+	
+#	var safe_pos = Data.save_data["last_safe_position"]
+#	# Check if it exists and isn't null
+#	if safe_pos != null:
+#		self.global_position = Vector2(safe_pos["x"], safe_pos["y"])
 
 func _on_Interact_pressed():
 	if is_on_floor():

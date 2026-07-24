@@ -12,7 +12,8 @@ var save_data = {
 	"player_position": {
 		"x": null,
 		"y": null
-	}
+	},
+	"last_safe_position": null
 }
 
 func _ready():
@@ -61,11 +62,12 @@ func reset_to_defaults():
 			"music": 1.0,
 			"sfx": 1.0
 		},
-		"achievements": [],
+		"ach": [],
 		"player_position": {
 			"x": 0.0,
 			"y": 0.0
-		}
+		},
+		"last_safe_position": null
 	}
 
 

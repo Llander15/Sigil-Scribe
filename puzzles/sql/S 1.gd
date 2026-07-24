@@ -28,6 +28,7 @@ func _ready():
 	
 	if "S 1" in Data.save_data["ach"]:
 		puzzleSolved = true
+		$Area2D/Sprite.visible = false
 		pass
 	pass
 
@@ -115,7 +116,7 @@ func updateAns():
 			$Popup/tutorial/t5.visible = true
 	else:
 		$Popup/Confirm.disabled = true
-	print(currentAns)
+	#print(currentAns)
 
 func puzzleSolve():
 	if not "S 1" in Data.save_data["ach"]:
@@ -124,6 +125,7 @@ func puzzleSolve():
 func _on_Confirm_pressed():
 	puzzleSolve()
 	puzzleSolved = true
+	$Area2D/Sprite.visible = false
 	
 	$Popup.visible = false
 	$Popup2.visible = true

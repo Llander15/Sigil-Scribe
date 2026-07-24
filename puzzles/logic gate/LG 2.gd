@@ -36,9 +36,8 @@ func _ready():
 	if "LG 2" in Data.save_data["ach"]:
 		$Door/StaticBody2D/CollisionShape2D.disabled = true
 		$Door/Sprite.visible = false
-		$Area2D/before.visible = false
-		$Area2D/after.visible = true
 		$Area2D/CollisionShape2D.disabled = true
+		$Area2D/sprite.visible = false
 		
 	if not $"Popup/NinePatchRect/Final/Final 1".solved:
 		# A hex color string wrapped in Color() to make it a light gray/disabled look
@@ -135,20 +134,6 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen").visible = true
 		target_player.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 
-#func _on_confirm_released():
-#	if puzzle_start:
-#		if $"Popup/NinePatchRect/Final/Final 1".solved:
-#			$Door/StaticBody2D/CollisionShape2D.disabled = true
-#			$Door/Sprite.visible = false
-#			$Area2D/before.visible = false
-#			$Area2D/after.visible = true
-#			$Area2D/CollisionShape2D.disabled = true
-#
-#			if not "LG 2" in Data.save_data["ach"]:
-#				Data.save_data["ach"].append("LG 2")
-#
-#			exit_puzzle()
-#	pass # Replace with function body.
 
 
 func _on_confirm_pressed():
@@ -156,13 +141,10 @@ func _on_confirm_pressed():
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Door/StaticBody2D/CollisionShape2D.disabled = true
 			$Door/Sprite.visible = false
-			$Area2D/before.visible = false
-			$Area2D/after.visible = true
 			$Area2D/CollisionShape2D.disabled = true
-			
 			if not "LG 2" in Data.save_data["ach"]:
 				Data.save_data["ach"].append("LG 2")
-			
+			$Area2D/sprite.visible = false
 			exit_puzzle()
 	pass # Replace with function body.
 

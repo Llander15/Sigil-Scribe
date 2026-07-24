@@ -3,7 +3,10 @@ extends Node
 var first_fall = false
 
 func _ready():
-	Global.last_safe_position = $"../Player".global_position
+	if Data.save_data["last_safe_position"]:
+		pass
+	else:
+		Data.save_data["last_safe_position"] = $"../Player".global_position
 	pass # Replace with function body.
 
 func player_fell(body):
@@ -12,7 +15,7 @@ func player_fell(body):
 		print("Player fell!")
 		
 		# 2. Reset the player's position to the last checkpoint
-		body.global_position = Global.last_safe_position
+		body.global_position = Data.save_data["last_safe_position"]
 		
 		# 3. Reset velocity so they don't keep "falling" after teleporting
 		if body.has_method("reset_velocity"):

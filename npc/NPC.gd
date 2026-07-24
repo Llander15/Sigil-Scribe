@@ -2,7 +2,7 @@ extends Area2D
 
 export var npc_name : String = "Senior Scribe"
 export(String, MULTILINE) var dialogue_text = "Welcome, Novice. Use the Logic Gauntlet to fix this circuit."
-
+export(String, MULTILINE) var dialogue_text2 = "Welcome, Novice. Use the Logic Gauntlet to fix this circuit."
 var is_player_nearby = false
 
 onready var dialogue_ui = $CanvasLayer/NinePatchRect
@@ -21,6 +21,8 @@ func toggle_dialogue():
 		dialogue_ui.hide()
 	else:
 		label.text = dialogue_text
+		if "Data Codex" in Data.save_data["ach"]:
+			label.text = dialogue_text2
 		dialogue_ui.show()
 
 # Connect these signals from the Area2D node

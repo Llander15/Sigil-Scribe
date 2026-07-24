@@ -19,6 +19,7 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		Global.last_safe_position = self.global_position
+		Data.save_data["last_safe_position"] = self.global_position
 		print("Checkpoint Saved!")
 		
 		#update player last position

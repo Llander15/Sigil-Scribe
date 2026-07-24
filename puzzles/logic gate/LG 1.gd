@@ -35,8 +35,7 @@ func _ready():
 	
 	if "LG 1" in Data.save_data["ach"]:
 		$Area2D/CollisionShape2D.disabled = true
-		$Area2D/before.visible = false
-		$Area2D/after.visible = true
+		$Area2D/sprite.visible = false
 		$platform/AnimationPlayer.play("moving platform")
 	else:
 		$platform/AnimationPlayer.play("RESET")
@@ -136,8 +135,7 @@ func _on_confirm_released():
 	if puzzle_start:
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Area2D/CollisionShape2D.disabled = true
-			$Area2D/before.visible = false
-			$Area2D/after.visible = true
+			$Area2D/sprite.visible = false
 			$platform/AnimationPlayer.play("moving platform")
 			exit_puzzle()
 			pass
@@ -152,8 +150,7 @@ func _on_confirm_pressed():
 	if puzzle_start:
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Area2D/CollisionShape2D.disabled = true
-			$Area2D/before.visible = false
-			$Area2D/after.visible = true
+			$Area2D/sprite.visible = false
 			$platform/AnimationPlayer.play("moving platform")
 			
 			if not "LG 1" in Data.save_data["ach"]:

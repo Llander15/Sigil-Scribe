@@ -50,8 +50,7 @@ func _ready():
 	if "LG 3" in Data.save_data["ach"]:
 		$Bridge/StaticBody2D/CollisionShape2D.disabled = false
 		$Bridge/Sprite.visible = true
-		$Area2D/before.visible = false
-		$Area2D/after.visible = true
+		$Area2D/sprite.visible = false
 		$Area2D/CollisionShape2D.disabled = true
 	
 	if not $"Popup/NinePatchRect/Final/Final 1".solved:
@@ -146,8 +145,7 @@ func _on_confirm_released():
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Bridge/StaticBody2D/CollisionShape2D.disabled = false
 			$Bridge/Sprite.visible = true
-			$Area2D/before.visible = false
-			$Area2D/after.visible = true
+			$Area2D/sprite.visible = false
 			$Area2D/CollisionShape2D.disabled = true
 			exit_puzzle()
 	pass # Replace with function body.
@@ -158,8 +156,7 @@ func _on_confirm_pressed():
 		if $"Popup/NinePatchRect/Final/Final 1".solved:
 			$Bridge/StaticBody2D/CollisionShape2D.disabled = false
 			$Bridge/Sprite.visible = true
-			$Area2D/before.visible = false
-			$Area2D/after.visible = true
+			$Area2D/sprite.visible = false
 			$Area2D/CollisionShape2D.disabled = true
 			
 			if not "LG 3" in Data.save_data["ach"]:
