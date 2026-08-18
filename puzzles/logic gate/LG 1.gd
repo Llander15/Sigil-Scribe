@@ -158,13 +158,33 @@ func _on_confirm_pressed():
 			
 			exit_puzzle()
 
+
+var drag_timer: SceneTreeTimer = null
+var drag_completed: bool = false
+
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_DRAG_END:
+	if what == NOTIFICATION_DRAG_BEGIN:
+		drag_completed = false
+		# Create a 2-second timer
+		drag_timer = get_tree().create_timer(2.0)
+		drag_timer.connect("timeout", self, "_on_drag_timer_timeout")
+
+	elif what == NOTIFICATION_DRAG_END:
+		# Cancel the timer reference if released early
+		drag_timer = null
+		
 		if not $"Popup/NinePatchRect/Final/Final 1".solved:
-			# A hex color string wrapped in Color() to make it a light gray/disabled look
+			# Disabled look (light gray)
 			$Popup/confirm.self_modulate = Color("aaaaaa") 
 			$Popup/confirm.disabled = true
 		else:
-			# White (1, 1, 1) represents 100% normal, untinted color in Godot
+			# Normal, untinted color
 			$Popup/confirm.self_modulate = Color(1, 1, 1)
 			$Popup/confirm.disabled = false
+
+func _on_drag_timer_timeout() -> void:
+	# Only execute if the drag is still active (drag_timer wasn't cleared by DRAG_END)
+	if drag_timer != null:
+		drag_completed = true
+		print("2 seconds passed during drag! Executing action...")
+		$Popup/Tutorial.visible = false

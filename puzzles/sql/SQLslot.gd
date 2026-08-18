@@ -11,6 +11,8 @@ func _ready():
 	
 	update_text_display()
 
+
+
 # This updates the size inside the Godot editor immediately when you type
 func set_sql_text(new_value):
 	sql_text = new_value

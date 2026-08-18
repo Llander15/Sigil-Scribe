@@ -81,6 +81,7 @@ atlas = ExtResource( 2 )
 region = Rect2( 52, 8, 32, 32 )
 
 [node name="S 1" type="Node2D"]
+z_index = 20
 script = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -100,6 +101,7 @@ anims/floating = SubResource( 10 )
 
 [node name="Popup" type="CanvasLayer" parent="."]
 pause_mode = 2
+layer = 10
 
 [node name="NinePatchRect" parent="Popup" instance=ExtResource( 1 )]
 margin_left = 32.0
@@ -426,6 +428,7 @@ custom_styles/panel = SubResource( 6 )
 [node name="Label" type="Label" parent="Popup/tutorial/t1/Panel5"]
 margin_right = 544.0
 margin_bottom = 124.0
+mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
 text = "In SQL puzzles, you are introduced to these blocks that represents real SQL syntaxes."
 align = 1
@@ -475,8 +478,9 @@ custom_styles/panel = SubResource( 6 )
 [node name="Label" type="Label" parent="Popup/tutorial/t2/Panel5"]
 margin_right = 544.0
 margin_bottom = 124.0
+mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "Before we start solving, first we look at the table to give us more information on what we are working on."
+text = "Before you start solving, first we look at the table to give us more information on what we are working on."
 align = 1
 valign = 1
 autowrap = true
@@ -519,6 +523,7 @@ custom_styles/panel = SubResource( 6 )
 [node name="Label" type="Label" parent="Popup/tutorial/t3/Panel5"]
 margin_right = 544.0
 margin_bottom = 124.0
+mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
 text = "The table shows the contents of the puzzle. Make sure to open it as it will help you solve future SQL puzzles."
 align = 1
@@ -568,8 +573,9 @@ custom_styles/panel = SubResource( 6 )
 [node name="Label" type="Label" parent="Popup/tutorial/t4/Panel5"]
 margin_right = 544.0
 margin_bottom = 108.0
+mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "Now Let us solve the puzzle by dragging the blocks in correct order."
+text = "Now try solving the puzzle by dragging the blocks in correct order."
 align = 1
 valign = 1
 autowrap = true
@@ -612,6 +618,7 @@ custom_styles/panel = SubResource( 6 )
 [node name="Label" type="Label" parent="Popup/tutorial/t5/Panel5"]
 margin_right = 544.0
 margin_bottom = 108.0
+mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
 text = "You have succesfully solved the puzzle and unlocked the confirm button."
 align = 1
@@ -620,6 +627,7 @@ autowrap = true
 
 [node name="Popup2" type="CanvasLayer" parent="."]
 pause_mode = 2
+layer = 10
 visible = false
 
 [node name="Logic Gauntlet" type="NinePatchRect" parent="Popup2"]

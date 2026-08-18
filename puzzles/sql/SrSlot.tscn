@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://puzzles/sql/SrSlot.gd" type="Script" id=1]
+
+[node name="SrSlot" type="Button"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 16.0
+margin_bottom = 20.0
+text = "ZXZx"
+script = ExtResource( 1 )
+
+[node name="ONE" type="Panel" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+
+[node name="Line2D" type="Line2D" parent="ONE"]
+points = PoolVector2Array( 16, 8, 0, 8 )
+width = 2.0
+
+[node name="MANY" type="Panel" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+
+[node name="Line2D" type="Line2D" parent="MANY"]
+points = PoolVector2Array( 16, 0, 0, 8, 16, 16 )
+width = 2.0
+
+[node name="Line2D2" type="Line2D" parent="MANY"]
+points = PoolVector2Array( 0, 8, 16, 8 )
+width = 2.0
+
+[connection signal="pressed" from="." to="." method="_on_SrSlot_pressed"]

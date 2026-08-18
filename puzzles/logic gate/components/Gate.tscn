@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/logicGates/blank.png" type="Texture" id=1]
 [ext_resource path="res://puzzles/logic gate/components/Gate.gd" type="Script" id=2]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 3 )
 
 [node name="Gate" type="TextureRect"]
 texture = ExtResource( 1 )
@@ -16,3 +28,29 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "AND"
 align = 1
 valign = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.784314 )
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 272.0
+margin_bottom = 320.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 2 )
+
+[node name="hint" type="RichTextLabel" parent="CanvasLayer/Panel"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 208.0
+margin_bottom = 256.0
+mouse_filter = 2
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+pause_mode = 2
+wait_time = 5.0

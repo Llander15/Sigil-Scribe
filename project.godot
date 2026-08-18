@@ -19,6 +19,7 @@ config/icon="res://logo.png"
 
 Global="*res://Global.gd"
 Data="*res://data.gd"
+DragManager="*res://DragManager.gd"
 
 [debug]
 

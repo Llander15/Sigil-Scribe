@@ -72,18 +72,8 @@ func setup_handshakes():
 	s2.connect("signal_updated", g1, "_on_input_b_received")
 	s2.connect("signal_updated", w2, "_on_signal_received")
 	
-	s3.connect("signal_updated", g2, "_on_input_a_received")
-	s3.connect("signal_updated", w3, "_on_signal_received")
-	
-
-	g1.connect("signal_updated", g3, "_on_input_a_received")
-	g1.connect("signal_updated", w4, "_on_signal_received")
-	
-	g2.connect("signal_updated", g3, "_on_input_b_received")
-	g2.connect("signal_updated", w5, "_on_signal_received")
-	
-	g3.connect("signal_updated", f1, "_on_signal_received")
-	g3.connect("signal_updated", w6, "_on_signal_received")
+	g1.connect("signal_updated", f1, "_on_signal_received")
+	g1.connect("signal_updated", w6, "_on_signal_received")
 	
 
 	s1.update_logic()
