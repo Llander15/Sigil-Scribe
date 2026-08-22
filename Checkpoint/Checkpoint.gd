@@ -1,30 +1,12 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
-		Global.last_safe_position = self.global_position
-		Data.save_data["last_safe_position"] = self.global_position
-		print("Checkpoint Saved!")
+		# Update last_safe_position & player_position in save_data
+		Data.set_last_safe_position(global_position)
+		Data.set_player_position(global_position)
 		
-		#update player last position
-		Data.save_data["player_position"]["x"] = self.global_position.x
-		Data.save_data["player_position"]["y"] = self.global_position.y
-		print("updated player last position")
-		# You can change the flag color or play an animation here
-	pass # Replace with function body.
+		# Persist data to file (essential for mobile pause/close)
+		Data.save_game()
+		
+		print("Checkpoint & Player position saved at: ", global_position)
