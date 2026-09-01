@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Welcome.gd" type="Script" id=1]
 [ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Background/sky.png" type="Texture" id=5]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Background/small clouds mid.png" type="Texture" id=7]
+[ext_resource path="res://Auth/Auth.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ParallaxLayer.gd" type="Script" id=9]
 [ext_resource path="res://ParallaxLayer2.gd" type="Script" id=10]
 [ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=12]
@@ -35,6 +36,7 @@ atlas = ExtResource( 7 )
 region = Rect2( 0, 472, 1280, 268 )
 
 [node name="Welcome" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 328.0, 32.0 ],
@@ -164,6 +166,12 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 32.0, 328.0, 64.0, 296.0 ],
 "_edit_vertical_guides_": [ 32.0, 608.0, 48.0, 592.0 ]
 }
+
+[node name="AuthUI" parent="." instance=ExtResource( 8 )]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 48.0
+margin_bottom = 48.0
 
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_Play_button_up"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]

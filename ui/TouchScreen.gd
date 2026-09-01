@@ -1,12 +1,5 @@
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$PausePopup.visible = false
 	$PausePopup/HBoxContainer/Settings/Settings.visible = false
@@ -17,73 +10,60 @@ func _ready():
 	if Data.save_data.get("ach") and "Data Codex" in Data.save_data["ach"]:
 		$"ControlButtons/Data Codex".visible = true
 
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _on_Pause_pressed():
 	get_tree().paused = true
 	$ControlButtons.visible = false
 	$PausePopup.visible = true
-	pass # Replace with function body.
-
 
 func _on_Resume_button_up():
 	get_tree().paused = false
 	$ControlButtons.visible = true
 	$PausePopup.visible = false
-	pass # Replace with function body.
 
 func _on_Settings_button_up():
 	$PausePopup/HBoxContainer/Settings/Settings.visible = true
-	pass # Replace with function body.
 
 func _on_Quit_button_up():
-	
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = true
-	pass # Replace with function body.
 
 func _on_Confirm_button_up():
 	get_tree().paused = false
-	get_tree().change_scene("res://Welcome.tscn")
-	pass # Replace with function body.
+	get_tree().call_deferred("change_scene", "res://Welcome.tscn")
 
 func _on_Cancel_button_up():
 	$PausePopup/HBoxContainer/Quit/QuitConfirmationPopup.visible = false
-	pass # Replace with function body.
 
 func _notification(what):
 	# Triggers when the user minimizes the app or opens another app
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT or what == MainLoop.NOTIFICATION_APP_PAUSED:
-		get_tree().paused = true
-		$ControlButtons.visible = false
-		$PausePopup.visible = true
+		if not get_tree().paused:
+			get_tree().paused = true
+			$ControlButtons.visible = false
+			$PausePopup.visible = true
 		
 	if what == NOTIFICATION_PAUSED:
-		print("The game was paused! Do something here.")
-		var player = get_parent().get_parent() #get the grandparent
-		if player.name == "Player": 
-			var player_pos = player.global_position
-			Data.save_data["player_position"]["x"] = player_pos.x
-			Data.save_data["player_position"]["y"] = player_pos.y
-			Data.save_game()
-			print("player position updated")
-			print("x" , Data.save_data["player_position"]["x"])
-			print("y" , Data.save_data["player_position"]["y"])
-		else:
-			print("player position update failed")
-		# Example: Lower the music volume or blur the screen
+		print("The game was paused!")
+		_save_player_position()
 		
 	elif what == NOTIFICATION_UNPAUSED:
 		print("The game was resumed!")
-		# Example: Restore music volume
+
+func _save_player_position():
+	# Access grandparent node safely
+	var player = get_parent().get_parent()
+	if player and player.name == "Player": 
+		var player_pos = player.global_position
+		
+		# FIXED: Matched function names with baseline Data.gd
+		#Data.set_last_safe_position(player_pos)
+		Data.set_player_position(player_pos)
+		Data.save_game()
+		
+		print("Player position updated to: ", player_pos)
+	else:
+		print("Player position update failed: Grandparent is not 'Player'")
 
 func _on_Book_pressed():
-	if "Data Codex" in Data.save_data["ach"]:
+	if Data.save_data.get("ach") and "Data Codex" in Data.save_data["ach"]:
 		$DataCodexPopup.visible = true
 		get_tree().paused = true
-		pass
-	pass # Replace with function body.

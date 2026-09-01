@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Auth/Auth.gd" type="Script" id=1]
+
+[node name="AuthUI" type="Control"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 280.0
+margin_bottom = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 264.0
+margin_bottom = 94.0
+
+[node name="EmailInput" type="LineEdit" parent="VBoxContainer"]
+margin_right = 264.0
+margin_bottom = 24.0
+placeholder_text = "Email"
+
+[node name="PasswordInput" type="LineEdit" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 264.0
+margin_bottom = 52.0
+secret = true
+placeholder_text = "Password"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 264.0
+margin_bottom = 87.0
+text = "
+"
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 91.0
+margin_right = 264.0
+margin_bottom = 111.0
+
+[node name="LoginBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 46.0
+margin_bottom = 20.0
+text = "Login"
+
+[node name="RegisterBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 50.0
+margin_right = 114.0
+margin_bottom = 20.0
+text = "Register"
+
+[node name="ConflictDialog" type="ConfirmationDialog" parent="."]
+margin_right = 156.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 150, 52.5 )
+
+[node name="LogoutBtn" type="Button" parent="."]
+margin_left = 520.0
+margin_top = -16.0
+margin_right = 575.0
+margin_bottom = 4.0
+text = "Logout"

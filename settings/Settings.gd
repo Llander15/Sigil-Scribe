@@ -1,91 +1,116 @@
 extends CanvasLayer
 
+onready var master_slider = $NinePatchRect/VolumeSlider
+# Add these if you have separate sliders for Music and SFX:
+# onready var music_slider = $NinePatchRect/MusicSlider
+# onready var sfx_slider = $NinePatchRect/SFXSlider
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-onready var volumeSLider = $NinePatchRect/VolumeSlider
+onready var main_panel = $NinePatchRect
+onready var delete_popup = $"Delete Confirm Popup"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = false
+	delete_popup.visible = false
+	main_panel.visible = true
 	
-	# 1. Load the previously saved volume from our SaveManager
-	# Default to 0.8 (80%) if no save data exists yet
-	var saved_volume = Data.save_data.get("volume_settings", {}).get("master", 0.8)
+	_load_and_apply_audio_settings()
 	
-	# 2. Set the slider's visual position to the saved volume
-	volumeSLider.value = saved_volume
-	
-	# 3. Apply the volume to the actual game audio
-	set_bus_volume(saved_volume)
-	
-	# 4. Connect the slider's signal so it updates in real-time when dragged
-	volumeSLider.connect("value_changed", self, "_on_volume_slider_value_changed")
+	# Connect signals
+	master_slider.connect("value_changed", self, "_on_master_slider_value_changed")
 
-
-func _on_volume_slider_value_changed(value: float):
-	# Apply the volume to the game
-	set_bus_volume(value)
+func _load_and_apply_audio_settings():
+	var volume_settings = Data.save_data.get("volume_settings", {})
 	
-	# Update our SaveManager data structure
+	var master_val = volume_settings.get("master", 0.8)
+	var music_val = volume_settings.get("music", 1.0)
+	var sfx_val = volume_settings.get("sfx", 1.0)
+	
+	master_slider.value = master_val
+	# music_slider.value = music_val
+	# sfx_slider.value = sfx_val
+	
+	set_bus_volume("Master", master_val)
+	set_bus_volume("Music", music_val)
+	set_bus_volume("SFX", sfx_val)
+
+func _on_master_slider_value_changed(value: float):
+	set_bus_volume("Master", value)
+	
+	if not Data.save_data.has("volume_settings"):
+		Data.save_data["volume_settings"] = {}
+		
 	Data.save_data["volume_settings"]["master"] = value
 	
-	# Optional: Save immediately, or let the mobile focus-out handle it
-	# SaveManager.save_game()
+	# FIXED: Aligned with baseline Data.gd save call
+	Data.save_game()
 
+# Optional handlers for separate audio streams
+func _on_music_slider_value_changed(value: float):
+	set_bus_volume("Music", value)
+	if not Data.save_data.has("volume_settings"):
+		Data.save_data["volume_settings"] = {}
+	Data.save_data["volume_settings"]["music"] = value
+	Data.save_game()
 
-func set_bus_volume(value: float):
-	# Find the index of the "Master" audio bus
-	var bus_index = AudioServer.get_bus_index("Master")
-	
-	# Convert a 0.0–1.0 linear slider value into decibels (dB)
-	# linear2db(0) is silent, linear2db(1) is 0dB (max original volume)
-	var db_volume = linear2db(value)
-	
-	AudioServer.set_bus_volume_db(bus_index, db_volume)
+func _on_sfx_slider_value_changed(value: float):
+	set_bus_volume("SFX", value)
+	if not Data.save_data.has("volume_settings"):
+		Data.save_data["volume_settings"] = {}
+	Data.save_data["volume_settings"]["sfx"] = value
+	Data.save_game()
 
+func set_bus_volume(bus_name: String, value: float):
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	if bus_index != -1:
+		# Convert linear 0.0-1.0 to decibels (-80dB to 0dB)
+		var db_volume = linear2db(value)
+		AudioServer.set_bus_volume_db(bus_index, db_volume)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_Close_button_up():
-#	self.visible = false
-	pass # Replace with function body.
-
-
-func _on_Delete_Player_Saved_File_button_up():
-#	$"Delete Confirm Popup".visible = true
-#	$NinePatchRect.visible = false
-	pass # Replace with function body.
-
-
-func _on_Confirm_button_up():
-#	print("confirm reset pressed")
-#	Data.reset_to_defaults()
-#	get_tree().change_scene("res://Welcome.tscn")
-#	if get_tree().paused:
-#		get_tree().paused = false
-	pass # Replace with function body.
-
-
-func _on_Delete_Player_Saved_File_pressed():
-	$"Delete Confirm Popup".visible = true
-	$NinePatchRect.visible = false
-	pass # Replace with function body.
-
+# -------------------------------------------------------------------
+# UI NAVIGATION & RESET POPUP HANDLERS
+# -------------------------------------------------------------------
 
 func _on_Close_pressed():
 	self.visible = false
-	pass # Replace with function body.
 
+func _on_Delete_Player_Saved_File_pressed():
+	delete_popup.visible = true
+	main_panel.visible = false
+
+func _on_Cancel_Reset_pressed():
+	delete_popup.visible = false
+	main_panel.visible = true
 
 func _on_Confirm_pressed():
-	print("confirm reset pressed")
-	Data.reset_to_defaults()
-	get_tree().change_scene("res://Welcome.tscn")
+	print("Confirm reset pressed: Resetting local and cloud save data...")
+	
+	# Unpause engine if paused from a pause menu
 	if get_tree().paused:
 		get_tree().paused = false
-		pass # Replace with function body.
+		
+	# Revert dictionary data structure back to defaults
+	Data.save_data = {
+		"coins": 100,
+		"level": 1,
+		"timestamp": OS.get_unix_time(),
+		"player_tutorial": true,
+		"volume_settings": {
+			"master": 0.8,
+			"music": 1.0,
+			"sfx": 1.0
+		},
+		"ach": [],
+		"player_position": {
+			"x": 0.0,
+			"y": 0.0
+		},
+		"last_safe_position": {
+			"x": 0.0,
+			"y": 0.0
+		}
+	}
+	
+	# FIXED: Save defaults locally and push to cloud if logged in
+	Data.save_game()
+		
+	get_tree().change_scene("res://Welcome.tscn")

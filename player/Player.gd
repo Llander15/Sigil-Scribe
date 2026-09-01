@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var run_sfx = $"Run SFX"
 onready var jump_sfx = $"Jump SFX"
 
-# signals
+# Signals
 signal interact_pressed  
 
 # Constants
@@ -13,7 +13,7 @@ const SPEED = 200
 const JUMP_HEIGHT = -480
 const RUN_SFX_DELAY = 0.3
 const FALL_GRACE_PERIOD = 0.3 
-const COYOTE_TIME = 0.15# Time in seconds player can still jump after leaving floor
+const COYOTE_TIME = 0.15 # Time in seconds player can still jump after leaving floor
 
 # Variables
 var motion = Vector2()
@@ -24,20 +24,19 @@ var coyote_timer = 0.0 # Tracks the "air time" for jumping
 
 func _ready():
 	randomize()
-	$Control/TouchScreen/ControlButtons/Interact.visible = false
-	var interact_btn = get_node("Control/TouchScreen/ControlButtons/Interact")
-	interact_btn.connect("released", self, "_on_Interact_pressed")
 	
-	#update player position
-	if Data.save_data["player_position"]["x"] and Data.save_data["player_position"]["y"]:
-		self.global_position.x = Data.save_data["player_position"]["x"]
-		self.global_position.y = Data.save_data["player_position"]["y"]
+	# Safe button signal binding
+	var interact_btn_path = "Control/TouchScreen/ControlButtons/Interact"
+	if has_node(interact_btn_path):
+		var interact_btn = get_node(interact_btn_path)
+		interact_btn.visible = false
+		if not interact_btn.is_connected("released", self, "_on_Interact_pressed"):
+			interact_btn.connect("released", self, "_on_Interact_pressed")
 	
-	
-#	var safe_pos = Data.save_data["last_safe_position"]
-#	# Check if it exists and isn't null
-#	if safe_pos != null:
-#		self.global_position = Vector2(safe_pos["x"], safe_pos["y"])
+	# Update player position safely using Data helper
+	var saved_pos = Data.get_player_position()
+	if saved_pos != Vector2.ZERO:
+		self.global_position = saved_pos
 
 func _on_Interact_pressed():
 	if is_on_floor():
@@ -61,7 +60,6 @@ func _physics_process(delta):
 		motion.x = 0
 		$Sprite.play("idle")
 		
-
 	# --- SFX & Coyote Timer Logic ---
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME # Reset coyote timer while on floor

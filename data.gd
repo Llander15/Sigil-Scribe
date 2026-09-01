@@ -1,106 +1,155 @@
 extends Node
 
+signal auth_status_changed(success, message)
+signal save_conflict_detected(cloud_data)
+
 const SAVE_PATH = "user://savegame.json"
+
+var current_user_id = ""
+var is_logged_in = false
 
 # Default data structure
 var save_data = {
+	"coins": 100,
+	"level": 1,
+	"timestamp": 0,
 	"player_tutorial": true,
-	"volume_settings": {
-		"master": 0.8,
-		"music": 1.0,
-		"sfx": 1.0
-	},
+	"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
 	"ach": [],
-	"player_position": {
-		"x": 0.0,
-		"y": 0.0
-	},
-	"last_safe_position": {
-		"x": 0.0,
-		"y": 0.0
-	}
+	"player_position": {"x": 0.0, "y": 0.0},
+	"last_safe_position": {"x": 0.0, "y": 0.0}
 }
 
 func _ready():
+	Firebase.Auth.connect("login_succeeded", self, "_on_login_succeeded")
+	Firebase.Auth.connect("login_failed", self, "_on_login_failed")
+	Firebase.Auth.connect("signup_succeeded", self, "_on_signup_succeeded")
+	Firebase.Auth.connect("signup_failed", self, "_on_signup_failed")
+	
 	load_game()
 
-# Call this to write data to the mobile device
+# -------------------------------------------------------------------
+# AUTHENTICATION LOGIC
+# -------------------------------------------------------------------
+
+func login_user(email: String, password: String):
+	Firebase.Auth.login_with_email_and_password(email, password)
+
+func signup_user(email: String, password: String):
+	Firebase.Auth.signup_with_email_and_password(email, password)
+
+func _on_login_succeeded(auth_info):
+	current_user_id = auth_info.localid
+	is_logged_in = true
+	emit_signal("auth_status_changed", true, "Logged in successfully!")
+	fetch_cloud_data()
+
+func _on_signup_succeeded(auth_info):
+	current_user_id = auth_info.localid
+	is_logged_in = true
+	emit_signal("auth_status_changed", true, "Account created! Linking local save...")
+	upload_to_cloud()
+
+func _on_login_failed(code, message):
+	emit_signal("auth_status_changed", false, "Login Failed: " + message)
+
+func _on_signup_failed(code, message):
+	emit_signal("auth_status_changed", false, "Registration Failed: " + message)
+
+# -------------------------------------------------------------------
+# SAVE & LOAD LOGIC
+# -------------------------------------------------------------------
+
 func save_game():
-	var file = File.new()
-	var error = file.open(SAVE_PATH, File.WRITE)
+	save_data["timestamp"] = OS.get_unix_time()
+	save_locally_only()
 	
-	if error == OK:
-		# to_json() converts the dictionary into a string in Godot 3
+	if is_logged_in and current_user_id != "":
+		upload_to_cloud()
+
+func save_locally_only():
+	var file = File.new()
+	if file.open(SAVE_PATH, File.WRITE) == OK:
 		file.store_string(to_json(save_data))
 		file.close()
-		print("Game Saved Successfully!")
-	else:
-		print("An error occurred while trying to save data. Code: ", error)
 
-# Automatically called on game start
 func load_game():
 	var file = File.new()
 	if not file.file_exists(SAVE_PATH):
-		print("No save file found. Creating a new one with defaults.")
-		save_game() 
+		save_game()
 		return
 
-	var error = file.open(SAVE_PATH, File.READ)
-	if error == OK:
-		var json_string = file.get_as_text()
+	if file.open(SAVE_PATH, File.READ) == OK:
+		var json_result = JSON.parse(file.get_as_text())
 		file.close()
-		
-		# Godot 3 JSON parsing
-		var json_result = JSON.parse(json_string)
 		if json_result.error == OK:
 			save_data = json_result.result
-			print("Game Loaded Successfully!")
-		else:
-			print("JSON Parse Error: ", json_result.error_string, " at line ", json_result.error_line)
-	else:
-		print("An error occurred while trying to load data. Code: ", error)
 
-func reset_to_defaults():
-	save_data = {
-		"player_tutorial": true,
-		"volume_settings": {
-			"master": 0.8,
-			"music": 1.0,
-			"sfx": 1.0
-		},
-		"ach": [],
-		"player_position": {
-			"x": 0.0,
-			"y": 0.0
-		},
-		"last_safe_position": {
-			"x": 0.0,
-			"y": 0.0
-		}
-	}
+# -------------------------------------------------------------------
+# CLOUD FIRESTORE SYNC
+# -------------------------------------------------------------------
+
+func upload_to_cloud():
+	if not is_logged_in or current_user_id == "":
+		return
+		
+	var collection: FirestoreCollection = Firebase.Firestore.collection("players")
+	var doc: FirestoreDocument = FirestoreDocument.new()
+	doc.doc_name = current_user_id
+	
+	for key in save_data.keys():
+		doc.add_or_update_field(key, save_data[key])
+		
+	var task = collection.update(doc)
+	yield(task, "completed")
+
+func fetch_cloud_data():
+	if not is_logged_in or current_user_id == "":
+		return
+		
+	var collection: FirestoreCollection = Firebase.Firestore.collection("players")
+	var task = collection.get_doc(current_user_id)
+	var response = yield(task, "completed")
+	
+	if response is FirestoreDocument and response.doc_name != "":
+		var cloud_data = {}
+		for key in response.keys():
+			cloud_data[key] = response.get_value(key)
+			
+		var cloud_timestamp = int(cloud_data.get("timestamp", 0))
+		var local_timestamp = int(save_data.get("timestamp", 0))
+		
+		if local_timestamp > 0 and cloud_timestamp > 0 and local_timestamp != cloud_timestamp:
+			emit_signal("save_conflict_detected", cloud_data)
+		elif cloud_timestamp > local_timestamp:
+			apply_cloud_save(cloud_data)
+		else:
+			upload_to_cloud()
+	else:
+		upload_to_cloud()
+
+func apply_cloud_save(cloud_data: Dictionary):
+	save_data = cloud_data
+	save_locally_only()
 
 func _notification(what):
-	# Triggers when the user minimizes the app or opens another app
 	if what == MainLoop.NOTIFICATION_WM_FOCUS_OUT or what == MainLoop.NOTIFICATION_APP_PAUSED:
 		save_game()
 
-# --- Vector2 Helpers for External Scripts ---
+# -------------------------------------------------------------------
+# HELPER GETTERS & SETTERS (VECTOR2 & UTILITY)
+# -------------------------------------------------------------------
 
 func set_last_safe_position(pos: Vector2) -> void:
 	save_data["last_safe_position"] = {"x": pos.x, "y": pos.y}
 
 func get_last_safe_position() -> Vector2:
 	var pos = save_data.get("last_safe_position", null)
-	
-	# Handle Vector2 directly (if coming from legacy code or memory)
 	if pos is Vector2:
 		return pos
-		
-	# Handle Dictionary format (JSON data)
 	if pos is Dictionary and pos.has("x") and pos.has("y"):
 		if pos.x != null and pos.y != null:
-			return Vector2(pos.x, pos.y)
-			
+			return Vector2(float(pos.x), float(pos.y))
 	return Vector2.ZERO
 
 func set_player_position(pos: Vector2) -> void:
@@ -108,14 +157,22 @@ func set_player_position(pos: Vector2) -> void:
 
 func get_player_position() -> Vector2:
 	var pos = save_data.get("player_position", null)
-	
-	# Handle Vector2 directly
 	if pos is Vector2:
 		return pos
-		
-	# Handle Dictionary format
 	if pos is Dictionary and pos.has("x") and pos.has("y"):
 		if pos.x != null and pos.y != null:
-			return Vector2(pos.x, pos.y)
-			
+			return Vector2(float(pos.x), float(pos.y))
 	return Vector2.ZERO
+
+func reset_to_defaults():
+	save_data = {
+		"coins": 100,
+		"level": 1,
+		"timestamp": OS.get_unix_time(),
+		"player_tutorial": true,
+		"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
+		"ach": [],
+		"player_position": {"x": 0.0, "y": 0.0},
+		"last_safe_position": {"x": 0.0, "y": 0.0}
+	}
+	save_game()
