@@ -3,10 +3,13 @@ extends Control
 onready var email_input = $VBoxContainer/EmailInput
 onready var password_input = $VBoxContainer/PasswordInput
 onready var status_label = $VBoxContainer/StatusLabel
+onready var vbox_container = $VBoxContainer
 
 onready var login_btn = $VBoxContainer/HBoxContainer/LoginBtn
 onready var register_btn = $VBoxContainer/HBoxContainer/RegisterBtn
 onready var conflict_dialog = $ConflictDialog
+
+onready var logout_btn = $LogoutBtn
 
 var pending_cloud_data = {}
 
@@ -14,6 +17,9 @@ func _ready():
 	# Connect UI buttons
 	login_btn.connect("pressed", self, "_on_login_pressed")
 	register_btn.connect("pressed", self, "_on_register_pressed")
+	
+	if logout_btn:
+		logout_btn.connect("pressed", self, "_on_logout_pressed")
 	
 	# Connect Data singleton conflict signals
 	Data.connect("save_conflict_detected", self, "_on_save_conflict_detected")
@@ -25,6 +31,18 @@ func _ready():
 	conflict_dialog.add_button("Keep Cloud Save", true, "use_cloud")
 	conflict_dialog.connect("confirmed", self, "_on_keep_local_chosen")
 	conflict_dialog.connect("custom_action", self, "_on_keep_cloud_chosen")
+
+	_update_ui_visibility()
+
+func _update_ui_visibility():
+	var logged_in = Data.is_logged_in
+	
+	# Toggle form inputs vs logout button based on login status
+	vbox_container.visible = not logged_in
+	$Panel.visible = not logged_in
+	
+	if logout_btn:
+		logout_btn.visible = logged_in
 
 func _on_login_pressed():
 	var email = email_input.text.strip_edges()
@@ -51,9 +69,27 @@ func _on_register_pressed():
 	# Registering automatically uploads current offline save to new account
 	Data.signup_user(email, password)
 
+# -------------------------------------------------------------------
+# LOGOUT HANDLER
+# -------------------------------------------------------------------
+
+func _on_logout_pressed():
+	# Wipes saved session credentials and resets login flags
+	Data.logout_user()
+	
+	# Clear input fields
+	email_input.text = ""
+	password_input.text = ""
+	
+	status_label.text = "Logged out successfully."
+	_update_ui_visibility()
+
 func _on_auth_status_changed(success: bool, message: String):
 	status_label.text = message
-	if success:
+	_update_ui_visibility()
+	
+	if success and Data.is_logged_in:
+		password_input.text = ""
 		# If no conflict dialog was popped, transition to main game
 		yield(get_tree().create_timer(1.0), "timeout")
 		if not conflict_dialog.visible:
@@ -65,9 +101,6 @@ func _on_auth_status_changed(success: bool, message: String):
 
 func _on_save_conflict_detected(cloud_data: Dictionary):
 	pending_cloud_data = cloud_data
-	
-	var local_time = OS.get_datetime_from_unix_time(Data.save_data.get("timestamp", 0))
-	var cloud_time = OS.get_datetime_from_unix_time(cloud_data.get("timestamp", 0))
 	
 	conflict_dialog.dialog_text = "Save Conflict Found!\n\n" \
 		+ "Local Save Level: " + str(Data.save_data.get("level", 1)) + "\n" \
@@ -85,4 +118,4 @@ func _on_keep_cloud_chosen(action):
 	if action == "use_cloud":
 		# Overwrite local save with cloud progress
 		Data.apply_cloud_save(pending_cloud_data)
-		get_tree().change_scene("Welcome.tscn")
+		get_tree().change_scene("res://Welcome.tscn")

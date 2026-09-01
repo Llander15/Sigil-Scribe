@@ -1,9 +1,11 @@
+# Data.gd
 extends Node
 
 signal auth_status_changed(success, message)
 signal save_conflict_detected(cloud_data)
 
 const SAVE_PATH = "user://savegame.json"
+const AUTH_PATH = "user://auth.json"
 
 var current_user_id = ""
 var is_logged_in = false
@@ -27,16 +29,60 @@ func _ready():
 	Firebase.Auth.connect("signup_failed", self, "_on_signup_failed")
 	
 	load_game()
+	
+	# Attempt auto-login if saved credentials exist
+	_auto_login()
 
 # -------------------------------------------------------------------
-# AUTHENTICATION LOGIC
+# AUTHENTICATION LOGIC & AUTO-LOGIN
 # -------------------------------------------------------------------
 
 func login_user(email: String, password: String):
+	# Save credentials locally for auto-login on next launch
+	_save_auth_credentials(email, password)
 	Firebase.Auth.login_with_email_and_password(email, password)
 
 func signup_user(email: String, password: String):
+	# Save credentials locally for auto-login on next launch
+	_save_auth_credentials(email, password)
 	Firebase.Auth.signup_with_email_and_password(email, password)
+
+func logout_user():
+	is_logged_in = false
+	current_user_id = ""
+	_clear_auth_credentials()
+	emit_signal("auth_status_changed", false, "Logged out.")
+
+func _auto_login():
+	var file = File.new()
+	if file.file_exists(AUTH_PATH):
+		if file.open(AUTH_PATH, File.READ) == OK:
+			var json_result = JSON.parse(file.get_as_text())
+			file.close()
+			
+			if json_result.error == OK and json_result.result is Dictionary:
+				var auth_data = json_result.result
+				var email = auth_data.get("email", "")
+				var password = auth_data.get("password", "")
+				
+				if email != "" and password != "":
+					emit_signal("auth_status_changed", true, "Auto-logging in...")
+					Firebase.Auth.login_with_email_and_password(email, password)
+
+func _save_auth_credentials(email: String, password: String):
+	var auth_data = {
+		"email": email,
+		"password": password
+	}
+	var file = File.new()
+	if file.open(AUTH_PATH, File.WRITE) == OK:
+		file.store_string(to_json(auth_data))
+		file.close()
+
+func _clear_auth_credentials():
+	var dir = Directory.new()
+	if dir.file_exists(AUTH_PATH):
+		dir.remove(AUTH_PATH)
 
 func _on_login_succeeded(auth_info):
 	current_user_id = auth_info.localid
@@ -137,7 +183,7 @@ func _notification(what):
 		save_game()
 
 # -------------------------------------------------------------------
-# HELPER GETTERS & SETTERS (VECTOR2 & UTILITY)
+# HELPER GETTERS & SETTERS
 # -------------------------------------------------------------------
 
 func set_last_safe_position(pos: Vector2) -> void:
