@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/arrow.png" type="Texture" id=1]
 [ext_resource path="res://ui/FPS.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/x.png" type="Texture" id=5]
 [ext_resource path="res://player/DataCodexPopup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/TouchScreen.gd" type="Script" id=7]
+[ext_resource path="res://Profile/Profile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=11]
 [ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=12]
@@ -48,13 +49,13 @@ __meta__ = {
 }
 
 [node name="FPS" type="Label" parent="."]
-margin_left = 8.0
+margin_left = 560.0
 margin_top = 336.0
-margin_right = 64.0
+margin_right = 626.0
 margin_bottom = 353.0
-custom_colors/font_color = Color( 0.776471, 0.768627, 0.156863, 1 )
+custom_colors/font_color = Color( 0.168627, 0.709804, 0.137255, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "FPS: 0"
+text = "FPS: 60"
 script = ExtResource( 2 )
 
 [node name="PausePopup" type="ColorRect" parent="."]
@@ -151,6 +152,8 @@ custom_fonts/font = SubResource( 3 )
 text = "Quit Game?"
 align = 1
 valign = 1
+
+[node name="Profile" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup/Label" instance=ExtResource( 8 )]
 
 [node name="Confirm" type="Button" parent="PausePopup/HBoxContainer/Quit/QuitConfirmationPopup"]
 margin_left = 64.0

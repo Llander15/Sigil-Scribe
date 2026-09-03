@@ -1,0 +1,419 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Profile/Profile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=2]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://player/idle1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/BG1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Panel.png" type="Texture" id=6]
+[ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=7]
+[ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=8]
+[ext_resource path="res://Assets/x.png" type="Texture" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 48, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.392157, 0.403922, 0.827451, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.176758, 0.103712, 0.0371122, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 9 )
+region = Rect2( 8, 52, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 9 )
+region = Rect2( 8, 52, 32, 32 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 9 )
+region = Rect2( 8, 52, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 9 )
+region = Rect2( 8, 52, 32, 32 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 18
+font_data = ExtResource( 3 )
+
+[node name="Profile" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="ProfileDetails" type="NinePatchRect" parent="."]
+visible = false
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 616.0
+margin_bottom = 336.0
+texture = ExtResource( 5 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 8
+patch_margin_bottom = 9
+
+[node name="BasicDetails" type="Control" parent="ProfileDetails"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 304.0
+margin_bottom = 96.0
+
+[node name="Avatar" type="NinePatchRect" parent="ProfileDetails/BasicDetails"]
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ProfileDetails/BasicDetails/Avatar"]
+position = Vector2( 40, 40 )
+scale = Vector2( 1.66667, 1.66667 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="PlayerName" type="LineEdit" parent="ProfileDetails/BasicDetails"]
+margin_left = 96.0
+margin_top = 48.0
+margin_right = 272.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 6 )
+max_length = 16
+placeholder_text = "Name yourself"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LevelLabel" type="Label" parent="ProfileDetails/BasicDetails"]
+margin_left = 96.0
+margin_right = 176.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 7 )
+text = "Level: 1"
+
+[node name="ExpLabel" type="Label" parent="ProfileDetails/BasicDetails/LevelLabel"]
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 8 )
+text = "EXP: 0%"
+
+[node name="StatsDetails" type="NinePatchRect" parent="ProfileDetails"]
+margin_left = 304.0
+margin_top = 64.0
+margin_right = 576.0
+margin_bottom = 296.0
+texture = ExtResource( 6 )
+patch_margin_left = 18
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 17
+
+[node name="Speed" type="Label" parent="ProfileDetails/StatsDetails"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 136.0
+margin_bottom = 41.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Speed:"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProfileDetails/StatsDetails/Speed"]
+margin_left = 136.0
+margin_right = 248.0
+margin_bottom = 24.0
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+max_value = 5.0
+value = 4.0
+percent_visible = false
+
+[node name="Upgrade" type="Control" parent="ProfileDetails/StatsDetails/Speed"]
+visible = false
+margin_left = 80.0
+margin_right = 120.0
+margin_bottom = 40.0
+
+[node name="Increase" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/Speed/Upgrade"]
+position = Vector2( 56, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 14 )
+
+[node name="SpeedLvl" type="Label" parent="ProfileDetails/StatsDetails/Speed/Upgrade"]
+margin_left = 80.0
+margin_right = 112.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+
+[node name="Decrease" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/Speed/Upgrade"]
+position = Vector2( 112, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 15 )
+
+[node name="JumpHeight" type="Label" parent="ProfileDetails/StatsDetails"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 136.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Jump Height:"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProfileDetails/StatsDetails/JumpHeight"]
+margin_left = 128.0
+margin_right = 240.0
+margin_bottom = 24.0
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+max_value = 5.0
+value = 3.0
+percent_visible = false
+
+[node name="Upgrade" type="Control" parent="ProfileDetails/StatsDetails/JumpHeight"]
+visible = false
+margin_left = 72.0
+margin_right = 112.0
+margin_bottom = 40.0
+
+[node name="Increase" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/JumpHeight/Upgrade"]
+position = Vector2( 56, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 14 )
+
+[node name="SpeedLvl" type="Label" parent="ProfileDetails/StatsDetails/JumpHeight/Upgrade"]
+margin_left = 80.0
+margin_right = 112.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+
+[node name="Decrease" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/JumpHeight/Upgrade"]
+position = Vector2( 112, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 15 )
+
+[node name="GoldYield" type="Label" parent="ProfileDetails/StatsDetails"]
+margin_left = 8.0
+margin_top = 80.0
+margin_right = 136.0
+margin_bottom = 105.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Gold Yield:"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProfileDetails/StatsDetails/GoldYield"]
+margin_left = 136.0
+margin_right = 248.0
+margin_bottom = 24.0
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+max_value = 5.0
+value = 2.0
+percent_visible = false
+
+[node name="Upgrade" type="Control" parent="ProfileDetails/StatsDetails/GoldYield"]
+visible = false
+margin_left = 80.0
+margin_right = 120.0
+margin_bottom = 40.0
+
+[node name="Increase" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/GoldYield/Upgrade"]
+position = Vector2( 56, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 14 )
+
+[node name="SpeedLvl" type="Label" parent="ProfileDetails/StatsDetails/GoldYield/Upgrade"]
+margin_left = 80.0
+margin_right = 112.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+
+[node name="Decrease" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/GoldYield/Upgrade"]
+position = Vector2( 112, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 15 )
+
+[node name="ExpYield" type="Label" parent="ProfileDetails/StatsDetails"]
+margin_left = 8.0
+margin_top = 112.0
+margin_right = 136.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Exp Yield:"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="ProfileDetails/StatsDetails/ExpYield"]
+margin_left = 136.0
+margin_right = 248.0
+margin_bottom = 24.0
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+max_value = 5.0
+value = 1.0
+percent_visible = false
+
+[node name="Upgrade" type="Control" parent="ProfileDetails/StatsDetails/ExpYield"]
+visible = false
+margin_left = 80.0
+margin_right = 120.0
+margin_bottom = 40.0
+
+[node name="Increase" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/ExpYield/Upgrade"]
+position = Vector2( 56, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 14 )
+
+[node name="SpeedLvl" type="Label" parent="ProfileDetails/StatsDetails/ExpYield/Upgrade"]
+margin_left = 80.0
+margin_right = 112.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+align = 1
+
+[node name="Decrease" type="TouchScreenButton" parent="ProfileDetails/StatsDetails/ExpYield/Upgrade"]
+position = Vector2( 112, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = SubResource( 15 )
+
+[node name="Upgrade" type="Button" parent="ProfileDetails/StatsDetails"]
+margin_left = 152.0
+margin_top = 192.0
+margin_right = 256.0
+margin_bottom = 217.0
+custom_fonts/font = SubResource( 12 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+text = "Upgrade"
+
+[node name="SpeedLvl2" type="Label" parent="ProfileDetails/StatsDetails"]
+margin_left = 16.0
+margin_top = 192.0
+margin_right = 136.0
+margin_bottom = 216.0
+custom_colors/font_color = Color( 0.121569, 0.0666667, 0.0196078, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "Stat Points: 20"
+align = 1
+
+[node name="Achievements" type="ColorRect" parent="ProfileDetails"]
+margin_left = 16.0
+margin_top = 112.0
+margin_right = 288.0
+margin_bottom = 296.0
+color = Color( 0.0901961, 0.129412, 0.203922, 1 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ProfileDetails/Achievements"]
+margin_right = 272.0
+margin_bottom = 184.0
+texture = ExtResource( 2 )
+patch_margin_left = 18
+patch_margin_top = 15
+patch_margin_right = 17
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="ProfileDetails/Achievements"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 146.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 9 )
+text = "Achievements:"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="ProfileDetails"]
+position = Vector2( 544, 16 )
+normal = SubResource( 13 )
+
+[node name="ProfileButton" type="TouchScreenButton" parent="."]
+position = Vector2( 150, 0 )
+scale = Vector2( 1.08333, 1.08333 )
+normal = SubResource( 17 )
+
+[node name="BasicDetails" type="Control" parent="."]
+margin_top = 320.0
+margin_right = 640.0
+margin_bottom = 360.0
+
+[node name="LevelLabel" type="Label" parent="BasicDetails"]
+margin_top = 8.0
+margin_right = 80.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.286275, 0.152941, 0.00392157, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "Lvl: 1"
+
+[node name="ExpLabel" type="Label" parent="BasicDetails/LevelLabel"]
+margin_top = 16.0
+margin_right = 49.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0.356863, 0.2, 0.0196078, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "EXP: 0%"
+
+[connection signal="pressed" from="ProfileDetails/StatsDetails/Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="ProfileDetails/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="ProfileButton" to="." method="_on_ProfileButton_pressed"]
