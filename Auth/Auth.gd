@@ -10,6 +10,7 @@ onready var register_btn = $VBoxContainer/HBoxContainer/RegisterBtn
 onready var conflict_dialog = $ConflictDialog
 
 onready var logout_btn = $LogoutBtn
+onready var open_auth = $OpenAuth
 
 var pending_cloud_data = {}
 
@@ -31,8 +32,13 @@ func _ready():
 	conflict_dialog.add_button("Keep Cloud Save", true, "use_cloud")
 	conflict_dialog.connect("confirmed", self, "_on_keep_local_chosen")
 	conflict_dialog.connect("custom_action", self, "_on_keep_cloud_chosen")
-
+	
 	_update_ui_visibility()
+	
+	if not Data.first_welcome_screen:
+		_on_CloseAuth_pressed()
+	else:
+		Data.first_welcome_screen = false
 
 func _update_ui_visibility():
 	var logged_in = Data.is_logged_in
@@ -40,9 +46,17 @@ func _update_ui_visibility():
 	# Toggle form inputs vs logout button based on login status
 	vbox_container.visible = not logged_in
 	$Panel.visible = not logged_in
+	$Panel2.visible = not logged_in
 	
 	if logout_btn:
 		logout_btn.visible = logged_in
+	
+	if logout_btn.visible:
+		if not logged_in:
+			$OpenAuth.visible = true
+		else:
+			$OpenAuth.visible = false
+	$OpenAuth.visible = false
 
 func _on_login_pressed():
 	var email = email_input.text.strip_edges()
@@ -119,3 +133,36 @@ func _on_keep_cloud_chosen(action):
 		# Overwrite local save with cloud progress
 		Data.apply_cloud_save(pending_cloud_data)
 		get_tree().change_scene("res://Welcome.tscn")
+
+
+func _on_Button_pressed():
+	if login_btn.visible:
+		register_btn.visible = true
+		login_btn.visible = false
+		$VBoxContainer/Switch.text = "Login"
+	else:
+		register_btn.visible = false
+		login_btn.visible = true
+		$VBoxContainer/Switch.text = "Create Account"
+	
+	
+	pass # Replace with function body.
+
+
+func _on_CloseAuth_pressed():
+	var logged_in = Data.is_logged_in
+	$Panel2.visible = false
+	$Panel.visible = false
+	$VBoxContainer.visible = false
+	if not logged_in:
+		open_auth.visible = true
+
+
+
+func _on_OpenAuth_pressed():
+	$Panel2.visible = true
+	$Panel.visible = true
+	$VBoxContainer.visible = true
+	
+	open_auth.visible = false
+

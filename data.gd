@@ -10,6 +10,8 @@ const AUTH_PATH = "user://auth.json"
 var current_user_id = ""
 var is_logged_in = false
 
+var first_welcome_screen = true
+
 # Default data structure
 var save_data = {
 	"coins": 100,
