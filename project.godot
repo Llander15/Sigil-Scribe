@@ -178,7 +178,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/GodotFirebase-3.x/addons/godot-firebase/plugin.cfg", "res://addons/godot-firebase/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot-firebase/plugin.cfg" )
 
 [gui]
 

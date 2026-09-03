@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Profile/Profile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=2]
@@ -37,6 +37,19 @@ animations = [ {
 [sub_resource type="DynamicFont" id=6]
 size = 24
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+content_margin_left = 7.0
+bg_color = Color( 0.152941, 0.188235, 0.258824, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0439806, 0.0648467, 0.104492, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="DynamicFont" id=7]
 size = 24
@@ -92,6 +105,8 @@ size = 18
 font_data = ExtResource( 3 )
 
 [node name="Profile" type="CanvasLayer"]
+pause_mode = 2
+layer = 40
 script = ExtResource( 1 )
 
 [node name="ProfileDetails" type="NinePatchRect" parent="."]
@@ -105,6 +120,13 @@ patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 8
 patch_margin_bottom = 9
+
+[node name="ColorRect" type="ColorRect" parent="ProfileDetails"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -80.0
+margin_top = -80.0
+margin_right = 656.0
+margin_bottom = 376.0
 
 [node name="BasicDetails" type="Control" parent="ProfileDetails"]
 margin_left = 16.0
@@ -129,6 +151,7 @@ margin_top = 48.0
 margin_right = 272.0
 margin_bottom = 83.0
 custom_fonts/font = SubResource( 6 )
+custom_styles/normal = SubResource( 19 )
 max_length = 16
 placeholder_text = "Name yourself"
 caret_blink = true
@@ -393,12 +416,12 @@ position = Vector2( 150, 0 )
 scale = Vector2( 1.08333, 1.08333 )
 normal = SubResource( 17 )
 
-[node name="BasicDetails" type="Control" parent="."]
+[node name="SmallPlayerLevel" type="Control" parent="."]
 margin_top = 320.0
 margin_right = 640.0
 margin_bottom = 360.0
 
-[node name="LevelLabel" type="Label" parent="BasicDetails"]
+[node name="LevelLabel" type="Label" parent="SmallPlayerLevel"]
 margin_top = 8.0
 margin_right = 80.0
 margin_bottom = 27.0
@@ -406,7 +429,7 @@ custom_colors/font_color = Color( 0.286275, 0.152941, 0.00392157, 1 )
 custom_fonts/font = SubResource( 18 )
 text = "Lvl: 1"
 
-[node name="ExpLabel" type="Label" parent="BasicDetails/LevelLabel"]
+[node name="ExpLabel" type="Label" parent="SmallPlayerLevel/LevelLabel"]
 margin_top = 16.0
 margin_right = 49.0
 margin_bottom = 35.0

@@ -1,16 +1,38 @@
 extends CanvasLayer
+
 ########################### Profile ###########################
 onready var profile_details = $ProfileDetails
 onready var profile_btn = $ProfileButton
+onready var small_player_level = $SmallPlayerLevel
+
+func _ready():
+	if $"..".name == "TouchScreen": #if parent is TouchScreen Scene
+		pass
+	else: #else, currently only Welcome Scene
+		small_player_level.visible = false
+		profile_btn.visible = false
+
 
 func _on_ProfileButton_pressed():
 	profile_details.visible = true
 	profile_btn.visible = false
+	small_player_level.visible = false
+	
+	if $"../ControlButtons":
+		$"../ControlButtons".visible = false
+	
+	get_tree().paused = true
 
 ######################## Profile Details ######################
 func _on_TouchScreenButton_pressed():
 	profile_details.visible = false
 	profile_btn.visible = true
+	small_player_level.visible = true
+	
+	if $"../ControlButtons":
+		$"../ControlButtons".visible = true
+	
+	get_tree().paused = false
 
 
 

@@ -14,11 +14,13 @@ func _on_Pause_pressed():
 	get_tree().paused = true
 	$ControlButtons.visible = false
 	$PausePopup.visible = true
+	$Profile.visible = false
 
 func _on_Resume_button_up():
 	get_tree().paused = false
 	$ControlButtons.visible = true
 	$PausePopup.visible = false
+	$Profile.visible = true
 
 func _on_Settings_button_up():
 	$PausePopup/HBoxContainer/Settings/Settings.visible = true
@@ -55,7 +57,7 @@ func _save_player_position():
 		var player_pos = player.global_position
 		
 		# FIXED: Matched function names with baseline Data.gd
-		#Data.set_last_safe_position(player_pos)
+		Data.set_last_safe_position(player_pos)
 		Data.set_player_position(player_pos)
 		Data.save_game()
 		
