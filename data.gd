@@ -12,18 +12,46 @@ var is_logged_in = false
 
 var first_welcome_screen = true
 
+# Make sure this signal is declared at the top of Data.gd
+signal mission_updated(new_mission)
+signal health_updated()
+
+func update_health(amount: int = 0):
+	if amount != 0:
+		var current_hp = save_data.get("current_health", 3)
+		var max_hp = save_data.get("max_health", 3)
+		save_data["current_health"] = clamp(current_hp + amount, 0, max_hp)
+	
+	emit_signal("health_updated")
+
+
+func advance_mission():
+	var current = int(save_data.get("mission_number", 0))
+	save_data["mission_number"] = current + 1
+	save_game()
+	
+	# MUST emit the signal to inform active NPCs/Terminals in the current scene
+	emit_signal("mission_updated", save_data["mission_number"])
+	print("Mission advanced to: ", save_data["mission_number"])
+ 
 # Default data structure
 var save_data = {
-	"level": 1,
+	"player_name": "",
+	"current_health": 3,
+	"title": "Beginner Scribe",
 	"total_exp": 0,
 	"gold": 0,
-	"stats":{"speed": 0, "jump_height": 0, "gold_yield": 0, "exp_yield": 0},
+	"player_skills": [],
+	"player_avatar": 0,
+	"mission_number": 0,
 	"timestamp": 0,
 	"player_tutorial": true,
 	"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
 	"ach": [],
 	"player_position": {"x": 0.0, "y": 0.0},
-	"last_safe_position": {"x": 0.0, "y": 0.0}
+	"last_safe_position": {"x": 0.0, "y": 0.0},
+	"shrines_activated": [],
+	"last_shrine_position": {"x": 0.0, "y": 0.0}
 }
 
 func _ready():
@@ -194,12 +222,22 @@ func set_last_safe_position(pos: Vector2) -> void:
 	save_data["last_safe_position"] = {"x": pos.x, "y": pos.y}
 
 func get_last_safe_position() -> Vector2:
-	var pos = save_data.get("last_safe_position", null)
+	var pos = save_data.get("last_safe_position", {})
 	if pos is Vector2:
 		return pos
-	if pos is Dictionary and pos.has("x") and pos.has("y"):
-		if pos.x != null and pos.y != null:
-			return Vector2(float(pos.x), float(pos.y))
+	if pos is Dictionary:
+		return Vector2(pos.get("x", 0.0), pos.get("y", 0.0))
+	return Vector2.ZERO
+
+func set_last_shrine_position(pos: Vector2) -> void:
+	save_data["last_shrine_position"] = {"x": pos.x, "y": pos.y}
+
+func get_last_shrine_position() -> Vector2:
+	var pos = save_data.get("last_shrine_position", {})
+	if pos is Vector2:
+		return pos
+	if pos is Dictionary:
+		return Vector2(pos.get("x", 0.0), pos.get("y", 0.0))
 	return Vector2.ZERO
 
 func set_player_position(pos: Vector2) -> void:
@@ -216,15 +254,21 @@ func get_player_position() -> Vector2:
 
 func reset_to_defaults():
 	save_data = {
-	"level": 1,
-	"total_exp": 0,
-	"gold": 0,
-	"stats":{"speed": 0, "jump_height": 0, "gold_yield": 0, "exp_yield": 0},
-	"timestamp": 0,
-	"player_tutorial": true,
-	"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
-	"ach": [],
-	"player_position": {"x": 0.0, "y": 0.0},
-	"last_safe_position": {"x": 0.0, "y": 0.0}
+		"player_name": "",
+		"current_health": 3,
+		"title": "Beginner Scribe",
+		"total_exp": 0,
+		"gold": 0,
+		"player_skills": [],
+		"player_avatar": 0,
+		"mission_number": 0,
+		"timestamp": 0,
+		"player_tutorial": true,
+		"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
+		"ach": [],
+		"player_position": {"x": 0.0, "y": 0.0},
+		"last_safe_position": {"x": 0.0, "y": 0.0},
+		"shrines_activated": [],
+		"last_shrine_position": {"x": 0.0, "y": 0.0}
 	}
 	save_game()

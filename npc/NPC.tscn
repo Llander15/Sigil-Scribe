@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://npc/NPC 1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/svg/Panel/Body/Headless.svg" type="Texture" id=2]
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://npc/NPC.gd" type="Script" id=4]
+[ext_resource path="res://Assets/triangle.png" type="Texture" id=5]
+[ext_resource path="res://Assets/infoicon1.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -21,10 +23,42 @@ size = 24
 extra_spacing_char = 4
 font_data = ExtResource( 3 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "New Anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, -32 ), Vector2( -8, -48 ), Vector2( -8, -32 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -8, -32 ) ]
+}
+
 [node name="NPC" type="Area2D"]
+pause_mode = 2
 script = ExtResource( 4 )
-dialogue_text = "Elder Scibe: 
-Scribe, hurry and get your tools in the chest and use it to save Aetheria."
+dialogue_lines = [ "Welcome to the completion site %s.", "Before you will be a full fledge Scribe.", "You must first complete the task that will be given to you here.", "And the first task for you is to get your tools inside this chest. And ofcourse you need to unlock it with your knowledge.", "Just a reminder mistakes will get you consiquences so be mindful." ]
+dialogue_lines2 = [ "Good job %s! ", "You may proceed to your test now.", "Now %s, try that gauntlet to unlock the Gate ahead of you." ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
@@ -35,6 +69,7 @@ playing = true
 shape = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0.72549 )
@@ -42,6 +77,7 @@ margin_left = 64.0
 margin_top = 32.0
 margin_right = 576.0
 margin_bottom = 192.0
+mouse_filter = 1
 texture = ExtResource( 2 )
 patch_margin_left = 16
 patch_margin_top = 16
@@ -57,5 +93,28 @@ text = "Hello! Hello! Hello! Hello! Hello! Hello! Hello! Hello! Hello! Hello! He
 valign = 1
 autowrap = true
 
+[node name="NextIndicator" type="TextureRect" parent="CanvasLayer/NinePatchRect"]
+margin_left = 496.0
+margin_top = 144.0
+margin_right = 528.0
+margin_bottom = 176.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Priority" type="TextureRect" parent="."]
+visible = false
+margin_left = -8.0
+margin_top = -32.0
+margin_right = 24.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Priority"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
 [connection signal="body_entered" from="." to="." method="_on_NPC_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_NPC_body_exited"]
+[connection signal="gui_input" from="CanvasLayer/NinePatchRect" to="." method="_on_NinePatchRect_gui_input"]

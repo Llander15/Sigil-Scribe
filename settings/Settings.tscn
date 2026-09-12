@@ -126,7 +126,6 @@ step = 0.05
 value = 0.8
 
 [node name="Delete Confirm Popup" type="ColorRect" parent="."]
-visible = false
 margin_left = 128.0
 margin_top = 48.0
 margin_right = 512.0
@@ -157,7 +156,8 @@ margin_top = 16.0
 margin_right = 384.0
 margin_bottom = 133.0
 custom_fonts/font = SubResource( 3 )
-text = "Delete Player Saved File?"
+text = "Delete Player
+Saved File?"
 align = 1
 valign = 1
 autowrap = true

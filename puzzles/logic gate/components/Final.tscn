@@ -12,6 +12,7 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="RS indicator" type="TextureRect" parent="."]
+visible = false
 margin_left = 29.3333
 margin_top = 29.3333
 margin_right = 45.3333

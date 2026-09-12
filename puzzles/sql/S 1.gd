@@ -1,5 +1,21 @@
 extends Node2D
 
+export(Array, int) var target_mission_numbers = [1]
+var interactable = false
+
+func check_mission_importance():
+	var current_mission = int(Data.save_data.get("mission_number", -1))
+	
+	# Checks if current_mission matches ANY number in target_mission_numbers
+	if current_mission in target_mission_numbers:
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+		interactable = true
+	else:
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = false
+		interactable = false
+
 var puzzleSolved = false
 var target_player = null
 
@@ -31,19 +47,29 @@ func _ready():
 		puzzleSolved = true
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = false
+			
+	if Data.has_signal("mission_updated"):
+		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
+			Data.connect("mission_updated", self, "_on_mission_updated")
+	
+	check_mission_importance()
+
+func _on_mission_updated(new_mission: int):
+	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
-	if puzzleSolved:
-		return
-	if body.name == "Player":
-		target_player = body
-		
-		var interact_node = body.get_node_or_null("Control/TouchScreen/ControlButtons/Interact")
-		if interact_node:
-			interact_node.visible = true
-		
-		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
-			body.connect("interact_pressed", self, "_on_player_interacted")
+	if interactable:
+		if puzzleSolved:
+			return
+		if body.name == "Player":
+			target_player = body
+			
+			var interact_node = body.get_node_or_null("Control/TouchScreen/ControlButtons/Interact")
+			if interact_node:
+				interact_node.visible = true
+			
+			if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
+				body.connect("interact_pressed", self, "_on_player_interacted")
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
@@ -120,10 +146,12 @@ func updateAns():
 			$Popup/Confirm.disabled = true
 
 func puzzleSolve():
+	if int(Data.save_data.get("mission_number", 0)) <= 1:
+		Data.save_data["mission_number"] = 2
+	
 	_ensure_achievements_array()
 	if not "S 1" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("S 1")
-		# FIXED: Matched save call with baseline Data.gd
 		Data.save_game()
 
 func _on_Confirm_pressed():
@@ -146,18 +174,49 @@ func _on_LG_Confirm_pressed():
 func _on_DC_Confirm_pressed():
 	_ensure_achievements_array()
 	
+	# 1. Update achievements
 	if not "Logic Gauntlet" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("Logic Gauntlet")
 	if not "Data Codex" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("Data Codex")
+		
+	# 2. Advance mission safely
+	var current_mission = int(Data.save_data.get("mission_number", 0))
+	if current_mission <= 1:
+		if Data.has_method("advance_mission"):
+			Data.advance_mission()
+		else:
+			Data.save_data["mission_number"] = 2
+			Data.save_game()
+	else:
+		Data.save_game()
 	
-	# FIXED: Save to disk and check cloud sync status automatically
-	Data.save_game()
+	# 3. Force emit signal so active NPCs in scene update immediately
+	if Data.has_signal("mission_updated"):
+		Data.emit_signal("mission_updated", int(Data.save_data["mission_number"]))
 	
-	exit_puzzle()
+	# 4. Unpause tree FIRST so nodes resume physics and input processing
+	get_tree().paused = false
+	
+	# 5. Hide puzzle UI windows
 	$Popup2.visible = false
 	
-	get_tree().reload_current_scene()
+	# 6. Reset target player and touch controls
+	if target_player and is_instance_valid(target_player):
+		target_player.pause_mode = Node.PAUSE_MODE_INHERIT
+		
+		var touch_screen = target_player.get_node_or_null("Control/TouchScreen")
+		if touch_screen:
+			touch_screen.visible = true
+			
+		var interact_btn = target_player.get_node_or_null("Control/TouchScreen/ControlButtons/Interact")
+		if interact_btn:
+			interact_btn.visible = false
+			
+		if target_player.has_method("reset_player"):
+			target_player.reset_player()
+		else:
+			target_player._ready()
 
 func _on_Button_pressed():
 	$Popup/tutorial/t1.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Welcome.gd" type="Script" id=1]
 [ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://ParallaxLayer2.gd" type="Script" id=10]
 [ext_resource path="res://Profile/Profile.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=12]
+[ext_resource path="res://Assets/BG1.png" type="Texture" id=13]
+[ext_resource path="res://LineEdit.gd" type="Script" id=14]
 
 [sub_resource type="DynamicFont" id=10]
 size = 56
@@ -35,6 +37,17 @@ region = Rect2( 0, 608, 1280, 344 )
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 472, 1280, 268 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 18
+font_data = ExtResource( 3 )
 
 [node name="Welcome" type="Node2D"]
 pause_mode = 2
@@ -176,6 +189,55 @@ margin_bottom = 48.0
 
 [node name="Profile" parent="." instance=ExtResource( 11 )]
 
+[node name="NewPlayerName" type="ColorRect" parent="."]
+visible = false
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="NewPlayerName" type="NinePatchRect" parent="NewPlayerName"]
+margin_left = 208.0
+margin_top = 96.0
+margin_right = 432.0
+margin_bottom = 256.0
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="LineEdit" type="LineEdit" parent="NewPlayerName/NewPlayerName"]
+margin_left = 24.0
+margin_top = 56.0
+margin_right = 200.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 13 )
+max_length = 16
+placeholder_text = "SigilScribe"
+script = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="NewPlayerName/NewPlayerName"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 120.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 14 )
+text = "Enter your name:"
+
+[node name="ConfirmNameButton" type="Button" parent="NewPlayerName/NewPlayerName"]
+margin_left = 24.0
+margin_top = 112.0
+margin_right = 200.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 15 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 12 )
+text = "Confirm"
+
 [connection signal="button_up" from="Buttons/Play" to="." method="_on_Play_button_up"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="button_up" from="Buttons/Settings" to="." method="_on_Settings_button_up"]
@@ -186,3 +248,4 @@ margin_bottom = 48.0
 [connection signal="pressed" from="Quit Confirmation/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="button_up" from="Quit Confirmation/Cancel" to="." method="_on_Cancel_button_up"]
 [connection signal="pressed" from="Quit Confirmation/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="NewPlayerName/NewPlayerName/ConfirmNameButton" to="." method="_on_ConfirmNameButton_pressed"]

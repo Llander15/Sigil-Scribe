@@ -3,23 +3,30 @@ extends CanvasLayer
 ########################### Profile ###########################
 onready var profile_details = $ProfileDetails
 onready var profile_btn = $ProfileButton
-onready var small_player_level = $SmallPlayerLevel
+
+
 
 func _ready():
-	if $"..".name == "TouchScreen": #if parent is TouchScreen Scene
+	profile_details.visible = false
+	#$ProfileButton.normal = "res://player/profile.png"
+	
+	#Update Name
+	$ProfileDetails/BasicDetails/PlayerName.text = Data.save_data["player_name"]
+	
+	
+	
+	if $"..".name == "ControlButtons": #if parent is TouchScreen Scene
 		pass
 	else: #else, currently only Welcome Scene
-		small_player_level.visible = false
 		profile_btn.visible = false
 
 
 func _on_ProfileButton_pressed():
 	profile_details.visible = true
 	profile_btn.visible = false
-	small_player_level.visible = false
 	
-	if $"../ControlButtons":
-		$"../ControlButtons".visible = false
+	if $"..".name == "ControlButtons":
+		$"..".visible = false
 	
 	get_tree().paused = true
 
@@ -27,12 +34,22 @@ func _on_ProfileButton_pressed():
 func _on_TouchScreenButton_pressed():
 	profile_details.visible = false
 	profile_btn.visible = true
-	small_player_level.visible = true
+
 	
-	if $"../ControlButtons":
-		$"../ControlButtons".visible = true
+	if $"..".name == "ControlButtons":
+		$"..".visible = true
+	
+	_update_Player_Name()
 	
 	get_tree().paused = false
+
+######################## Basic Details ######################
+func _update_Player_Name():
+	var playerNameInput = $ProfileDetails/BasicDetails/PlayerName.text
+	
+	Data.save_data["player_name"] = playerNameInput
+	
+	print("Player name is updated to: ", Data.save_data["player_name"])
 
 
 
@@ -73,6 +90,17 @@ func _update_Stats_View():
 	jmp_ht_edit.visible = !jmp_ht_edit.visible
 	gold_yld_edit.visible = !gold_yld_edit.visible
 	exp_yld_edit.visible = !exp_yld_edit.visible
+
+func _notification(what):
+	if what == NOTIFICATION_PAUSED:
+		$ProfileButton.visible = false
+		print("Game was paused!")
+		# Execute code when game pauses (e.g., show pause menu UI)
+		
+	elif what == NOTIFICATION_UNPAUSED:
+		$ProfileButton.visible = true
+		print("Game was resumed!")
+		# Execute code when game unpauses
 
 
 

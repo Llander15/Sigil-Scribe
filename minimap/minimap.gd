@@ -16,3 +16,11 @@ func _physics_process(delta):
 	if 1<0: # this statement is for removing the "delta" not used in debugger
 		print(delta)
 
+func _notification(what):
+	if what == NOTIFICATION_PAUSED:
+		self.visible = false
+		# Execute code when game pauses (e.g., show pause menu UI)
+		
+	elif what == NOTIFICATION_UNPAUSED:
+		self.visible = true
+		# Execute code when game unpauses

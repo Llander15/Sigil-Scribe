@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Auth/Auth.gd" type="Script" id=1]
 [ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=2]
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/x.png" type="Texture" id=4]
+[ext_resource path="res://LineEdit.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 4 )
@@ -85,6 +86,7 @@ margin_right = 264.0
 margin_bottom = 35.0
 custom_fonts/font = SubResource( 1 )
 placeholder_text = "Email"
+script = ExtResource( 5 )
 
 [node name="PasswordInput" type="LineEdit" parent="VBoxContainer"]
 margin_top = 39.0
@@ -93,6 +95,7 @@ margin_bottom = 74.0
 custom_fonts/font = SubResource( 2 )
 secret = true
 placeholder_text = "Password"
+script = ExtResource( 5 )
 
 [node name="StatusLabel" type="Label" parent="VBoxContainer"]
 margin_top = 78.0

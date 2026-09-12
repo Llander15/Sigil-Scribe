@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/StoneGate.png" type="Texture" id=1]
+[ext_resource path="res://Assets/gate_control.png" type="Texture" id=2]
+[ext_resource path="res://SQL Obstacles/Ch1Gate.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 24.0
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/StoneGate.png-4c346bd7222f461cf57512726cfeed90.stex"
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = SubResource( 1 )
+region = Rect2( 150, 6, 96, 128 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = SubResource( 1 )
+region = Rect2( 3, 4, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = SubResource( 1 )
+region = Rect2( 3, 81, 128, 65 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 153, 194, 14, 29 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 31, 157, 41, 96 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 24, 48 )
+
+[node name="Ch1Gate" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 64 )
+
+[node name="Interact" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Interact"]
+position = Vector2( -112, 176 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Interact/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact/Sprite/Area2D"]
+shape = SubResource( 8 )
+
+[node name="Obstacle" type="Node2D" parent="."]
+
+[node name="Base" type="StaticBody2D" parent="Obstacle"]
+
+[node name="Sprite0" type="Sprite" parent="Obstacle/Base"]
+position = Vector2( 0, 128 )
+texture = SubResource( 4 )
+
+[node name="Sprite1" type="Sprite" parent="Obstacle/Base"]
+texture = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Obstacle/Base"]
+position = Vector2( 0, 64 )
+texture = SubResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Obstacle/Base"]
+position = Vector2( -32, 128 )
+texture = SubResource( 5 )
+
+[node name="Sprite4" type="Sprite" parent="Obstacle/Base"]
+position = Vector2( 32, 128 )
+texture = SubResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacle/Base"]
+polygon = PoolVector2Array( -48, 104, 48, 104, 48, 64, 56, 64, 56, 48, 64, 40, 64, -32, 32, -32, 32, -8, 16, -8, 16, -32, -16, -32, -16, -8, -32, -8, -32, -32, -64, -32, -64, 40, -56, 48, -56, 64, -48, 64 )
+
+[node name="Bars" type="StaticBody2D" parent="Obstacle"]
+
+[node name="Sprite" type="Sprite" parent="Obstacle/Bars"]
+position = Vector2( 0, 144 )
+texture = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle/Bars"]
+position = Vector2( 0, 144 )
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="Interact/Sprite/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Interact/Sprite/Area2D" to="." method="_on_Area2D_body_exited"]

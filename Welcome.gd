@@ -8,6 +8,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Data.save_data["player_name"] == "" && Data.save_data["ach"] == []:
+		$Profile.visible = false
+		$NewPlayerName.visible = true
+	
 	$"Quit Confirmation".visible = false
 	pass # Replace with function body.
 
@@ -67,3 +71,15 @@ func _on_Cancel_pressed():
 func _on_Confirm_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_ConfirmNameButton_pressed():
+	var playerNameInput = $NewPlayerName/NewPlayerName/LineEdit.text
+	
+	if playerNameInput == "":
+		$NewPlayerName/NewPlayerName/Label.text = "Please enter your name:"
+	else:
+		Data.save_data["player_name"] = playerNameInput
+		_on_Play_pressed()
+		MobileInputManager._close_overlay()
+

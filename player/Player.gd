@@ -23,10 +23,38 @@ var fall_grace_timer = 0.0
 var coyote_timer = 0.0 # Tracks the "air time" for jumping
 
 func _ready():
+	$Control/TouchScreen._ready()
 	randomize()
 	
-	# Safe button signal binding
+	# Ensure player UI nodes process regardless of tree pause state
+	var touch_screen_path = "Control/TouchScreen"
+	if has_node(touch_screen_path):
+		var touch_screen = get_node(touch_screen_path)
+		touch_screen.pause_mode = Node.PAUSE_MODE_PROCESS
+		touch_screen.visible = true
+		
 	var interact_btn_path = "Control/TouchScreen/ControlButtons/Interact"
+	if has_node(interact_btn_path):
+		var interact_btn = get_node(interact_btn_path)
+		interact_btn.pause_mode = Node.PAUSE_MODE_PROCESS
+		interact_btn.visible = false
+		if not interact_btn.is_connected("released", self, "_on_Interact_pressed"):
+			interact_btn.connect("released", self, "_on_Interact_pressed")
+	
+	var saved_pos = Data.get_player_position()
+	if saved_pos != Vector2.ZERO:
+		self.global_position = saved_pos
+	randomize()
+	
+	# Restore normal pause behavior in case it was modified during dialogue/UI
+	pause_mode = Node.PAUSE_MODE_INHERIT
+	
+	# Safe button signal binding
+	touch_screen_path = "Control/TouchScreen"
+	if has_node(touch_screen_path):
+		get_node(touch_screen_path).visible = true
+		
+	interact_btn_path = "Control/TouchScreen/ControlButtons/Interact"
 	if has_node(interact_btn_path):
 		var interact_btn = get_node(interact_btn_path)
 		interact_btn.visible = false
@@ -34,9 +62,24 @@ func _ready():
 			interact_btn.connect("released", self, "_on_Interact_pressed")
 	
 	# Update player position safely using Data helper
-	var saved_pos = Data.get_player_position()
+	saved_pos = Data.get_player_position()
 	if saved_pos != Vector2.ZERO:
 		self.global_position = saved_pos
+
+func reset_player():
+	# Reset movement physics & timers
+	motion = Vector2.ZERO
+	snap_vector = Vector2.DOWN * 8
+	run_timer = 0.0
+	fall_grace_timer = 0.0
+	coyote_timer = 0.0
+	
+	# Stop ongoing audio
+	if run_sfx and run_sfx.playing:
+		run_sfx.stop()
+		
+	# Re-run initialization to rebind and refresh Control UI
+	_ready()
 
 func _on_Interact_pressed():
 	if is_on_floor():
