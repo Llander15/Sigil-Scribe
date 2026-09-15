@@ -100,14 +100,13 @@ func _on_player_interacted():
 		start_dialogue()
 
 func start_dialogue():
-	# Choose dialogue lines based on achievement data
-	var achievements = Data.save_data.get("ach", [])
-	if "Data Codex" in achievements:
-		current_dialogue_array = dialogue_lines2
-	else:
+	if (Data.save_data.get("mission_number", -1)) == 3:
 		current_dialogue_array = dialogue_lines
-		if no_player_interacted > 0 or (Data.save_data.get("mission_number", -1)) == 1:
-			current_dialogue_array = dialogue_lines3
+		Data.advance_mission()
+	elif (Data.save_data.get("mission_number", -1)) == 4:
+		current_dialogue_array = dialogue_lines2
+	elif (Data.save_data.get("mission_number", -1)) > 4:
+		current_dialogue_array = dialogue_lines3
 		no_player_interacted =+ 1
 
 

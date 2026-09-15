@@ -1,9 +1,8 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://tileset/dirt_tile.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://world/World1/Death Zones.gd" type="Script" id=3]
-[ext_resource path="res://puzzles/logic gate/LG 1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Checkpoint/Checkpoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://playericon.png" type="Texture" id=6]
 [ext_resource path="res://world/World1/World1.gd" type="Script" id=7]
@@ -30,6 +29,8 @@
 [ext_resource path="res://Assets/bridge middle v2.png" type="Texture" id=28]
 [ext_resource path="res://drag/Drag.tscn" type="PackedScene" id=29]
 [ext_resource path="res://puzzles/logic gate/LG 4.tscn" type="PackedScene" id=30]
+[ext_resource path="res://puzzles/logic gate/LG_1/LG_1.tscn" type="PackedScene" id=31]
+[ext_resource path="res://npc/npc2/NPC2.tscn" type="PackedScene" id=32]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
@@ -61,7 +62,7 @@ b = Vector2( 2152, 0 )
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 856, 240 )
+position = Vector2( 912, 232 )
 z_index = 5
 
 [node name="Background" type="Node2D" parent="."]
@@ -71,7 +72,7 @@ position = Vector2( 1056, 1024 )
 tile_set = ExtResource( 17 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -2621365, 6, 0, -2555867, 6, 0, -2555847, 6, 0, -2555829, 5, 0, -2490331, 5, 0, -2490324, 6, 0, -2490311, 5, 0, -2490293, 5, 0, -2424795, 5, 0, -2424788, 5, 0, -2424787, 536870921, 0, -2424775, 5, 0, -2424757, 5, 0, -2424742, 536870918, 0, -2424715, 536870918, 0, -2359261, 8, 0, -2359259, 4, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359252, 4, 0, -2359248, 6, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359239, 5, 0, -2359234, 6, 0, -2359221, 5, 0, -2359206, 5, 0, -2359202, 6, 0, -2359179, 536870917, 0, -2359150, 536870918, 0, -2293703, 4, 0, -2293698, 5, 0, -2293685, 5, 0, -2293670, 5, 0, -2293666, 536870917, 0, -2293643, 536870917, 0, -2293633, 6, 0, -2293614, 536870917, 0, -2162697, 536870918, 0, -2228164, 0, 0, -2228162, 5, 0, -2228149, 5, 0, -2228134, 5, 0, -2228132, 6, 0, -2228130, 536870917, 0, -2228110, 10, 0, -2228107, 536870917, 0, -2228105, 9, 0, -2228097, 5, 0, -2228094, 6, 0, -2228078, 536870917, 0, -2097161, 536870917, 0, -2162626, 4, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162615, 0, 0, -2162613, 4, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162603, 7, 0, -2162599, 8, 0, -2162598, 4, 0, -2162596, 4, 0, -2162594, 536870916, 0, -2162593, 0, 0, -2162592, 8, 0, -2162571, 536870916, 0, -2162565, 8, 0, -2162561, 4, 0, -2162559, 8, 0, -2162558, 4, 0, -2162547, 7, 0, -2162542, 536870916, 0, -2031625, 536870916, 0, -1966091, 536870912, 0, -1769485, 536870912, 0, -1769475, 6, 0, -1834962, 6, 0, -1703945, 536870912, 0, -1703939, 5, 0, -1703937, 536870918, 0, -1769466, 536870918, 0, -1769436, 536870918, 0, -1769429, 536870918, 0, -1769426, 5, 0, -1638403, 5, 0, -1638401, 536870917, 0, -1703930, 536870917, 0, -1703900, 536870917, 0, -1703893, 536870917, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1703882, 536870918, 0, -1572867, 4, 0, -1572866, 536870920, 0, -1572865, 536870916, 0, -1638398, 0, 0, -1638394, 536870917, 0, -1638364, 536870917, 0, -1638357, 536870917, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1638346, 536870917, 0, -1638327, 536870918, 0, -1638321, 536870912, 0, -1572858, 536870916, 0, -1572854, 536870918, 0, -1572841, 536870918, 0, -1572834, 536870918, 0, -1572828, 536870917, 0, -1572824, 1, 0, -1572823, 2, 0, -1572822, 2, 0, -1572821, 536870916, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1572810, 536870917, 0, -1572806, 536870918, 0, -1572791, 536870917, 0, -1507320, 0, 0, -1507318, 536870917, 0, -1507305, 536870917, 0, -1507298, 536870917, 0, -1507295, 10, 0, -1507292, 536870916, 0, -1507291, 8, 0, -1507274, 536870916, 0, -1507270, 536870917, 0, -1507255, 536870917, 0, -1507251, 536870912, 0, -1441782, 536870916, 0, -1441769, 536870917, 0, -1441765, 536870918, 0, -1441764, 9, 0, -1441762, 536870917, 0, -1441736, 7, 0, -1441734, 536870916, 0, -1441719, 536870917, 0, -1376243, 536870919, 0, -1376240, 0, 0, -1376234, 0, 0, -1376233, 536870916, 0, -1376231, 7, 0, -1376229, 536870916, 0, -1376226, 536870916, 0, -1376195, 536870915, 0, -1376194, 536870914, 0, -1376193, 536870914, 0, -1376192, 536870913, 0, -1376183, 536870916, 0 )
+tile_data = PoolIntArray( -2621365, 6, 0, -2555867, 6, 0, -2555847, 6, 0, -2555829, 5, 0, -2490331, 5, 0, -2490324, 6, 0, -2490311, 5, 0, -2490293, 5, 0, -2424795, 5, 0, -2424788, 5, 0, -2424787, 536870921, 0, -2424775, 5, 0, -2424757, 5, 0, -2424742, 536870918, 0, -2424715, 536870918, 0, -2359261, 8, 0, -2359259, 4, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359252, 4, 0, -2359248, 6, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359239, 5, 0, -2359234, 6, 0, -2359221, 5, 0, -2359206, 5, 0, -2359202, 6, 0, -2359179, 536870917, 0, -2359150, 536870918, 0, -2293703, 4, 0, -2293698, 5, 0, -2293685, 5, 0, -2293670, 5, 0, -2293666, 536870917, 0, -2293643, 536870917, 0, -2293633, 6, 0, -2293614, 536870917, 0, -2162697, 536870918, 0, -2228164, 0, 0, -2228162, 5, 0, -2228149, 5, 0, -2228134, 5, 0, -2228132, 6, 0, -2228130, 536870917, 0, -2228110, 10, 0, -2228107, 536870917, 0, -2228105, 9, 0, -2228097, 5, 0, -2228094, 6, 0, -2228078, 536870917, 0, -2097161, 536870917, 0, -2162626, 4, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162615, 0, 0, -2162613, 4, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162603, 7, 0, -2162599, 8, 0, -2162598, 4, 0, -2162596, 4, 0, -2162594, 536870916, 0, -2162593, 0, 0, -2162592, 8, 0, -2162571, 536870916, 0, -2162565, 8, 0, -2162561, 4, 0, -2162559, 8, 0, -2162558, 4, 0, -2162547, 7, 0, -2162542, 536870916, 0, -2031625, 536870916, 0, -1966091, 536870912, 0, -1769485, 536870912, 0, -1769475, 6, 0, -1834962, 6, 0, -1703945, 536870912, 0, -1703939, 5, 0, -1769466, 536870918, 0, -1769436, 536870918, 0, -1769429, 536870918, 0, -1769426, 5, 0, -1638403, 5, 0, -1703930, 536870917, 0, -1703900, 536870917, 0, -1703893, 536870917, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1703882, 536870918, 0, -1572867, 4, 0, -1572866, 536870920, 0, -1638394, 536870917, 0, -1638364, 536870917, 0, -1638357, 536870917, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1638346, 536870917, 0, -1638327, 536870918, 0, -1638321, 536870912, 0, -1572858, 536870916, 0, -1572854, 536870918, 0, -1572841, 536870918, 0, -1572834, 536870918, 0, -1572828, 536870917, 0, -1572824, 0, 0, -1572821, 536870916, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1572810, 536870917, 0, -1572791, 536870917, 0, -1507320, 0, 0, -1507318, 536870917, 0, -1507305, 536870917, 0, -1507298, 536870917, 0, -1507292, 536870916, 0, -1507291, 8, 0, -1507274, 536870916, 0, -1507255, 536870917, 0, -1507251, 536870912, 0, -1441782, 536870916, 0, -1441769, 536870917, 0, -1441765, 536870918, 0, -1441764, 9, 0, -1441762, 536870917, 0, -1441719, 536870917, 0, -1376243, 536870919, 0, -1376234, 0, 0, -1376233, 536870916, 0, -1376231, 7, 0, -1376229, 536870916, 0, -1376226, 536870916, 0, -1376195, 536870915, 0, -1376194, 536870914, 0, -1376193, 536870914, 0, -1376192, 536870913, 0, -1376183, 536870916, 0 )
 
 [node name="Ground" type="Node2D" parent="."]
 position = Vector2( 1056, 1024 )
@@ -165,6 +166,7 @@ texture = SubResource( 7 )
 centered = false
 
 [node name="SQL puzzles" type="Node2D" parent="."]
+position = Vector2( 520, 128 )
 
 [node name="S 1" parent="SQL puzzles" instance=ExtResource( 22 )]
 position = Vector2( 1184, 232 )
@@ -177,18 +179,11 @@ texture = ExtResource( 24 )
 [node name="DL puzzles" type="Node2D" parent="."]
 position = Vector2( 1056, 1024 )
 
-[node name="LG 1" parent="DL puzzles" instance=ExtResource( 4 )]
-position = Vector2( 2144, -672 )
-
-[node name="platform" parent="DL puzzles/LG 1" index="2"]
-position = Vector2( -80, 112 )
-
-[node name="GateControl" type="Sprite" parent="DL puzzles/LG 1"]
-position = Vector2( 0, 16 )
-texture = ExtResource( 25 )
+[node name="LG_1" parent="DL puzzles" instance=ExtResource( 31 )]
+position = Vector2( 1280, -760 )
 
 [node name="LG 2" parent="DL puzzles" instance=ExtResource( 8 )]
-position = Vector2( 480, -672 )
+position = Vector2( 2560, -1056 )
 
 [node name="GateControl" type="Sprite" parent="DL puzzles/LG 2"]
 position = Vector2( 0, 16 )
@@ -325,6 +320,9 @@ position = Vector2( 4976, -1024 )
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 5592, -1024 )
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( 7712, -1088 )
 
 [node name="Shrines" type="Node2D" parent="."]
 
@@ -486,19 +484,36 @@ drag_margin_bottom = 0.5
 layer = 10
 visible = false
 
-[node name="NPC" parent="." instance=ExtResource( 16 )]
-position = Vector2( 992, 240 )
+[node name="NPCs" type="Node2D" parent="."]
+z_index = 1
+
+[node name="NPC" parent="NPCs" instance=ExtResource( 16 )]
+position = Vector2( 1552, 368 )
 z_index = 2
 important = true
+dialogue_lines3 = [ "You have the tools now? ", "Oh, your'e asking for my favorite SQL querry?", "It would be:
+SELECT * FROM table_name  ;
+", "As an insructor, we always start teaching students like you with this querry.", "It is where we all start, and teaching that every time brings back memories..." ]
+
+[node name="NPC2" parent="NPCs" instance=ExtResource( 32 )]
+position = Vector2( 2472, 272 )
+target_mission_numbers = [ 3 ]
+dialogue_lines = [ "Looks like you passed the first test %s.", "From here on, you will be handling Digital Logic tests.", "You have to pass all 7 Digital Logic test.", "AND, OR, XOR, NOT, NAND, NOR, and XNOR.
+All the Logic Gate you must know to get out of this place.", "See those []? you must match the colors of those [] with Digital Logic Output to considered it as solved.", "Start with the first three there. ", "If you are having problem feel free to ask me or use your Data Codex." ]
+dialogue_lines2 = [ "Need help with the test? 
+I don't mind.", "The test is for you to use the correct LOGIC GATE to change the OUTPUT base on the INPUT.", "For example, AND:
+if both of its inputs are POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If at least one of the INPUT is NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "next logic gate, OR:
+if at least one of the INPUT is POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If both of its inputs are NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "and then, XOR:
+if the inputs are POSITIVE and NEGATIVE, the OUTPUT will be POSITIVE. ", "if the inputs are both POSITIVE or both NEGATIVE, the OUTPUT will be NEGATIVE.", "That's all for the three Logic Gates. You can learn more with your Data Codex if you want. ", "Feel free to ask me again if you're having problems. Good luck." ]
 
 [node name="Houses" type="Node2D" parent="."]
 
 [node name="House2" type="Sprite" parent="Houses"]
-position = Vector2( 2384, 240 )
+position = Vector2( 2120, 304 )
 texture = ExtResource( 21 )
 
 [node name="House3" type="Sprite" parent="Houses"]
-position = Vector2( 2752, 272 )
+position = Vector2( 2912, 304 )
 texture = ExtResource( 21 )
 flip_h = true
 
@@ -506,8 +521,12 @@ flip_h = true
 position = Vector2( 2568, 240 )
 texture = ExtResource( 14 )
 
+[node name="House10" type="Sprite" parent="Houses"]
+position = Vector2( 2800, -144 )
+texture = ExtResource( 14 )
+
 [node name="House5" type="Sprite" parent="Houses"]
-position = Vector2( 1976, 336 )
+position = Vector2( 1592, 336 )
 texture = ExtResource( 21 )
 
 [node name="House6" type="Sprite" parent="Houses"]
@@ -534,10 +553,6 @@ texture = ExtResource( 21 )
 [connection signal="body_entered" from="Death Zones/Area2D3" to="Death Zones" method="_on_Area2D2_body_entered"]
 [connection signal="released" from="test/reset" to="." method="_on_reset_released"]
 
-[editable path="DL puzzles/LG 1"]
-[editable path="DL puzzles/LG 1/Popup/NinePatchRect/Wires/Wire 1"]
-[editable path="DL puzzles/LG 1/Popup/NinePatchRect/Wires/Wire 2"]
-[editable path="DL puzzles/LG 1/Popup/NinePatchRect/Wires/Wire 3"]
 [editable path="DL puzzles/LG 3"]
 [editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 1"]
 [editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 2"]

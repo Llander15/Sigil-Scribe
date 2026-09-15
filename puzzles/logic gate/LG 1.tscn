@@ -248,7 +248,7 @@ modulate = Color( 1, 1, 1, 0.764706 )
 margin_left = 56.0
 margin_top = 48.0
 margin_right = 440.0
-margin_bottom = 136.0
+margin_bottom = 152.0
 custom_styles/panel = SubResource( 9 )
 
 [node name="Label" type="Label" parent="Popup/Tutorial/Panel"]
@@ -257,7 +257,7 @@ margin_top = 8.0
 margin_right = 376.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 10 )
-text = "Learn how the Logic Gate works directly by HOLDING the gate you want to know."
+text = "Learn how the Logic Gate works directly by DRAGGING and  HOLDING the gate you want to know."
 align = 1
 valign = 1
 autowrap = true
