@@ -92,7 +92,7 @@ func evaluate_logic():
 	emit_signal("signal_updated", current_output)
 
 # --- Your Drag and Drop Logic ---
-var drag_icon_texture = preload("res://Assets/hand.png")
+var drag_icon_texture = preload("res://Assets/cursors/cursor_drag.png")
 
 func get_drag_data(_position):
 	if draggable:
@@ -116,7 +116,7 @@ func get_drag_data(_position):
 		var drag_icon = TextureRect.new()
 		drag_icon.texture = drag_icon_texture
 		drag_icon.expand = true
-		drag_icon.rect_size = Vector2(32, 32)
+		drag_icon.rect_size = Vector2(48, 48)
 		drag_icon.rect_position = Vector2(-16, -16) # Centered on the finger/cursor
 		
 		# 3. Position the visual RELATIVE to the pivot

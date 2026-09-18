@@ -38,7 +38,9 @@ func update_text_display():
 	# 4. Set the minimum size so the HFlowContainer/HBoxContainer can arrange it
 	self.rect_min_size = Vector2(new_width, new_height)
 
+
 # --- DRAG LOGIC ---
+var drag_icon_texture = preload("res://Assets/cursors/cursor_drag.png")
 func get_drag_data(_position):
 	# Tool mode safety: don't allow dragging inside the editor window workspace
 	if Engine.editor_hint:
@@ -67,6 +69,15 @@ func get_drag_data(_position):
 	pivot.add_child(drag_preview)
 	drag_preview.rect_position = Vector2(-drag_preview.rect_size.x / 2, -100)
 	
+	var drag_icon = TextureRect.new()
+	drag_icon.texture = drag_icon_texture
+	drag_icon.expand = true
+	drag_icon.rect_size = Vector2(48, 48)
+	drag_icon.rect_position = Vector2(-16, -16) # Centered on the finger/cursor
+	
+	drag_preview.rect_position = Vector2(-32, -100) 
+	
+	pivot.add_child(drag_icon) #drag
 	set_drag_preview(pivot)
 	return data
 

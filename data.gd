@@ -45,7 +45,17 @@ var save_data = {
 	"player_avatar": 0,
 	"mission_number": 0,
 	"timestamp": 0,
-	"player_tutorial": true,
+	"tutorials": {
+		"movement": false,
+		"npc": false,
+		"puzzle_interact": false,
+		"sql": false,
+		"data_codex": false,
+		"digital_logic": false,
+		"shop": false
+	},
+	"puzzles_solved": [],
+	"denied_login": false,
 	"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
 	"ach": [],
 	"player_position": {"x": 0.0, "y": 0.0},
@@ -254,21 +264,31 @@ func get_player_position() -> Vector2:
 
 func reset_to_defaults():
 	save_data = {
-		"player_name": "",
-		"current_health": 3,
-		"title": "Beginner Scribe",
-		"total_exp": 0,
-		"gold": 0,
-		"player_skills": [],
-		"player_avatar": 0,
-		"mission_number": 0,
-		"timestamp": 0,
-		"player_tutorial": true,
-		"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
-		"ach": [],
-		"player_position": {"x": 0.0, "y": 0.0},
-		"last_safe_position": {"x": 0.0, "y": 0.0},
-		"shrines_activated": [],
-		"last_shrine_position": {"x": 0.0, "y": 0.0}
+	"player_name": "",
+	"current_health": 3,
+	"title": "Beginner Scribe",
+	"total_exp": 0,
+	"gold": 0,
+	"player_skills": [],
+	"player_avatar": 0,
+	"mission_number": 0,
+	"timestamp": 0,
+	"tutorials": {
+		"movement": false,
+		"npc": false,
+		"puzzle_interact": false,
+		"sql": false,
+		"data_codex": false,
+		"digital_logic": false,
+		"shop": false
+	},
+	"puzzles_solved": [],
+	"denied_login": false,
+	"volume_settings": {"master": 0.8, "music": 1.0, "sfx": 1.0},
+	"ach": [],
+	"player_position": {"x": 0.0, "y": 0.0},
+	"last_safe_position": {"x": 0.0, "y": 0.0},
+	"shrines_activated": [],
+	"last_shrine_position": {"x": 0.0, "y": 0.0}
 	}
 	save_game()

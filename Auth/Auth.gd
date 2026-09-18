@@ -33,6 +33,7 @@ func _ready():
 	conflict_dialog.connect("confirmed", self, "_on_keep_local_chosen")
 	conflict_dialog.connect("custom_action", self, "_on_keep_cloud_chosen")
 	
+
 	_update_ui_visibility()
 	
 	if not Data.first_welcome_screen:
@@ -44,6 +45,7 @@ func _update_ui_visibility():
 	var logged_in = Data.is_logged_in
 	
 	# Toggle form inputs vs logout button based on login status
+	
 	vbox_container.visible = not logged_in
 	$Panel.visible = not logged_in
 	$Panel2.visible = not logged_in
@@ -134,7 +136,6 @@ func _on_keep_cloud_chosen(action):
 		Data.apply_cloud_save(pending_cloud_data)
 		get_tree().change_scene("res://Welcome.tscn")
 
-
 func _on_Button_pressed():
 	if login_btn.visible:
 		register_btn.visible = true
@@ -148,7 +149,6 @@ func _on_Button_pressed():
 	
 	pass # Replace with function body.
 
-
 func _on_CloseAuth_pressed():
 	var logged_in = Data.is_logged_in
 	$Panel2.visible = false
@@ -156,8 +156,7 @@ func _on_CloseAuth_pressed():
 	$VBoxContainer.visible = false
 	if not logged_in:
 		open_auth.visible = true
-
-
+	Data.save_data["denied_login"] = true
 
 func _on_OpenAuth_pressed():
 	$Panel2.visible = true
