@@ -36,11 +36,10 @@ onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
 
 func _ready():
 	$Popup.visible = false
-	if "LG_1" in Data.save_data["puzzles_solved"]:
+	if "LG_3" in Data.save_data["puzzles_solved"]:
 		_puzzle_solved()
 	else:
 		$Torch/AnimatedSprite.play("small_green_fire")
-		pass
 	
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
@@ -129,8 +128,8 @@ func _on_confirm_pressed():
 	var is_correct = yield(f1, "evaluation_completed")
 	
 	if is_correct:
-		if not "LG_1" in Data.save_data["puzzles_solved"]:
-			Data.save_data["puzzles_solved"].append("LG_1")
+		if not "LG_3" in Data.save_data["puzzles_solved"]:
+			Data.save_data["puzzles_solved"].append("LG_3")
 		
 		if f1.transition_time > 0.0:
 			yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
@@ -208,4 +207,6 @@ func _on_Timer_timeout():
 			$Popup/confirm.disabled = false
 			if not Data.save_data["tutorials"]["digital_logic"]:
 				Data.save_data["tutorials"]["digital_logic"] = true
+
+	
 

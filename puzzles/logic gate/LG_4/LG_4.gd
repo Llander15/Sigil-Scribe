@@ -24,11 +24,9 @@ var puzzle_start = false
 var solved = false
 
 onready var s1 = $"Popup/NinePatchRect/Sources/Source 1"
-onready var s2 = $"Popup/NinePatchRect/Sources/Source 2"
 
 onready var w1 = $"Popup/NinePatchRect/Wires/Wire 1"
 onready var w2 = $"Popup/NinePatchRect/Wires/Wire 2"
-onready var w3 = $"Popup/NinePatchRect/Wires/Wire 3"
 
 onready var g1 = $"Popup/NinePatchRect/Gates/Gate 1"
 
@@ -36,11 +34,11 @@ onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
 
 func _ready():
 	$Popup.visible = false
-	if "LG_1" in Data.save_data["puzzles_solved"]:
+	if "LG_4" in Data.save_data["puzzles_solved"]:
 		_puzzle_solved()
 	else:
-		$Torch/AnimatedSprite.play("small_green_fire")
-		pass
+		$Platform/AnimatedSprite.play("broken")
+		$Platform/KinematicBody2D/CollisionShape2D.disabled = true
 	
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
@@ -49,14 +47,10 @@ func setup_handshakes():
 	s1.connect("signal_updated", g1, "_on_input_a_received")
 	s1.connect("signal_updated", w1, "_on_signal_received")
 	
-	s2.connect("signal_updated", g1, "_on_input_b_received")
-	s2.connect("signal_updated", w2, "_on_signal_received")
-	
 	g1.connect("signal_updated", f1, "_on_signal_received")
-	g1.connect("signal_updated", w3, "_on_signal_received")
+	g1.connect("signal_updated", w2, "_on_signal_received")
 
 	s1.update_logic()
-	s2.update_logic()
 	
 	if Data.has_signal("mission_updated"):
 		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
@@ -122,18 +116,27 @@ func _on_confirm_pressed():
 	
 	w1.confirm_state()
 	w2.confirm_state()
-	w3.confirm_state()
 	
 	f1.confirm_state()
 	
 	var is_correct = yield(f1, "evaluation_completed")
 	
 	if is_correct:
-		if not "LG_1" in Data.save_data["puzzles_solved"]:
-			Data.save_data["puzzles_solved"].append("LG_1")
+		$Area2D.visible = false
+		$Area2D/CollisionShape2D.disabled = true
+		yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
+		exit_puzzle()
+		yield(get_tree().create_timer(2), "timeout")
+		$Platform/AnimatedSprite.play("repair")
+		yield($Platform/AnimatedSprite, "animation_finished")
+		$Platform/AnimatedSprite.play("default")
+		$Platform/KinematicBody2D/CollisionShape2D.disabled = false
 		
-		if f1.transition_time > 0.0:
-			yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
+		if not "LG_4" in Data.save_data["puzzles_solved"]:
+			Data.save_data["puzzles_solved"].append("LG_4")
+		
+#		if f1.transition_time > 0.0:
+#			yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
 			
 		_puzzle_solved()
 	else:
@@ -146,13 +149,10 @@ func _on_confirm_pressed():
 
 func _puzzle_solved():
 	$Area2D.visible = false
-	$Torch/AnimatedSprite.play("big_green_fire")
+	$Platform/AnimatedSprite.play("default")
+	$Platform/KinematicBody2D/CollisionShape2D.disabled = false
 	$Area2D/CollisionShape2D.disabled = true
-	var current_mission = Data.save_data.get("mission_number", -1)
-	if current_mission == 4:
-		var solved = Data.save_data.get("puzzles_solved", [])
-		if "LG_1" in solved and "LG_2" in solved and "LG_3" in solved:
-			Data.advance_mission()
+	$Platform/AnimationPlayer.play("moving_platform")
 	exit_puzzle()
 
 func _notification(what: int) -> void:
@@ -191,7 +191,6 @@ func _on_t5alpha0Btn_pressed():
 func _on_t6alpha0Btn_pressed():
 	$Popup/Tutorial/t6.visible = false
 	$Popup/Tutorial/t7.visible = true
-	$Popup/Tutorial/t8/Sprite/AnimationPlayer.play("RESET")
 	pass # Replace with function body.
 
 
@@ -208,4 +207,5 @@ func _on_Timer_timeout():
 			$Popup/confirm.disabled = false
 			if not Data.save_data["tutorials"]["digital_logic"]:
 				Data.save_data["tutorials"]["digital_logic"] = true
+	
 

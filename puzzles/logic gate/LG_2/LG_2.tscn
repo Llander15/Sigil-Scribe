@@ -1,7 +1,7 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
-[ext_resource path="res://puzzles/logic gate/LG_1/LG_1.gd" type="Script" id=2]
+[ext_resource path="res://puzzles/logic gate/LG_2/LG_2.gd" type="Script" id=2]
 [ext_resource path="res://Assets/dl_area.png" type="Texture" id=3]
 [ext_resource path="res://Assets/torches/Small_Green_Torch.png" type="Texture" id=4]
 [ext_resource path="res://puzzles/logic gate/components/Wire.tscn" type="PackedScene" id=5]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Assets/cursors/cursor_drag.png" type="Texture" id=15]
 [ext_resource path="res://Assets/cursors/cursor_point.png" type="Texture" id=16]
 [ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/torches/Small_Red_Torch.png" type="Texture" id=18]
+[ext_resource path="res://Assets/torches/Big_Red_Torch.png" type="Texture" id=19]
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 14 )
@@ -40,6 +42,30 @@ region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 14 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 19 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 19 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 19 )
 region = Rect2( 64, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
@@ -66,6 +92,30 @@ region = Rect2( 32, 32, 32, 32 )
 atlas = ExtResource( 4 )
 region = Rect2( 64, 32, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 32, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
 "frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
@@ -73,9 +123,19 @@ animations = [ {
 "name": "big_green_fire",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "big_red_fire",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "small_green_fire",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "small_red_fire",
 "speed": 5.0
 } ]
 
@@ -197,7 +257,7 @@ tracks/1/keys = {
 "values": [ ExtResource( 16 ), ExtResource( 15 ) ]
 }
 
-[node name="LG_1" type="Node2D"]
+[node name="LG_2" type="Node2D"]
 script = ExtResource( 2 )
 target_mission_numbers = [ 4 ]
 
@@ -205,7 +265,7 @@ target_mission_numbers = [ 4 ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Torch"]
 frames = SubResource( 16 )
-animation = "small_green_fire"
+animation = "big_red_fire"
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -301,18 +361,25 @@ margin_right = 200.0
 margin_bottom = 168.0
 
 [node name="Gate 2" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
-margin_left = 424.0
+margin_left = 416.0
 margin_top = 120.0
-margin_right = 456.0
+margin_right = 448.0
 margin_bottom = 152.0
 LogicGate = "AND"
 
 [node name="Gate 3" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
-margin_left = 488.0
+margin_left = 456.0
 margin_top = 120.0
-margin_right = 520.0
+margin_right = 488.0
 margin_bottom = 152.0
 LogicGate = "XOR"
+
+[node name="Gate 4" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 496.0
+margin_top = 120.0
+margin_right = 528.0
+margin_bottom = 152.0
+LogicGate = "OR"
 
 [node name="Sources" type="Node2D" parent="Popup/NinePatchRect"]
 
@@ -335,6 +402,7 @@ margin_left = 272.0
 margin_top = 122.0
 margin_right = 312.0
 margin_bottom = 162.0
+required_state = false
 update_on_confirm = true
 delay = 1.0
 
@@ -803,6 +871,7 @@ margin_right = 640.0
 margin_bottom = 368.0
 
 [node name="t8" type="Node2D" parent="Popup/Tutorial"]
+visible = false
 
 [node name="Timer" type="Timer" parent="Popup/Tutorial/t8"]
 wait_time = 2.0

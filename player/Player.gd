@@ -22,9 +22,18 @@ var run_timer = 0.0
 var fall_grace_timer = 0.0
 var coyote_timer = 0.0 # Tracks the "air time" for jumping
 
+func _heart_updated():
+	if Data.save_data["current_health"] <= 0:
+		self.global_position = Data.get_last_shrine_position()
+
 func _ready():
 	$Control/TouchScreen._ready()
 	randomize()
+	
+	# Safely connect the global signal to local function
+	if Data.has_signal("health_updated"):
+		if not Data.is_connected("health_updated", self, "_heart_updated"):
+			Data.connect("health_updated", self, "_heart_updated")
 	
 	# Ensure player UI nodes process regardless of tree pause state
 	var touch_screen_path = "Control/TouchScreen"

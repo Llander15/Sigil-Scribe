@@ -24,6 +24,17 @@ export(Array, String, MULTILINE) var dialogue_lines3 = [
 	"The core gate is active. Proceed to the next section."
 ]
 
+export(Array, String, MULTILINE) var dialogue_lines4 = [
+	"Hello, %s. Looks like you are not qualified for my task yet.",
+	"Finish your current tasks first and we'll meet later."
+]
+
+export(Array, String, MULTILINE) var dialogue_lines5 = [
+	"Good day %s.",
+	"I have no task left for you.",
+	"Though I apreciate the company."
+]
+
 var is_player_nearby = false
 var target_player = null
 var is_dialogue_active = false # Tracks if dialogue is currently running
@@ -99,20 +110,24 @@ func _on_player_interacted():
 	if not dialogue_ui.visible:
 		start_dialogue()
 
+var advance_mission_after_dialogue = false
 func start_dialogue():
-	if (Data.save_data.get("mission_number", -1)) == 3:
+	if (Data.save_data.get("mission_number", -1)) < 3:
+		current_dialogue_array = dialogue_lines4
+	elif (Data.save_data.get("mission_number", -1)) == 3:
 		current_dialogue_array = dialogue_lines
-		Data.advance_mission()
+		advance_mission_after_dialogue = true
 	elif (Data.save_data.get("mission_number", -1)) == 4:
 		current_dialogue_array = dialogue_lines2
-	elif (Data.save_data.get("mission_number", -1)) > 4:
+	elif (Data.save_data.get("mission_number", -1)) == 5:
 		current_dialogue_array = dialogue_lines3
-		no_player_interacted =+ 1
-
-
+		advance_mission_after_dialogue = true
+	elif (Data.save_data.get("mission_number", -1)) > 5:
+		current_dialogue_array = dialogue_lines5
+	
 	if current_dialogue_array.empty():
 		return
-
+	
 	is_dialogue_active = true
 	get_tree().paused = true
 
@@ -132,6 +147,9 @@ func advance_dialogue():
 		set_current_line_text()
 		update_indicator()
 	else:
+		if advance_mission_after_dialogue:
+			Data.advance_mission()
+			advance_mission_after_dialogue = false
 		close_dialogue()
 
 func set_current_line_text():

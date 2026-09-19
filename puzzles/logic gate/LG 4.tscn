@@ -103,7 +103,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 48, 8 )
 
-[node name="LG 4" type="Node2D"]
+[node name="LG_4" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]

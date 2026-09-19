@@ -8,7 +8,7 @@
 [ext_resource path="res://player/DataCodexPopup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/TouchScreen.gd" type="Script" id=7]
 [ext_resource path="res://Profile/Profile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/Sprite_heart.png" type="Texture" id=9]
+[ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=9]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=11]
 [ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=12]
@@ -230,31 +230,11 @@ text = "Cancel"
 [node name="DataCodexPopup" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="Hearts" type="HBoxContainer" parent="."]
+[node name="Hearts" parent="." instance=ExtResource( 9 )]
 margin_left = 224.0
 margin_top = 16.0
 margin_right = 272.0
 margin_bottom = 16.0
-custom_constants/separation = 24
-
-[node name="Heart1" type="Control" parent="Hearts"]
-
-[node name="Sprite" type="Sprite" parent="Hearts/Heart1"]
-texture = ExtResource( 9 )
-
-[node name="Heart2" type="Control" parent="Hearts"]
-margin_left = 24.0
-margin_right = 24.0
-
-[node name="Sprite" type="Sprite" parent="Hearts/Heart2"]
-texture = ExtResource( 9 )
-
-[node name="Heart3" type="Control" parent="Hearts"]
-margin_left = 48.0
-margin_right = 48.0
-
-[node name="Sprite" type="Sprite" parent="Hearts/Heart3"]
-texture = ExtResource( 9 )
 
 [connection signal="pressed" from="ControlButtons/Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="ControlButtons/Data Codex" to="." method="_on_Book_pressed"]

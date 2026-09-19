@@ -1,9 +1,9 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
-[ext_resource path="res://puzzles/logic gate/LG_1/LG_1.gd" type="Script" id=2]
+[ext_resource path="res://puzzles/logic gate/LG_4/LG_4.gd" type="Script" id=2]
 [ext_resource path="res://Assets/dl_area.png" type="Texture" id=3]
-[ext_resource path="res://Assets/torches/Small_Green_Torch.png" type="Texture" id=4]
+[ext_resource path="res://Assets/platforms/platform_repair_animation_1.png" type="Texture" id=4]
 [ext_resource path="res://puzzles/logic gate/components/Wire.tscn" type="PackedScene" id=5]
 [ext_resource path="res://puzzles/logic gate/components/Source.tscn" type="PackedScene" id=6]
 [ext_resource path="res://puzzles/logic gate/components/Gate.tscn" type="PackedScene" id=7]
@@ -13,71 +13,139 @@
 [ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=12]
 [ext_resource path="res://Assets/BG1.png" type="Texture" id=13]
-[ext_resource path="res://Assets/torches/Big_Green_Torch.png" type="Texture" id=14]
+[ext_resource path="res://Assets/platforms/platform_1.png" type="Texture" id=14]
 [ext_resource path="res://Assets/cursors/cursor_drag.png" type="Texture" id=15]
 [ext_resource path="res://Assets/cursors/cursor_point.png" type="Texture" id=16]
 [ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=17]
 
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 14 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 14 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 14 )
-region = Rect2( 32, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 14 )
-region = Rect2( 64, 32, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 32, 32, 32 )
+region = Rect2( 96, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 4 )
-region = Rect2( 32, 32, 32, 32 )
+region = Rect2( 192, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 4 )
-region = Rect2( 64, 32, 32, 32 )
+region = Rect2( 288, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 4 )
+region = Rect2( 288, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 192, 96, 96 )
 
 [sub_resource type="SpriteFrames" id=16]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 38 ) ],
 "loop": true,
-"name": "big_green_fire",
+"name": "broken",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 39 ) ],
 "loop": true,
-"name": "small_green_fire",
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": true,
+"name": "repair",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 33.5, 3.5 )
+
+[sub_resource type="Animation" id=52]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=53]
+resource_name = "moving_platform"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 6, 8, 12 ),
+"transitions": PoolRealArray( 1, 2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -360 ), Vector2( 0, -360 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 6, 8, 12 ),
+"transitions": PoolRealArray( 1, 2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -360 ), Vector2( 0, -360 ), Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -197,16 +265,31 @@ tracks/1/keys = {
 "values": [ ExtResource( 16 ), ExtResource( 15 ) ]
 }
 
-[node name="LG_1" type="Node2D"]
+[sub_resource type="DynamicFont" id=37]
+size = 24
+font_data = ExtResource( 11 )
+
+[node name="LG_4" type="Node2D"]
 script = ExtResource( 2 )
-target_mission_numbers = [ 4 ]
+target_mission_numbers = [ 6 ]
 
-[node name="Torch" type="Node2D" parent="."]
+[node name="Platform" type="Node2D" parent="."]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Torch"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Platform"]
 frames = SubResource( 16 )
-animation = "small_green_fire"
 playing = true
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Platform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/KinematicBody2D"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 51 )
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+anims/RESET = SubResource( 52 )
+anims/moving_platform = SubResource( 53 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -266,7 +349,7 @@ update_on_confirm = true
 
 [node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 1" index="0"]
 position = Vector2( 172, -41 )
-points = PoolVector2Array( 8, -16, 24, -16, 56, 16, 80, 16 )
+points = PoolVector2Array( 8, 24, 80, 24 )
 
 [node name="Wire 2" parent="Popup/NinePatchRect/Wires" instance=ExtResource( 5 )]
 margin_left = -88.0
@@ -274,23 +357,11 @@ margin_top = 232.0
 margin_right = -88.0
 margin_bottom = 232.0
 update_on_confirm = true
+delay = 0.5
 
 [node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 2" index="0"]
 position = Vector2( 172, -41 )
-points = PoolVector2Array( 12, 1, 28, 1, 60, -31, 84, -31 )
-
-[node name="Wire 3" parent="Popup/NinePatchRect/Wires" instance=ExtResource( 5 )]
-margin_left = 24.0
-margin_top = 184.0
-margin_right = 24.0
-margin_bottom = 184.0
-update_on_confirm = true
-delay = 0.5
-
-[node name="Line2D" parent="Popup/NinePatchRect/Wires/Wire 3" index="0"]
-position = Vector2( 172, -51 )
-scale = Vector2( 1.15, 1 )
-points = PoolVector2Array( 3.47826, 19, 76.5217, 19 )
+points = PoolVector2Array( 116, -39, 188, -39 )
 
 [node name="Gates" type="Node2D" parent="Popup/NinePatchRect"]
 
@@ -299,34 +370,44 @@ margin_left = 168.0
 margin_top = 136.0
 margin_right = 200.0
 margin_bottom = 168.0
+SingleInput = true
 
 [node name="Gate 2" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
-margin_left = 424.0
-margin_top = 120.0
-margin_right = 456.0
-margin_bottom = 152.0
+margin_left = 432.0
+margin_top = 96.0
+margin_right = 464.0
+margin_bottom = 128.0
 LogicGate = "AND"
 
 [node name="Gate 3" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
-margin_left = 488.0
-margin_top = 120.0
-margin_right = 520.0
-margin_bottom = 152.0
+margin_left = 432.0
+margin_top = 144.0
+margin_right = 464.0
+margin_bottom = 176.0
 LogicGate = "XOR"
+
+[node name="Gate 4" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_top = 96.0
+margin_right = 512.0
+margin_bottom = 128.0
+LogicGate = "OR"
+
+[node name="Gate 5" parent="Popup/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 480.0
+margin_top = 144.0
+margin_right = 512.0
+margin_bottom = 176.0
+LogicGate = "NOT"
 
 [node name="Sources" type="Node2D" parent="Popup/NinePatchRect"]
 
 [node name="Source 1" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
 margin_left = 80.0
-margin_top = 104.0
+margin_top = 144.0
 margin_right = 96.0
-margin_bottom = 120.0
-
-[node name="Source 2" parent="Popup/NinePatchRect/Sources" instance=ExtResource( 6 )]
-margin_left = 80.0
-margin_top = 184.0
-margin_right = 96.0
-margin_bottom = 200.0
+margin_bottom = 160.0
+SourceType = "NEGATIVE"
 
 [node name="Final" type="Node2D" parent="Popup/NinePatchRect"]
 
@@ -803,6 +884,7 @@ margin_right = 640.0
 margin_bottom = 368.0
 
 [node name="t8" type="Node2D" parent="Popup/Tutorial"]
+visible = false
 
 [node name="Timer" type="Timer" parent="Popup/Tutorial/t8"]
 wait_time = 2.0
@@ -854,6 +936,28 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="Tutorial_Single_Input" type="Node2D" parent="Popup"]
+
+[node name="t1" type="Node2D" parent="Popup/Tutorial_Single_Input"]
+
+[node name="Panel2" type="Panel" parent="Popup/Tutorial_Single_Input/t1"]
+margin_left = 72.0
+margin_top = 72.0
+margin_right = 408.0
+margin_bottom = 144.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Popup/Tutorial_Single_Input/t1/Panel2"]
+margin_right = 336.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 37 )
+text = "Single Input Gate,
+use NOT Gate to invert state."
+align = 1
+valign = 1
+autowrap = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="released" from="Popup/exit" to="." method="_on_exit_released"]
@@ -869,4 +973,3 @@ autowrap = true
 
 [editable path="Popup/NinePatchRect/Wires/Wire 1"]
 [editable path="Popup/NinePatchRect/Wires/Wire 2"]
-[editable path="Popup/NinePatchRect/Wires/Wire 3"]

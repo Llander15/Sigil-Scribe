@@ -1,21 +1,5 @@
 extends CanvasLayer
 
-onready var hearts_container = $Hearts #HBoxContainer
-onready var heart_1 = $Hearts/Heart1 #Control that have Sprite as a child
-onready var heart_2 = $Hearts/Heart2
-onready var heart_3 = $Hearts/Heart3
-
-func _update_heart_output():
-	var hp = int(Data.save_data.get("current_health", 3))
-	
-	heart_1.modulate = Color(1, 1, 1) if hp >= 1 else Color(0, 0, 0)
-	heart_2.modulate = Color(1, 1, 1) if hp >= 2 else Color(0, 0, 0)
-	heart_3.modulate = Color(1, 1, 1) if hp >= 3 else Color(0, 0, 0)
-	
-	if hp <= 0 and $"../..".name == "Player":
-		$"../..".global_position = Data.get_last_shrine_position()
-		print("Player Died")
-
 func _ready():
 	$PausePopup.visible = false
 	$PausePopup/HBoxContainer/Settings/Settings.visible = false
@@ -25,12 +9,6 @@ func _ready():
 	$"ControlButtons/Data Codex".visible = false
 	if Data.save_data.get("ach") and "Data Codex" in Data.save_data["ach"]:
 		$"ControlButtons/Data Codex".visible = true
-	
-	# Safely connect the global signal to local function
-	if Data.has_signal("health_updated"):
-		if not Data.is_connected("health_updated", self, "_update_heart_output"):
-			Data.connect("health_updated", self, "_update_heart_output")
-	_update_heart_output()
 
 func _on_Pause_pressed():
 	get_tree().paused = true
