@@ -20,25 +20,25 @@ func update_mission_panel(mission_id: int = -1): #mission starts at 0
 		return # Exit gracefully if label still doesn't exist
 	match mission_id:
 		0:
-			mission_panel_label.text = "Mission: \n- Find Elder Scribe to get your first task."
+			mission_panel_label.text = "Mission: \n- Find Zor, the Elder Scribe to get your first task."
 		1:
-			mission_panel_label.text = "Mission: \n- Get your tools inside the chest by solving a SQL puzzle\n- (Optional) Ask Elder Scribe for his favorite SQL Querry for hint."
+			mission_panel_label.text = "Mission: \n- Get your tools inside the chest by solving a SQL puzzle\n- (Optional) Ask Zor for his favorite SQL Querry for hint."
 		2:
 			mission_panel_label.text = "Mission: \n- You have successfully recieved your tools, report back to Elder Scribe"
 		3:
-			mission_panel_label.text = "Mission: \n- Proceed to the next Scribe Instructor to recieve your next task."
+			mission_panel_label.text = "Mission: \n- Proceed to the next Scribe Instructor George to recieve your next task."
 		4:
-			mission_panel_label.text = "Mission: \n- Interact with the torches and strengthen its fire with Digital Logic puzzles.\n- (Optional) Ask Scribe Instructor for help."
+			mission_panel_label.text = "Mission: \n- Strengthen the fire of the torches with Digital Logic puzzles.\n- (Optional) Ask George for help."
 		5:
-			mission_panel_label.text = "Mission:\n- You have successfully strengthen the torches, report back to Scribe Instructor."
+			mission_panel_label.text = "Mission:\n- You have successfully strengthen the torches, report back to George."
 		6:
 			mission_panel_label.text = "Mission: \n- Repair the broken moving platform with Digital Logic puzzle."
 		7:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Platform is now fixed and working! Meet Scribe Instructor Alea at the top of the cliff."
 		8:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Locate and strengthen the remaining torches.\n (Optional) Read Data Codex (Book Logo on top) and learn more about the Digital Logic Gates."
 		9:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- All torches now are strengthen! Report back to Alea for your next task."
 		10:
 			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
 		11:

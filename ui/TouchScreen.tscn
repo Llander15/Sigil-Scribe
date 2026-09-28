@@ -238,10 +238,10 @@ margin_right = 272.0
 margin_bottom = 16.0
 
 [node name="Mission Panel" parent="." instance=ExtResource( 14 )]
-modulate = Color( 1, 1, 1, 0.705882 )
-margin_left = 440.0
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_left = 376.0
 margin_top = 40.0
-margin_right = 440.0
+margin_right = 376.0
 margin_bottom = 40.0
 
 [connection signal="pressed" from="ControlButtons/Pause" to="." method="_on_Pause_pressed"]

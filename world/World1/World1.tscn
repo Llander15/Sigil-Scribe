@@ -7,8 +7,8 @@
 [ext_resource path="res://Checkpoint/Checkpoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://playericon.png" type="Texture" id=6]
 [ext_resource path="res://world/World1/World1.gd" type="Script" id=7]
-[ext_resource path="res://puzzles/logic gate/LG 2.tscn" type="PackedScene" id=8]
-[ext_resource path="res://puzzles/logic gate/LG 3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://puzzles/logic gate/LG_5/LG_5.tscn" type="PackedScene" id=8]
+[ext_resource path="res://puzzles/logic gate/LG_6/LG_6.tscn" type="PackedScene" id=9]
 [ext_resource path="res://tileset/tileset.tres" type="TileSet" id=10]
 [ext_resource path="res://minimap/minimap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Checkpoint/Shrine.tscn" type="PackedScene" id=12]
@@ -24,15 +24,15 @@
 [ext_resource path="res://puzzles/sql/S 1.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Background/big clouds.png" type="Texture" id=23]
 [ext_resource path="res://Assets/chest.png" type="Texture" id=24]
-[ext_resource path="res://Assets/gate_control.png" type="Texture" id=25]
-[ext_resource path="res://Assets/bridge left v2.png" type="Texture" id=26]
-[ext_resource path="res://Assets/bridge right v2.png" type="Texture" id=27]
-[ext_resource path="res://Assets/bridge middle v2.png" type="Texture" id=28]
+[ext_resource path="res://puzzles/logic gate/LG_7/LG_7.tscn" type="PackedScene" id=25]
 [ext_resource path="res://drag/Drag.tscn" type="PackedScene" id=29]
 [ext_resource path="res://puzzles/logic gate/LG_4/LG_4.tscn" type="PackedScene" id=30]
 [ext_resource path="res://puzzles/logic gate/LG_1/LG_1.tscn" type="PackedScene" id=31]
 [ext_resource path="res://npc/npc2/NPC2.tscn" type="PackedScene" id=32]
 [ext_resource path="res://puzzles/logic gate/LG_3/LG_3.tscn" type="PackedScene" id=33]
+[ext_resource path="res://npc/npc3/NPC3.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Assets/animated_greeneries/Tree_animated.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Assets/animated_greeneries/Bush_animated.tscn" type="PackedScene" id=36]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
@@ -117,7 +117,101 @@ z_index = -2
 tile_set = ExtResource( 17 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -2621365, 6, 0, -2555867, 6, 0, -2555847, 6, 0, -2555829, 5, 0, -2490331, 5, 0, -2490324, 6, 0, -2490311, 5, 0, -2490293, 5, 0, -2424795, 5, 0, -2424788, 5, 0, -2424787, 536870921, 0, -2424775, 5, 0, -2424757, 5, 0, -2424742, 536870918, 0, -2424715, 536870918, 0, -2359261, 8, 0, -2359259, 4, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359252, 4, 0, -2359248, 6, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359239, 5, 0, -2359234, 6, 0, -2359221, 5, 0, -2359206, 5, 0, -2359202, 6, 0, -2359179, 536870917, 0, -2359150, 536870918, 0, -2293703, 4, 0, -2293698, 5, 0, -2293685, 5, 0, -2293670, 5, 0, -2293666, 536870917, 0, -2293643, 536870917, 0, -2293633, 6, 0, -2293614, 536870917, 0, -2162697, 536870918, 0, -2228164, 0, 0, -2228162, 5, 0, -2228149, 5, 0, -2228134, 5, 0, -2228132, 6, 0, -2228130, 536870917, 0, -2228110, 10, 0, -2228107, 536870917, 0, -2228105, 9, 0, -2228097, 5, 0, -2228094, 6, 0, -2228078, 536870917, 0, -2097161, 536870917, 0, -2162626, 4, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162615, 0, 0, -2162613, 4, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162603, 7, 0, -2162599, 8, 0, -2162598, 4, 0, -2162596, 4, 0, -2162594, 536870916, 0, -2162593, 0, 0, -2162592, 8, 0, -2162571, 536870916, 0, -2162565, 8, 0, -2162561, 4, 0, -2162559, 8, 0, -2162558, 4, 0, -2162547, 7, 0, -2162542, 536870916, 0, -2031625, 536870916, 0, -1966091, 536870912, 0, -1769485, 536870912, 0, -1769475, 6, 0, -1834962, 6, 0, -1703945, 536870912, 0, -1703939, 5, 0, -1769466, 536870918, 0, -1769436, 536870918, 0, -1769429, 536870918, 0, -1769426, 5, 0, -1638403, 5, 0, -1703930, 536870917, 0, -1703900, 536870917, 0, -1703893, 536870917, 0, -1703890, 5, 0, -1703887, 536870918, 0, -1703882, 536870918, 0, -1572867, 4, 0, -1572866, 536870920, 0, -1638394, 536870917, 0, -1638364, 536870917, 0, -1638357, 536870917, 0, -1638354, 5, 0, -1638351, 536870917, 0, -1638346, 536870917, 0, -1638327, 536870918, 0, -1638321, 536870912, 0, -1572858, 536870916, 0, -1572854, 536870918, 0, -1572841, 536870918, 0, -1572834, 536870918, 0, -1572828, 536870917, 0, -1572824, 0, 0, -1572821, 536870916, 0, -1572818, 4, 0, -1572815, 536870916, 0, -1572810, 536870917, 0, -1572791, 536870917, 0, -1507320, 0, 0, -1507318, 536870917, 0, -1507305, 536870917, 0, -1507298, 536870917, 0, -1507292, 536870916, 0, -1507291, 8, 0, -1507274, 536870916, 0, -1507255, 536870917, 0, -1507251, 536870912, 0, -1441782, 536870916, 0, -1441769, 536870917, 0, -1441765, 536870918, 0, -1441764, 9, 0, -1441762, 536870917, 0, -1441719, 536870917, 0, -1376243, 536870919, 0, -1376234, 0, 0, -1376233, 536870916, 0, -1376231, 7, 0, -1376229, 536870916, 0, -1376226, 536870916, 0, -1376195, 536870915, 0, -1376194, 536870914, 0, -1376193, 536870914, 0, -1376192, 536870913, 0, -1376183, 536870916, 0 )
+tile_data = PoolIntArray( -2424787, 536870921, 0, -2424715, 536870918, 0, -2359261, 8, 0, -2359257, 1, 0, -2359256, 2, 0, -2359255, 2, 0, -2359254, 3, 0, -2359243, 1, 0, -2359242, 2, 0, -2359241, 3, 0, -2359179, 536870917, 0, -2359150, 536870918, 0, -2293643, 536870917, 0, -2293633, 6, 0, -2293614, 536870917, 0, -2228110, 10, 0, -2228107, 536870917, 0, -2228105, 9, 0, -2228097, 5, 0, -2228094, 6, 0, -2228078, 536870917, 0, -2162625, 7, 0, -2162624, 536870915, 0, -2162623, 2, 0, -2162622, 2, 0, -2162621, 3, 0, -2162616, 536870919, 0, -2162612, 1, 0, -2162611, 3, 0, -2162607, 536870920, 0, -2162603, 7, 0, -2162599, 8, 0, -2162592, 8, 0, -2162571, 536870916, 0, -2162565, 8, 0, -2162561, 4, 0, -2162559, 8, 0, -2162558, 4, 0, -2162547, 7, 0, -2162542, 536870916, 0, -1572866, 536870920, 0, -1507291, 8, 0, -1441764, 9, 0, -1376243, 536870919, 0, -1376231, 7, 0, -1376195, 536870915, 0, -1376194, 536870914, 0, -1376193, 536870914, 0, -1376192, 536870913, 0 )
+
+[node name="animated_trees" type="Node2D" parent="Background"]
+
+[node name="Tree_animated" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 720, -688 )
+
+[node name="Tree_animated5" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1160, -752 )
+
+[node name="Tree_animated2" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 96, -816 )
+
+[node name="Tree_animated3" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( -272, -1040 )
+
+[node name="Tree_animated4" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 352, -720 )
+
+[node name="Tree_animated6" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1192, -1168 )
+
+[node name="Tree_animated7" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1856, -1136 )
+
+[node name="Tree_animated8" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 2512, -1072 )
+
+[node name="Tree_animated16" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 2824, -1072 )
+
+[node name="Tree_animated17" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 3120, -1072 )
+
+[node name="Tree_animated9" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 2344, -688 )
+
+[node name="Tree_animated10" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 2120, -688 )
+
+[node name="Tree_animated11" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1568, -784 )
+
+[node name="Tree_animated12" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1800, -720 )
+
+[node name="Tree_animated13" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 1016, -720 )
+
+[node name="Tree_animated14" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 864, -688 )
+
+[node name="Tree_animated15" parent="Background/animated_trees" instance=ExtResource( 35 )]
+position = Vector2( 584, -688 )
+
+[node name="animated_bushes" type="Node2D" parent="Background"]
+
+[node name="Bush_animated" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( -96, -784 )
+
+[node name="Bush_animated4" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 232, -752 )
+
+[node name="Bush_animated11" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 480, -656 )
+
+[node name="Bush_animated5" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 1352, -752 )
+
+[node name="Bush_animated6" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 1728, -720 )
+
+[node name="Bush_animated7" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 2464, -720 )
+
+[node name="Bush_animated8" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 2384, -1040 )
+
+[node name="Bush_animated12" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 2904, -1040 )
+
+[node name="Bush_animated13" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 3048, -1040 )
+
+[node name="Bush_animated9" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 1920, -1072 )
+
+[node name="Bush_animated10" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( 1544, -1136 )
+
+[node name="Bush_animated2" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( -272, -848 )
+
+[node name="Bush_animated3" parent="Background/animated_bushes" instance=ExtResource( 36 )]
+position = Vector2( -368, -944 )
 
 [node name="Ground" type="Node2D" parent="."]
 position = Vector2( 1056, 1024 )
@@ -236,64 +330,16 @@ position = Vector2( 1666, -719 )
 [node name="LG_4" parent="DL puzzles" instance=ExtResource( 30 )]
 position = Vector2( 2240, -656 )
 
-[node name="LG 2" parent="DL puzzles" instance=ExtResource( 8 )]
-position = Vector2( 2560, -1056 )
+[node name="LG_5" parent="DL puzzles" instance=ExtResource( 8 )]
+position = Vector2( 2080, -1064 )
 
-[node name="GateControl" type="Sprite" parent="DL puzzles/LG 2"]
-position = Vector2( 0, 16 )
-texture = ExtResource( 25 )
+[node name="LG_6" parent="DL puzzles" instance=ExtResource( 9 )]
+position = Vector2( 1816, -1136 )
+target_mission_numbers = [ 8 ]
 
-[node name="LG 3" parent="DL puzzles" instance=ExtResource( 9 )]
-position = Vector2( 3136, -1056 )
-
-[node name="Bridge" parent="DL puzzles/LG 3" index="2"]
-position = Vector2( 128, 64 )
-
-[node name="Sprite" parent="DL puzzles/LG 3/Bridge" index="1"]
-position = Vector2( 0, -16 )
-
-[node name="Sprite" parent="DL puzzles/LG 3/Bridge/Sprite" index="0"]
-texture = ExtResource( 26 )
-
-[node name="Sprite2" parent="DL puzzles/LG 3/Bridge/Sprite" index="1"]
-texture = ExtResource( 28 )
-
-[node name="Sprite3" parent="DL puzzles/LG 3/Bridge/Sprite" index="2"]
-texture = ExtResource( 28 )
-
-[node name="Sprite4" parent="DL puzzles/LG 3/Bridge/Sprite" index="3"]
-texture = ExtResource( 28 )
-
-[node name="Sprite5" parent="DL puzzles/LG 3/Bridge/Sprite" index="4"]
-texture = ExtResource( 28 )
-
-[node name="Sprite6" parent="DL puzzles/LG 3/Bridge/Sprite" index="5"]
-texture = ExtResource( 28 )
-
-[node name="Sprite7" parent="DL puzzles/LG 3/Bridge/Sprite" index="6"]
-texture = ExtResource( 28 )
-
-[node name="Sprite8" parent="DL puzzles/LG 3/Bridge/Sprite" index="7"]
-texture = ExtResource( 28 )
-
-[node name="Sprite9" parent="DL puzzles/LG 3/Bridge/Sprite" index="8"]
-texture = ExtResource( 28 )
-
-[node name="Sprite10" parent="DL puzzles/LG 3/Bridge/Sprite" index="9"]
-texture = ExtResource( 28 )
-
-[node name="Sprite11" parent="DL puzzles/LG 3/Bridge/Sprite" index="10"]
-texture = ExtResource( 28 )
-
-[node name="Sprite12" parent="DL puzzles/LG 3/Bridge/Sprite" index="11"]
-texture = ExtResource( 28 )
-
-[node name="Sprite13" parent="DL puzzles/LG 3/Bridge/Sprite" index="12"]
-texture = ExtResource( 27 )
-
-[node name="GateControl" type="Sprite" parent="DL puzzles/LG 3"]
-position = Vector2( 0, 16 )
-texture = ExtResource( 25 )
+[node name="LG_7" parent="DL puzzles" instance=ExtResource( 25 )]
+position = Vector2( 1136, -1164 )
+target_mission_numbers = [ 8 ]
 
 [node name="minimap" parent="." instance=ExtResource( 11 )]
 layer = 0
@@ -378,7 +424,7 @@ position = Vector2( 7712, -1088 )
 position = Vector2( 1096, 208 )
 
 [node name="Shrine2" parent="Shrines" instance=ExtResource( 12 )]
-position = Vector2( 3864, -48 )
+position = Vector2( 2472, -144 )
 Shrine_no = 1
 
 [node name="Death Zones" type="Node" parent="."]
@@ -542,6 +588,7 @@ z_index = 1
 [node name="NPC" parent="NPCs" instance=ExtResource( 16 )]
 position = Vector2( 1552, 368 )
 z_index = 2
+npc_name = "Zor"
 important = true
 dialogue_lines3 = [ "You have the tools now? ", "Oh, your'e asking for my favorite SQL querry?", "It would be:
 SELECT * FROM table_name  ;
@@ -549,6 +596,7 @@ SELECT * FROM table_name  ;
 
 [node name="NPC2" parent="NPCs" instance=ExtResource( 32 )]
 position = Vector2( 2384, 272 )
+npc_name = "George"
 target_mission_numbers = [ 3, 5 ]
 dialogue_lines = [ "Looks like you passed the first test %s.", "From here on, you will be handling Digital Logic tests.", "You have to pass all 7 Digital Logic test.", "AND, OR, XOR, NOT, NAND, NOR, and XNOR.
 All the Logic Gate you must know to get out of this place.", "See those torches? you must match the colors of those torches with Digital Logic Output to considered it as solved.", "Start with the first three there. ", "If you are having problem feel free to ask me or use your Data Codex." ]
@@ -557,8 +605,12 @@ I don't mind.", "The test is for you to use the correct LOGIC GATE to change the
 if both of its inputs are POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If at least one of the INPUT is NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "next logic gate, OR:
 if at least one of the INPUT is POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If both of its inputs are NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "and then, XOR:
 if the inputs are POSITIVE and NEGATIVE, the OUTPUT will be POSITIVE. ", "if the inputs are both POSITIVE or both NEGATIVE, the OUTPUT will be NEGATIVE.", "That's all for the three Logic Gates. You can learn more with your Data Codex if you want. ", "Feel free to ask me again if you're having problems. Good luck." ]
-dialogue_lines3 = [ "Good work on completing the first three Digital Logic puzzles %s.", "Make sure to remember these Gates as you will be using them all the time.", "You may now proceed to your next tasks.
-Good luck %s." ]
+dialogue_lines3 = [ "Good work on completing the first three Digital Logic puzzles %s.", "Make sure to remember these Gates as you will be using them all the time.", "Meet your next instructor at the top of cliff ahead.", "But before you reach her, you must first repair a broken platform.", "Good luck %s." ]
+
+[node name="NPC3" parent="NPCs" instance=ExtResource( 34 )]
+position = Vector2( 3512, -16 )
+npc_name = "Alea"
+target_mission_numbers = [ 7, 9 ]
 
 [connection signal="body_entered" from="Death Zones/Area2D0" to="Death Zones" method="_on_Area2D0_body_entered"]
 [connection signal="body_entered" from="Death Zones/Area2D1" to="Death Zones" method="_on_Area2D1_body_entered"]
@@ -566,11 +618,4 @@ Good luck %s." ]
 [connection signal="body_entered" from="Death Zones/Area2D3" to="Death Zones" method="_on_Area2D2_body_entered"]
 [connection signal="released" from="test/reset" to="." method="_on_reset_released"]
 
-[editable path="DL puzzles/LG 3"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 1"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 2"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 3"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 4"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 5"]
-[editable path="DL puzzles/LG 3/Popup/NinePatchRect/Wires/Wire 6"]
 [editable path="minimap"]

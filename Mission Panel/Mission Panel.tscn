@@ -21,7 +21,7 @@ expand_margin_bottom = 4.0
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_right = 192.0
+margin_right = 256.0
 margin_bottom = 37.0
 custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
