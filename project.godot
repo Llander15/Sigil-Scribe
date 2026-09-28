@@ -165,6 +165,7 @@ CloudSaveManager="*res://CloudSaveManager.gd"
 Global="*res://Global.gd"
 DragManager="*res://DragManager.gd"
 MobileInputManager="*res://MobileInputManager.gd"
+MissionPanel="*res://Mission Panel/Mission Panel.gd"
 
 [debug]
 

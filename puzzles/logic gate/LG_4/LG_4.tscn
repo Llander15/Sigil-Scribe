@@ -85,7 +85,7 @@ animations = [ {
 "frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
 "loop": true,
 "name": "repair",
-"speed": 5.0
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=51]
@@ -277,6 +277,7 @@ target_mission_numbers = [ 6 ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Platform"]
 frames = SubResource( 16 )
+animation = "repair"
 playing = true
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="Platform"]

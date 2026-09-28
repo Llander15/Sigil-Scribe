@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Mission Panel/Mission Panel.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.176471, 0.141176, 0.0470588, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[node name="Mission Panel" type="Control"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 192.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Mission:
+- Talk to Elder Scribe"
+autowrap = true
