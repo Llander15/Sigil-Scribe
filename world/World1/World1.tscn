@@ -320,6 +320,7 @@ position = Vector2( 1056, 1024 )
 
 [node name="LG_1" parent="DL puzzles" instance=ExtResource( 31 )]
 position = Vector2( 1429, -751 )
+target_mission_numbers = [ -1 ]
 
 [node name="LG_2" parent="DL puzzles" instance=ExtResource( 4 )]
 position = Vector2( 1820, -712 )
@@ -422,10 +423,6 @@ position = Vector2( 7712, -1088 )
 
 [node name="Shrine1" parent="Shrines" instance=ExtResource( 12 )]
 position = Vector2( 1096, 208 )
-
-[node name="Shrine2" parent="Shrines" instance=ExtResource( 12 )]
-position = Vector2( 2472, -144 )
-Shrine_no = 1
 
 [node name="Death Zones" type="Node" parent="."]
 script = ExtResource( 3 )

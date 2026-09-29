@@ -199,7 +199,6 @@ tracks/1/keys = {
 
 [node name="LG_1" type="Node2D"]
 script = ExtResource( 2 )
-target_mission_numbers = [ 4 ]
 
 [node name="Torch" type="Node2D" parent="."]
 
@@ -854,6 +853,148 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="Solved Preview" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 5
+
+[node name="NinePatchRect" parent="Solved Preview" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 336.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Solved Preview/NinePatchRect"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 384.0
+margin_bottom = 272.0
+texture = ExtResource( 13 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Solved Preview/NinePatchRect"]
+margin_left = 400.0
+margin_top = 64.0
+margin_right = 544.0
+margin_bottom = 208.0
+texture = ExtResource( 13 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="Wires" type="Node2D" parent="Solved Preview/NinePatchRect"]
+
+[node name="Wire 1" parent="Solved Preview/NinePatchRect/Wires" instance=ExtResource( 5 )]
+margin_left = -84.0
+margin_top = 169.0
+margin_right = -84.0
+margin_bottom = 169.0
+
+[node name="Line2D" parent="Solved Preview/NinePatchRect/Wires/Wire 1" index="0"]
+position = Vector2( 172, -41 )
+points = PoolVector2Array( 8, -16, 24, -16, 56, 16, 80, 16 )
+
+[node name="Wire 2" parent="Solved Preview/NinePatchRect/Wires" instance=ExtResource( 5 )]
+margin_left = -88.0
+margin_top = 232.0
+margin_right = -88.0
+margin_bottom = 232.0
+
+[node name="Line2D" parent="Solved Preview/NinePatchRect/Wires/Wire 2" index="0"]
+position = Vector2( 172, -41 )
+points = PoolVector2Array( 12, 1, 28, 1, 60, -31, 84, -31 )
+
+[node name="Wire 3" parent="Solved Preview/NinePatchRect/Wires" instance=ExtResource( 5 )]
+margin_left = 24.0
+margin_top = 184.0
+margin_right = 24.0
+margin_bottom = 184.0
+
+[node name="Line2D" parent="Solved Preview/NinePatchRect/Wires/Wire 3" index="0"]
+position = Vector2( 172, -51 )
+scale = Vector2( 1.15, 1 )
+points = PoolVector2Array( 3.47826, 19, 76.5217, 19 )
+
+[node name="Gates" type="Node2D" parent="Solved Preview/NinePatchRect"]
+
+[node name="Gate 1" parent="Solved Preview/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 168.0
+margin_top = 136.0
+margin_right = 200.0
+margin_bottom = 168.0
+LogicGate = "AND"
+
+[node name="Gate 2" parent="Solved Preview/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 424.0
+margin_top = 120.0
+margin_right = 456.0
+margin_bottom = 152.0
+
+[node name="Gate 3" parent="Solved Preview/NinePatchRect/Gates" instance=ExtResource( 7 )]
+margin_left = 488.0
+margin_top = 120.0
+margin_right = 520.0
+margin_bottom = 152.0
+LogicGate = "XOR"
+
+[node name="Sources" type="Node2D" parent="Solved Preview/NinePatchRect"]
+
+[node name="Source 1" parent="Solved Preview/NinePatchRect/Sources" instance=ExtResource( 6 )]
+margin_left = 80.0
+margin_top = 104.0
+margin_right = 96.0
+margin_bottom = 120.0
+
+[node name="Source 2" parent="Solved Preview/NinePatchRect/Sources" instance=ExtResource( 6 )]
+margin_left = 80.0
+margin_top = 184.0
+margin_right = 96.0
+margin_bottom = 200.0
+
+[node name="Final" type="Node2D" parent="Solved Preview/NinePatchRect"]
+
+[node name="Final 1" parent="Solved Preview/NinePatchRect/Final" instance=ExtResource( 8 )]
+margin_left = 272.0
+margin_top = 122.0
+margin_right = 312.0
+margin_bottom = 162.0
+
+[node name="exit" type="TouchScreenButton" parent="Solved Preview"]
+position = Vector2( 560, 48 )
+normal = SubResource( 3 )
+
+[node name="confirm" type="Button" parent="Solved Preview"]
+margin_left = 432.0
+margin_top = 256.0
+margin_right = 576.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+disabled = true
+text = "Activate"
+
+[node name="Hearts" parent="Solved Preview" instance=ExtResource( 17 )]
+
+[node name="Panel" type="Panel" parent="Solved Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 424.0
+margin_bottom = 304.0
+
+[node name="Panel2" type="Panel" parent="Solved Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 432.0
+margin_top = 96.0
+margin_right = 576.0
+margin_bottom = 304.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="released" from="Popup/exit" to="." method="_on_exit_released"]
@@ -866,7 +1007,12 @@ autowrap = true
 [connection signal="pressed" from="Popup/Tutorial/t6/alpha0Btn" to="." method="_on_t6alpha0Btn_pressed"]
 [connection signal="pressed" from="Popup/Tutorial/t7/alpha0Btn" to="." method="_on_t7alpha0Btn_pressed"]
 [connection signal="timeout" from="Popup/Tutorial/t8/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="released" from="Solved Preview/exit" to="." method="_on_exit_released"]
+[connection signal="pressed" from="Solved Preview/confirm" to="." method="_on_confirm_pressed"]
 
 [editable path="Popup/NinePatchRect/Wires/Wire 1"]
 [editable path="Popup/NinePatchRect/Wires/Wire 2"]
 [editable path="Popup/NinePatchRect/Wires/Wire 3"]
+[editable path="Solved Preview/NinePatchRect/Wires/Wire 1"]
+[editable path="Solved Preview/NinePatchRect/Wires/Wire 2"]
+[editable path="Solved Preview/NinePatchRect/Wires/Wire 3"]
