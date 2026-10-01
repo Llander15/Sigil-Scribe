@@ -172,6 +172,10 @@ func _puzzle_solved_init():
 	$Platform/AnimationPlayer.play("moving_platform")
 
 func _puzzle_solved():
+	$Area2D/Sprite.visible = true
+	$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+	$Area2D/Sprite/AnimationPlayer.play("floating")
+	
 	$Platform/AnimatedSprite.play("default")
 	$Platform/KinematicBody2D/CollisionShape2D.disabled = false
 	$Platform/AnimationPlayer.play("moving_platform")
