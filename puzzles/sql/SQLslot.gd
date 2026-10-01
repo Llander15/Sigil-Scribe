@@ -2,6 +2,7 @@ tool
 extends Label
 
 export(String) var sql_text = "SELECT" setget set_sql_text
+export var locked = false
 
 func _ready():
 	# MOUSE_FILTER_PASS allows dragging while still registering clicks properly
@@ -22,6 +23,22 @@ func set_sql_text(new_value):
 func update_text_display():
 	self.text = sql_text
 	
+	# Always ensure this instance has its own unique StyleBoxFlat override
+	var stylebox = get_stylebox("normal")
+	if not stylebox is StyleBoxFlat:
+		stylebox = StyleBoxFlat.new()
+		add_stylebox_override("normal", stylebox)
+	else:
+		# If it already has one, duplicate it to ensure it's not shared with duplicates/scenes
+		stylebox = stylebox.duplicate()
+		add_stylebox_override("normal", stylebox)
+		
+	# Apply color safely without affecting other nodes
+	if locked:
+		stylebox.bg_color = Color("#455370")
+	else:
+		stylebox.bg_color = Color("#315dba")
+		
 	# 1. Fetch the custom font override, or fall back to the default theme font
 	var font = get_font("font")
 	if not font:
@@ -38,10 +55,11 @@ func update_text_display():
 	# 4. Set the minimum size so the HFlowContainer/HBoxContainer can arrange it
 	self.rect_min_size = Vector2(new_width, new_height)
 
-
 # --- DRAG LOGIC ---
 var drag_icon_texture = preload("res://Assets/cursors/cursor_drag.png")
 func get_drag_data(_position):
+	if locked:
+		return
 	# Tool mode safety: don't allow dragging inside the editor window workspace
 	if Engine.editor_hint:
 		return null
@@ -83,11 +101,15 @@ func get_drag_data(_position):
 
 # --- DROP LOGIC ---
 func can_drop_data(_position, data):
+	if locked:
+		return
 	if Engine.editor_hint:
 		return false
 	return typeof(data) == TYPE_DICTIONARY and data.has("sql_content")
 
 func drop_data(_position, data):
+	if locked:
+		return
 	var origin = data["origin_node"]
 	
 	# Swap text contents between the two labels

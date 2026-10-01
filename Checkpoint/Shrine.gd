@@ -20,6 +20,11 @@ func _on_Area2D_body_entered(body):
 			if Data.has_method("update_health"):
 				Data.update_health(0) # Triggers UI refresh signal cleanly
 		
+		if not Data.get_last_shrine_position() == global_position:
+			$CanvasLayer/AnnounceLabel.text = "Spawn Point Updated."
+			$CanvasLayer/AnnounceLabel/AnimationPlayer.stop()
+			$CanvasLayer/AnnounceLabel/AnimationPlayer.play("in_out")
+		
 		# FIXED: Save the Shrine's exact position (Node2D), NOT the player's position!
 		Data.set_last_shrine_position(global_position)
 		
@@ -30,6 +35,9 @@ func _on_Area2D_body_entered(body):
 		# Add shrine ID if not already registered
 		if not Shrine_no in Data.save_data["shrines_activated"]:
 			Data.save_data["shrines_activated"].append(Shrine_no)
+			$CanvasLayer/AnnounceLabel.text = "Spawn Point Updated."
+			$CanvasLayer/AnnounceLabel/AnimationPlayer.stop()
+			$CanvasLayer/AnnounceLabel/AnimationPlayer.play("in_out")
 		
 		# Save to disk ONCE
 		Data.save_game()

@@ -2,20 +2,55 @@ extends Node2D
 
 export(Array, int) var target_mission_numbers = [-1]
 var interactable = false
-onready var POPUP = $Popup
+
+func get_current_mission() -> int:
+	return int(Data.save_data.get("mission_number", -1))
 
 func _on_mission_updated(new_mission: int):
 	check_mission_importance()
 
 func check_mission_importance():
-	var current_mission = int(Data.save_data.get("mission_number", -1))
+	var current_mission = get_current_mission()
+	var target_min = target_mission_numbers[0] if target_mission_numbers.size() > 0 else -1
+	
+	# If the puzzle is already solved, always lock the sprite to solved/preview state
+	if "LG_2" in Data.save_data.get("puzzles_solved", []):
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+		interactable = false
+		return
 	
 	# Checks if current_mission matches ANY number in target_mission_numbers
 	if current_mission in target_mission_numbers:
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(1.0, 1.0)
 		interactable = true
-	else:
+	elif current_mission < target_min:  # Player is below required mission
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = false
+		interactable = false
+	else: # Player has passed the target mission
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+		interactable = false
+	current_mission = get_current_mission()
+	target_min = target_mission_numbers[0] if target_mission_numbers.size() > 0 else -1
+	
+	# Checks if current_mission matches ANY number in target_mission_numbers
+	if current_mission in target_mission_numbers:
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(1.0, 1.0)
+		interactable = true
+	elif current_mission < target_min:  # Player is below required mission
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = false
+		interactable = false
+	else: # Player has passed the target mission (show solved preview/disabled state)
+		
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = true
 			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
@@ -25,7 +60,7 @@ var target_player = null
 var puzzle_start = false
 var solved = false
 
-#puzzle
+#puzzle nodes
 onready var s1 = $"Popup/NinePatchRect/Sources/Source 1"
 onready var s2 = $"Popup/NinePatchRect/Sources/Source 2"
 
@@ -37,32 +72,32 @@ onready var g1 = $"Popup/NinePatchRect/Gates/Gate 1"
 
 onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
 
-###########################################################
-#preview
-onready var ps1 = $"Preview/NinePatchRect/Sources/Source 1"
-onready var ps2 = $"Preview/NinePatchRect/Sources/Source 2"
+#preview nodes
+onready var ps1 = $"Solved Preview/NinePatchRect/Sources/Source 1"
+onready var ps2 = $"Solved Preview/NinePatchRect/Sources/Source 2"
 
-onready var pw1 = $"Preview/NinePatchRect/Wires/Wire 1"
-onready var pw2 = $"Preview/NinePatchRect/Wires/Wire 2"
-onready var pw3 = $"Preview/NinePatchRect/Wires/Wire 3"
+onready var pw1 = $"Solved Preview/NinePatchRect/Wires/Wire 1"
+onready var pw2 = $"Solved Preview/NinePatchRect/Wires/Wire 2"
+onready var pw3 = $"Solved Preview/NinePatchRect/Wires/Wire 3"
 
-onready var pg1 = $"Preview/NinePatchRect/Gates/Gate 1"
+onready var pg1 = $"Solved Preview/NinePatchRect/Gates/Gate 1"
 
-onready var pf1 = $"Preview/NinePatchRect/Final/Final 1"
+onready var pf1 = $"Solved Preview/NinePatchRect/Final/Final 1"
 
 func _ready():
 	$Popup.visible = false
-	$Preview.visible = false
+	$"Solved Preview".visible = false
+	
 	if "LG_2" in Data.save_data["puzzles_solved"]:
-		_puzzle_solved()
+		_puzzle_solved_init()
 	else:
-		$Torch/AnimatedSprite.play("small_red_fire")
+		$Torch/AnimatedSprite.play("small_green_fire")
 	
 	yield(get_tree(), "idle_frame")
 	setup_handshakes()
 
 func setup_handshakes():
-	#puzzle
+	#puzzle handshakes
 	s1.connect("signal_updated", g1, "_on_input_a_received")
 	s1.connect("signal_updated", w1, "_on_signal_received")
 	
@@ -74,8 +109,8 @@ func setup_handshakes():
 
 	s1.update_logic()
 	s2.update_logic()
-	##############################################################
-	#preview
+	
+	#preview handshakes
 	ps1.connect("signal_updated", pg1, "_on_input_a_received")
 	ps1.connect("signal_updated", pw1, "_on_signal_received")
 	
@@ -88,17 +123,20 @@ func setup_handshakes():
 	ps1.update_logic()
 	ps2.update_logic()
 	
-	
 	if Data.has_signal("mission_updated"):
 		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
 			Data.connect("mission_updated", self, "_on_mission_updated")
 	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
+	var current_mission = get_current_mission()
+	var target_min = target_mission_numbers[0] if target_mission_numbers.size() > 0 else -1
+	
+	if current_mission < target_min:
+		return
+		
 	if body.name == "Player":
-		
 		target_player = body
-		
 		body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = true
 		
 		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
@@ -106,32 +144,36 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
-		
 		target_player = null
-		
 		body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 		
 		if body.is_connected("interact_pressed", self, "_on_player_interacted"):
 			body.disconnect("interact_pressed", self, "_on_player_interacted")
 
 func _on_player_interacted():
-	POPUP.visible = true
-	puzzle_start = true
+	var current_mission = get_current_mission()
+	var target_min = target_mission_numbers[0] if target_mission_numbers.size() > 0 else -1
 	
-	#tutorial, going back to start
-	if Data.save_data["tutorials"]["digital_logic"] == false:
-		$Popup/confirm.disabled = true
+	if target_min < current_mission and not "LG_2" in Data.save_data["puzzles_solved"]:
+		return
 		
-		$Popup/Tutorial/t1.visible = true
-		$Popup/Tutorial/t2.visible = false
-		$Popup/Tutorial/t3.visible = false
-		$Popup/Tutorial/t4.visible = false
-		$Popup/Tutorial/t5.visible = false
-		$Popup/Tutorial/t6.visible = false
-		$Popup/Tutorial/t7.visible = false
-		$Popup/Tutorial/t8.visible = false
-		$Popup/Tutorial/t9.visible = false
-	
+	# Determine which window to open based on completion state
+	if "LG_2" in Data.save_data["puzzles_solved"]:
+		$"Solved Preview".visible = true
+		pw1.confirm_state()
+		pw2.confirm_state()
+		pw3.confirm_state()
+		pf1.confirm_state()
+	else:
+		$Popup.visible = true
+		# Tutorial check
+		if Data.save_data["tutorials"]["digital_logic"] == false:
+			$Popup/confirm.disabled = true
+			$Popup/Tutorial/t1.visible = true
+			for i in range(2, 10):
+				$Popup/Tutorial.get_node("t" + str(i)).visible = false
+
+	puzzle_start = true
 	get_tree().paused = true
 	target_player.get_node("Control/TouchScreen").visible = false
 
@@ -139,7 +181,8 @@ func _on_exit_released():
 	exit_puzzle()
 
 func exit_puzzle():
-	POPUP.visible = false
+	$Popup.visible = false
+	$"Solved Preview".visible = false
 	puzzle_start = false
 	get_tree().paused = false
 	
@@ -148,12 +191,16 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 
 func _on_confirm_pressed():
+	if g1.LogicGate == "":
+		$Popup/InstructionLabel.text = "Fill in all blank slots first."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
+		return
 	get_tree().get_root().set_disable_input(true)
 	
 	w1.confirm_state()
 	w2.confirm_state()
 	w3.confirm_state()
-	
 	f1.confirm_state()
 	
 	var is_correct = yield(f1, "evaluation_completed")
@@ -167,6 +214,9 @@ func _on_confirm_pressed():
 			
 		_puzzle_solved()
 	else:
+		$Popup/InstructionLabel.text = "Incorrect logic, try again."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
 		Data.update_health(-1)
 		var current_health = Data.save_data.get("current_health", 3)
 		if current_health <= 0:
@@ -174,12 +224,21 @@ func _on_confirm_pressed():
 	
 	get_tree().get_root().set_disable_input(false)
 
+func _puzzle_solved_init():
+	$Torch/AnimatedSprite.play("big_green_fire")
+	
+	if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+
 func _puzzle_solved():
-	POPUP = $Preview
+	$Torch/AnimatedSprite.play("big_green_fire")
 	
+	if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
 	
-	$Torch/AnimatedSprite.play("big_red_fire")
-	var current_mission = Data.save_data.get("mission_number", -1)
+	var current_mission = get_current_mission()
 	if current_mission == 4:
 		var solved = Data.save_data.get("puzzles_solved", [])
 		if "LG_1" in solved and "LG_2" in solved and "LG_3" in solved:
@@ -188,56 +247,46 @@ func _puzzle_solved():
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END:
-		$Popup/Tutorial/t8/Timer.stop()
+		if has_node("Popup/Tutorial/t8/Timer"):
+			$Popup/Tutorial/t8/Timer.stop()
 	
 	if what == NOTIFICATION_DRAG_BEGIN:
-		$Popup/Tutorial/t8/Timer.start()
+		if has_node("Popup/Tutorial/t8/Timer"):
+			$Popup/Tutorial/t8/Timer.start()
 
 func _on_t1alpha0Btn_pressed():
-	$Popup/Tutorial/t1.visible= false
+	$Popup/Tutorial/t1.visible = false
 	$Popup/Tutorial/t2.visible = true
-	pass # Replace with function body.
 
 func _on_t2alpha0Btn_pressed():
 	$Popup/Tutorial/t2.visible = false
 	$Popup/Tutorial/t3.visible = true
-	pass # Replace with function body.
 
 func _on_t3alpha0Btn_pressed():
 	$Popup/Tutorial/t3.visible = false
 	$Popup/Tutorial/t4.visible = true
-	pass # Replace with function body.
 
 func _on_t4alpha0Btn_pressed():
 	$Popup/Tutorial/t4.visible = false
 	$Popup/Tutorial/t5.visible = true
-	pass # Replace with function body.
 
 func _on_t5alpha0Btn_pressed():
 	$Popup/Tutorial/t5.visible = false
 	$Popup/Tutorial/t6.visible = true
-	pass # Replace with function body.
-
 
 func _on_t6alpha0Btn_pressed():
 	$Popup/Tutorial/t6.visible = false
 	$Popup/Tutorial/t7.visible = true
 	$Popup/Tutorial/t8/Sprite/AnimationPlayer.play("RESET")
-	pass # Replace with function body.
-
 
 func _on_t7alpha0Btn_pressed():
 	$Popup/Tutorial/t7.visible = false
 	$Popup/Tutorial/t8.visible = true
 	$Popup/Tutorial/t8/Sprite/AnimationPlayer.play("drag_and_hold")
-	pass # Replace with function body.
-
 
 func _on_Timer_timeout():
 	if $Popup/Tutorial/t8 and $Popup/Tutorial/t8.visible:
-			$Popup/Tutorial/t8.visible = false
-			$Popup/confirm.disabled = false
-			if not Data.save_data["tutorials"]["digital_logic"]:
-				Data.save_data["tutorials"]["digital_logic"] = true
-	
-
+		$Popup/Tutorial/t8.visible = false
+		$Popup/confirm.disabled = false
+		if not Data.save_data["tutorials"]["digital_logic"]:
+			Data.save_data["tutorials"]["digital_logic"] = true

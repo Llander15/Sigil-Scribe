@@ -14,10 +14,12 @@ func check_mission_importance():
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = true
 		interactable = true
-	else:
+	elif current_mission < target_mission_numbers[0]:
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = false
 		interactable = false
+	else:
+		_puzzle_solved_init()
 
 var target_player = null
 var puzzle_start = false
@@ -32,10 +34,15 @@ onready var g1 = $"Popup/NinePatchRect/Gates/Gate 1"
 
 onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
 
+onready var POPUP = $Popup
+
 func _ready():
-	$Popup.visible = false
+	POPUP.visible = false
+	$Preview.visible = false
+	
 	if "LG_4" in Data.save_data["puzzles_solved"]:
-		_puzzle_solved()
+		_puzzle_solved_init()
+		POPUP = $Preview
 	else:
 		$Platform/AnimatedSprite.play("broken")
 		$Platform/KinematicBody2D/CollisionShape2D.disabled = true
@@ -58,15 +65,14 @@ func setup_handshakes():
 	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
-	if interactable:
-		if body.name == "Player":
-			
-			target_player = body
-			
-			body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = true
-			
-			if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
-				body.connect("interact_pressed", self, "_on_player_interacted")
+	if body.name == "Player":
+		
+		target_player = body
+		
+		body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = true
+		
+		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
+			body.connect("interact_pressed", self, "_on_player_interacted")
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
@@ -79,7 +85,7 @@ func _on_Area2D_body_exited(body):
 			body.disconnect("interact_pressed", self, "_on_player_interacted")
 
 func _on_player_interacted():
-	$Popup.visible = true
+	POPUP.visible = true
 	puzzle_start = true
 	
 	#tutorial, going back to start
@@ -103,7 +109,7 @@ func _on_exit_released():
 	exit_puzzle()
 
 func exit_puzzle():
-	$Popup.visible = false
+	POPUP.visible = false
 	puzzle_start = false
 	get_tree().paused = false
 	
@@ -112,6 +118,11 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 
 func _on_confirm_pressed():
+	if g1.LogicGate == "":
+		$Popup/InstructionLabel.text = "Fill in all blank slots first."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
+		return
 	get_tree().get_root().set_disable_input(true)
 	
 	w1.confirm_state()
@@ -141,6 +152,9 @@ func _on_confirm_pressed():
 			
 		_puzzle_solved()
 	else:
+		$Popup/InstructionLabel.text = "Incorrect logic, try again."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
 		Data.update_health(-1)
 		var current_health = Data.save_data.get("current_health", 3)
 		if current_health <= 0:
@@ -148,11 +162,18 @@ func _on_confirm_pressed():
 	
 	get_tree().get_root().set_disable_input(false)
 
-func _puzzle_solved():
-	$Area2D.visible = false
+func _puzzle_solved_init():
+	$Area2D/Sprite.visible = true
+	$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+	$Area2D/Sprite/AnimationPlayer.play("floating")
+	
 	$Platform/AnimatedSprite.play("default")
 	$Platform/KinematicBody2D/CollisionShape2D.disabled = false
-	$Area2D/CollisionShape2D.disabled = true
+	$Platform/AnimationPlayer.play("moving_platform")
+
+func _puzzle_solved():
+	$Platform/AnimatedSprite.play("default")
+	$Platform/KinematicBody2D/CollisionShape2D.disabled = false
 	$Platform/AnimationPlayer.play("moving_platform")
 	exit_puzzle()
 
@@ -208,5 +229,7 @@ func _on_Timer_timeout():
 			$Popup/confirm.disabled = false
 			if not Data.save_data["tutorials"]["digital_logic"]:
 				Data.save_data["tutorials"]["digital_logic"] = true
-	
 
+func _process(delta):
+	if "LG_4" in Data.save_data["puzzles_solved"]:
+		$Area2D.position = $Platform/KinematicBody2D.position

@@ -7,10 +7,10 @@ onready var anim_player = $AnimationPlayer
 
 # The Narrative Data: Just the text for Aetheria
 var story_data = [
-	"For centuries, the floating islands of Aetheria were held aloft by the Great Schema—ancient veins of logic and data.",
-	"But the Syntax Blight has struck. Logic gates have shorted, and the Void Tables have been locked.",
-	"As the world falls into the abyss, only a Scribe can bridge the gap.",
-	"Equipped with your Codex of Command, you must Refactor Aetheria... before the system crashes forever."
+	"In the floating islands of Eero, daily life runs smoothly thanks to the Great Schema—an orderly network of logic and data.",
+	"Within the high stone walls of the Academy, you are a Student Scribe striving for promotion to a Higher Title Scribe.",
+	"Guided by your Data Codex, your daily duties are to calibrate logic gates, queries archive tables, and pass your practical exams.",
+	"Master these puzzles to earn your official rank, step beyond the Academy gates, and begin your journey as a full-fledged Scribe!"
 ]
 
 onready var label = $ColorRect/Label

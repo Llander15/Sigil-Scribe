@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://tileset/dirt_tile.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://Background/big clouds.png" type="Texture" id=23]
 [ext_resource path="res://Assets/chest.png" type="Texture" id=24]
 [ext_resource path="res://puzzles/logic gate/LG_7/LG_7.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Assets/arrow.png" type="Texture" id=26]
+[ext_resource path="res://world/World1/Directions.gd" type="Script" id=27]
 [ext_resource path="res://drag/Drag.tscn" type="PackedScene" id=29]
 [ext_resource path="res://puzzles/logic gate/LG_4/LG_4.tscn" type="PackedScene" id=30]
 [ext_resource path="res://puzzles/logic gate/LG_1/LG_1.tscn" type="PackedScene" id=31]
@@ -33,6 +35,166 @@
 [ext_resource path="res://npc/npc3/NPC3.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Assets/animated_greeneries/Tree_animated.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Assets/animated_greeneries/Bush_animated.tscn" type="PackedScene" id=36]
+
+[sub_resource type="Animation" id=9]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ), Vector2( 1196, 172 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1188, 172 ), Vector2( 1480, 308 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1552, 268 ), Vector2( 1552, 300 ), Vector2( 1552, 268 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1704, 268 ), Vector2( 1704, 300 ), Vector2( 1704, 268 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1704, 268 ), Vector2( 1704, 300 ), Vector2( 1704, 268 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 912, 172 ) ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
@@ -62,6 +224,77 @@ b = Vector2( 2152, 0 )
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 7 )
+
+[node name="Directions" type="Node2D" parent="."]
+z_index = 5
+script = ExtResource( 27 )
+
+[node name="dir_1" type="Node2D" parent="Directions"]
+
+[node name="Sprite" type="Sprite" parent="Directions/dir_1"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 912, 172 )
+rotation = -3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Directions/dir_1/Sprite"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="Directions/dir_1"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 912, 172 )
+rotation = 3.49066
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Directions/dir_1/Sprite2"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="Directions/dir_1"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 912, 172 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Directions/dir_1/Sprite3"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[node name="dir_2" type="Node2D" parent="Directions"]
+
+[node name="Sprite3" type="Sprite" parent="Directions/dir_2"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 912, 172 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Directions/dir_2/Sprite3"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 15 )
+anims/RESET = SubResource( 16 )
+
+[node name="dir_3" type="Node2D" parent="Directions"]
+position = Vector2( -152, 0 )
+
+[node name="Sprite3" type="Sprite" parent="Directions/dir_3"]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 912, 172 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Directions/dir_3/Sprite3"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 17 )
+anims/RESET = SubResource( 18 )
 
 [node name="Houses" type="Node2D" parent="."]
 z_index = -1
@@ -320,13 +553,15 @@ position = Vector2( 1056, 1024 )
 
 [node name="LG_1" parent="DL puzzles" instance=ExtResource( 31 )]
 position = Vector2( 1429, -751 )
-target_mission_numbers = [ -1 ]
+target_mission_numbers = [ 4 ]
 
 [node name="LG_2" parent="DL puzzles" instance=ExtResource( 4 )]
-position = Vector2( 1820, -712 )
+position = Vector2( 1672, -720 )
+target_mission_numbers = [ 4 ]
 
 [node name="LG_3" parent="DL puzzles" instance=ExtResource( 33 )]
-position = Vector2( 1666, -719 )
+position = Vector2( 1824, -712 )
+target_mission_numbers = [ 4 ]
 
 [node name="LG_4" parent="DL puzzles" instance=ExtResource( 30 )]
 position = Vector2( 2240, -656 )
@@ -587,22 +822,25 @@ position = Vector2( 1552, 368 )
 z_index = 2
 npc_name = "Zor"
 important = true
-dialogue_lines3 = [ "You have the tools now? ", "Oh, your'e asking for my favorite SQL querry?", "It would be:
+dialogue_lines = [ "Hello %s.", "I am Zor, and I will be overseeing your first evaluation for the rank of Novice Scribe.", "To begin your evaluation: open that chest over there and retrieve its contents.", "Within that chest lie two fundamental items for any aspiring Scribe." ]
+dialogue_lines2 = [ "Good job %s! ", "Use the Logic Gauntlet to solve the Digital Logic puzzle, and consult the Data Codex whenever you need to learn.", "You may proceed to your next evaluator now.
+Good luck %s." ]
+dialogue_lines3 = [ "Have you retrieve them already?", "Oh? You're actually curious about my favorite query?", "It would be:
 SELECT * FROM table_name  ;
-", "As an insructor, we always start teaching students like you with this querry.", "It is where we all start, and teaching that every time brings back memories..." ]
+", "That query is the foundation of every Scribe's journey, the very first truth we learn to uncover. Quite remarkable, isn't it?\"" ]
 
 [node name="NPC2" parent="NPCs" instance=ExtResource( 32 )]
 position = Vector2( 2384, 272 )
 npc_name = "George"
 target_mission_numbers = [ 3, 5 ]
-dialogue_lines = [ "Looks like you passed the first test %s.", "From here on, you will be handling Digital Logic tests.", "You have to pass all 7 Digital Logic test.", "AND, OR, XOR, NOT, NAND, NOR, and XNOR.
-All the Logic Gate you must know to get out of this place.", "See those torches? you must match the colors of those torches with Digital Logic Output to considered it as solved.", "Start with the first three there. ", "If you are having problem feel free to ask me or use your Data Codex." ]
+dialogue_lines = [ "Good job on passing Zor's test %s.", "From here on, you will be handling Digital Logic tests.", "You have to pass all 7 Digital Logic test.", "AND, OR, XOR, NOT, NAND, NOR, and XNOR.", "All the Logic Gate you must know to earn the title Novice Scribe.", "Now, let's start the evaluation.", "See those torches? You must match their colors with the Digital Logic output to strengthen their flame.", "Start with the first three there. ", "If you run into any trouble, feel free to ask me or consult your Data Codex." ]
 dialogue_lines2 = [ "Need help with the test? 
 I don't mind.", "The test is for you to use the correct LOGIC GATE to change the OUTPUT base on the INPUT.", "For example, AND:
 if both of its inputs are POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If at least one of the INPUT is NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "next logic gate, OR:
 if at least one of the INPUT is POSITIVE or GREEN, the OUTPUT will also be POSITIVE or GREEN.", "If both of its inputs are NEGATIVE or RED, the OUTPUT will also be NEGATIVE or RED.", "and then, XOR:
 if the inputs are POSITIVE and NEGATIVE, the OUTPUT will be POSITIVE. ", "if the inputs are both POSITIVE or both NEGATIVE, the OUTPUT will be NEGATIVE.", "That's all for the three Logic Gates. You can learn more with your Data Codex if you want. ", "Feel free to ask me again if you're having problems. Good luck." ]
-dialogue_lines3 = [ "Good work on completing the first three Digital Logic puzzles %s.", "Make sure to remember these Gates as you will be using them all the time.", "Meet your next instructor at the top of cliff ahead.", "But before you reach her, you must first repair a broken platform.", "Good luck %s." ]
+dialogue_lines3 = [ "Good work on completing the first three Digital Logic puzzles %s.", "Make sure to memorize these gates, you'll be using them constantly throughout your journey.", "Head up the cliff ahead, your next instructor is waiting at the top.", "Before you can reach her, however, you must first repair a broken platform on the way.", "Good luck %s." ]
+dialogue_lines4 = [ "Hello, %s. Looks like you are not qualified for my task yet.", "Finish Zor's tasks first and we'll meet later." ]
 
 [node name="NPC3" parent="NPCs" instance=ExtResource( 34 )]
 position = Vector2( 3512, -16 )

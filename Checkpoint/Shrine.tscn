@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Checkpoint/Shrine.gd" type="Script" id=1]
 [ext_resource path="res://Assets/save point landmark (non-active).png" type="Texture" id=2]
 [ext_resource path="res://Assets/save point landmark (active).png" type="Texture" id=3]
+[ext_resource path="res://Announcer.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -65,5 +66,14 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "active"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="AnnounceLabel" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 168.0
+margin_top = 64.0
+margin_right = 472.0
+margin_bottom = 96.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/x.png" type="Texture" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://Assets/infoIcon2.png" type="Texture" id=11]
 [ext_resource path="res://Assets/infoicon1.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Panel.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Icon/ArrowLeft.png" type="Texture" id=14]
+[ext_resource path="res://Assets/cursors/cursor_point.png" type="Texture" id=15]
+[ext_resource path="res://Assets/cursors/cursor_drag.png" type="Texture" id=16]
+[ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=17]
+[ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=18]
+[ext_resource path="res://InstructionLabel.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -47,6 +53,137 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -16 ), Vector2( 0, -32 ), Vector2( 0, -16 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=50]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=51]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=52]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=53]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=54]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=49]
+bg_color = Color( 0.156863, 0.14902, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=55]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=56]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=57]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
 [sub_resource type="DynamicFont" id=4]
 size = 24
 extra_spacing_char = 4
@@ -69,9 +206,369 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [sub_resource type="DynamicFont" id=5]
-size = 32
 extra_spacing_char = 4
 font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=43]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=44]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=46]
+animations = [ {
+"frames": [ SubResource( 45 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "drag",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=47]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 224, 216 ) ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "drag and drop"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "default", "drag", "drag" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 184, 294 ), Vector2( 184, 294 ), Vector2( 400, 152 ), Vector2( 400, 152 ) ]
+}
 
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 4 )
@@ -111,9 +608,9 @@ margin_bottom = 336.0
 
 [node name="Terminal" type="NinePatchRect" parent="Popup/NinePatchRect"]
 margin_left = 32.0
-margin_top = 32.0
+margin_top = 48.0
 margin_right = 516.0
-margin_bottom = 224.0
+margin_bottom = 208.0
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 32, 32 )
 patch_margin_left = 7
@@ -122,60 +619,127 @@ patch_margin_right = 7
 patch_margin_bottom = 7
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal"]
-margin_left = -16.0
-margin_right = 468.0
-margin_bottom = 192.0
+margin_right = 483.0
+margin_bottom = 160.0
 custom_constants/separation = 16
 alignment = 1
 
 [node name="S1" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 47.0
-margin_top = 71.0
-margin_right = 93.0
-margin_bottom = 121.0
-rect_min_size = Vector2( 46, 50 )
-text = ";"
-sql_text = ";"
+margin_left = 65.0
+margin_top = 55.0
+margin_right = 151.0
+margin_bottom = 105.0
+custom_styles/normal = SubResource( 50 )
+locked = true
 
 [node name="S2" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 109.0
-margin_top = 71.0
-margin_right = 179.0
-margin_bottom = 121.0
-rect_min_size = Vector2( 70, 50 )
-text = "FROM"
-sql_text = "FROM"
-
-[node name="S3" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 195.0
-margin_top = 71.0
-margin_right = 241.0
-margin_bottom = 121.0
+margin_left = 167.0
+margin_top = 55.0
+margin_right = 213.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 46, 50 )
+custom_styles/normal = SubResource( 51 )
 text = "*"
 sql_text = "*"
+locked = true
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 229.0
+margin_top = 55.0
+margin_right = 299.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 70, 50 )
+custom_styles/normal = SubResource( 52 )
+text = "FROM"
+sql_text = "FROM"
+locked = true
 
 [node name="S4" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 257.0
-margin_top = 71.0
-margin_right = 335.0
-margin_bottom = 121.0
+margin_left = 315.0
+margin_top = 55.0
+margin_right = 355.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 40, 50 )
+custom_styles/normal = SubResource( 53 )
+text = ""
+sql_text = ""
+
+[node name="S5" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 371.0
+margin_top = 55.0
+margin_right = 417.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 46, 50 )
+custom_styles/normal = SubResource( 54 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Popup/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 240.0
+texture = ExtResource( 17 )
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="Popup/NinePatchRect/Terminal/NinePatchRect"]
+show_behind_parent = true
+margin_right = 360.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 49 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 450.0
+margin_bottom = 256.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="S1" parent="Popup/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 88.0
+margin_top = 15.0
+margin_right = 166.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 78, 50 )
+custom_styles/normal = SubResource( 55 )
 text = "chest"
 sql_text = "chest"
 
-[node name="S5" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
-margin_left = 351.0
-margin_top = 71.0
-margin_right = 437.0
-margin_bottom = 121.0
+[node name="S2" parent="Popup/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 182.0
+margin_top = 15.0
+margin_right = 268.0
+margin_bottom = 65.0
+custom_styles/normal = SubResource( 56 )
+text = "pocket"
+sql_text = "pocket"
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 284.0
+margin_top = 15.0
+margin_right = 362.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 78, 50 )
+custom_styles/normal = SubResource( 57 )
+text = "floor"
+sql_text = "floor"
+
+[node name="Hearts" parent="Popup/NinePatchRect/Terminal" instance=ExtResource( 18 )]
+margin_left = 416.0
+margin_top = -16.0
+margin_right = 464.0
+margin_bottom = -16.0
 
 [node name="Table" type="NinePatchRect" parent="Popup/NinePatchRect"]
 visible = false
 margin_left = 32.0
 margin_top = 32.0
 margin_right = 516.0
-margin_bottom = 224.0
+margin_bottom = 274.0
 texture = ExtResource( 8 )
 patch_margin_left = 7
 patch_margin_top = 7
@@ -246,7 +810,7 @@ margin_top = 96.0
 margin_right = 288.0
 margin_bottom = 128.0
 custom_fonts/font = SubResource( 4 )
-text = "Manual"
+text = "Data Codex"
 align = 1
 valign = 1
 
@@ -337,9 +901,9 @@ normal = SubResource( 2 )
 
 [node name="Confirm" type="Button" parent="Popup"]
 margin_left = 432.0
-margin_top = 272.0
+margin_top = 266.0
 margin_right = 576.0
-margin_bottom = 313.0
+margin_bottom = 311.0
 custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
@@ -347,29 +911,20 @@ custom_styles/disabled = ExtResource( 10 )
 custom_styles/normal = ExtResource( 5 )
 text = "Confrim"
 
-[node name="Table" type="Button" parent="Popup"]
-margin_left = 64.0
-margin_top = 272.0
-margin_right = 208.0
-margin_bottom = 313.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/disabled = ExtResource( 10 )
-custom_styles/normal = ExtResource( 5 )
-text = "Table"
+[node name="Table" type="TextureButton" parent="Popup"]
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 3 )
 
-[node name="Back" type="Button" parent="Popup"]
+[node name="Back" type="TextureButton" parent="Popup"]
 visible = false
-margin_left = 64.0
-margin_top = 272.0
-margin_right = 208.0
-margin_bottom = 313.0
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = ExtResource( 7 )
-custom_styles/pressed = ExtResource( 7 )
-custom_styles/normal = ExtResource( 5 )
-text = "Back"
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 3 )
 
 [node name="Info" type="TextureButton" parent="Popup"]
 visible = false
@@ -387,237 +942,255 @@ margin_bottom = 40.0
 [node name="t1" type="Node2D" parent="Popup/tutorial"]
 visible = false
 
-[node name="Panel" type="Panel" parent="Popup/tutorial/t1"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_right = 656.0
-margin_bottom = 128.0
-
-[node name="Panel2" type="Panel" parent="Popup/tutorial/t1"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 196.0
-margin_right = 656.0
-margin_bottom = 432.0
-
-[node name="Panel3" type="Panel" parent="Popup/tutorial/t1"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -576.0
-margin_top = 128.0
-margin_right = 84.0
-margin_bottom = 196.0
-
-[node name="Panel4" type="Panel" parent="Popup/tutorial/t1"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 496.0
-margin_top = 128.0
-margin_right = 1156.0
-margin_bottom = 196.0
-
-[node name="Panel5" type="Panel" parent="Popup/tutorial/t1"]
+[node name="Panel1" type="Panel" parent="Popup/tutorial/t1"]
 margin_left = 48.0
-margin_top = 196.0
 margin_right = 592.0
-margin_bottom = 320.0
+margin_bottom = 64.0
 custom_styles/panel = SubResource( 6 )
 
-[node name="Label" type="Label" parent="Popup/tutorial/t1/Panel5"]
-margin_right = 544.0
-margin_bottom = 124.0
+[node name="Label" type="Label" parent="Popup/tutorial/t1/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 64.0
 mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "In SQL puzzles, you are introduced to these blocks that represents real SQL syntaxes."
+text = "In this puzzle, you'll work with blocks that represent real SQL syntax."
 align = 1
 valign = 1
 autowrap = true
 
 [node name="Button" type="Button" parent="Popup/tutorial/t1"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 656.0
+margin_right = 646.0
 margin_bottom = 432.0
+
+[node name="arrow1" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 172, 136 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow1"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow1/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 19 )
+"anims/floating arrow" = SubResource( 20 )
+
+[node name="arrow2" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 254, 136 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow2"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow2/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 21 )
+"anims/floating arrow" = SubResource( 22 )
+
+[node name="arrow3" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 328, 136 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow3"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow3/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 23 )
+"anims/floating arrow" = SubResource( 24 )
+
+[node name="arrow4" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 400, 136 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow4"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow4/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 25 )
+"anims/floating arrow" = SubResource( 26 )
+
+[node name="arrow5" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 458, 136 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow5"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow5/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 27 )
+"anims/floating arrow" = SubResource( 28 )
+
+[node name="arrow6" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 166, 266 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow6"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow6/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 29 )
+"anims/floating arrow" = SubResource( 30 )
+
+[node name="arrow7" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 244, 266 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow7"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow7/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 31 )
+"anims/floating arrow" = SubResource( 32 )
+
+[node name="arrow8" type="Node2D" parent="Popup/tutorial/t1"]
+position = Vector2( 322, 266 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow8"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow8/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 33 )
+"anims/floating arrow" = SubResource( 34 )
 
 [node name="t2" type="Node2D" parent="Popup/tutorial"]
 visible = false
 
-[node name="Panel" type="Panel" parent="Popup/tutorial/t2"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_right = 656.0
-margin_bottom = 272.0
-
-[node name="Panel2" type="Panel" parent="Popup/tutorial/t2"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 313.0
-margin_right = 656.0
-margin_bottom = 432.0
-
-[node name="Panel3" type="Panel" parent="Popup/tutorial/t2"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -576.0
-margin_top = 272.0
-margin_right = 64.0
-margin_bottom = 313.0
-
-[node name="Panel4" type="Panel" parent="Popup/tutorial/t2"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 208.0
-margin_top = 272.0
-margin_right = 868.0
-margin_bottom = 313.0
-
-[node name="Panel5" type="Panel" parent="Popup/tutorial/t2"]
+[node name="Panel1" type="Panel" parent="Popup/tutorial/t2"]
 margin_left = 48.0
-margin_top = 48.0
 margin_right = 592.0
-margin_bottom = 192.0
+margin_bottom = 80.0
 custom_styles/panel = SubResource( 6 )
 
-[node name="Label" type="Label" parent="Popup/tutorial/t2/Panel5"]
+[node name="Label" type="Label" parent="Popup/tutorial/t2/Panel1"]
 margin_right = 544.0
-margin_bottom = 124.0
+margin_bottom = 80.0
 mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "Before you start solving, first we look at the table to give us more information on what we are working on."
+text = "There are 2 types of block:
+Blue: Draggable (Swap or move into query slots)
+Gray: Locked / Fixed (Non-draggable reference blocks)"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="t3" type="Node2D" parent="Popup/tutorial"]
-visible = false
-
-[node name="Panel" type="Panel" parent="Popup/tutorial/t3"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_right = 656.0
-margin_bottom = 64.0
-
-[node name="Panel2" type="Panel" parent="Popup/tutorial/t3"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 176.0
-margin_right = 656.0
-margin_bottom = 432.0
-
-[node name="Panel3" type="Panel" parent="Popup/tutorial/t3"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -576.0
-margin_top = 64.0
-margin_right = 64.0
-margin_bottom = 176.0
-
-[node name="Panel4" type="Panel" parent="Popup/tutorial/t3"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 544.0
-margin_top = 64.0
-margin_right = 1204.0
-margin_bottom = 176.0
-
-[node name="Panel5" type="Panel" parent="Popup/tutorial/t3"]
-margin_left = 48.0
-margin_top = 176.0
-margin_right = 592.0
-margin_bottom = 320.0
-custom_styles/panel = SubResource( 6 )
-
-[node name="Label" type="Label" parent="Popup/tutorial/t3/Panel5"]
-margin_right = 544.0
-margin_bottom = 124.0
-mouse_filter = 0
-custom_fonts/font = SubResource( 5 )
-text = "The table shows the contents of the puzzle. Make sure to open it as it will help you solve future SQL puzzles."
-align = 1
-valign = 1
-autowrap = true
-
-[node name="t3button" type="Button" parent="Popup/tutorial/t3"]
+[node name="Button" type="Button" parent="Popup/tutorial/t2"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 656.0
 margin_bottom = 368.0
 
-[node name="t4" type="Node2D" parent="Popup/tutorial"]
+[node name="t3" type="Node2D" parent="Popup/tutorial"]
 visible = false
 
-[node name="Panel" type="Panel" parent="Popup/tutorial/t4"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_right = 656.0
-margin_bottom = 128.0
-
-[node name="Panel2" type="Panel" parent="Popup/tutorial/t4"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 192.0
-margin_right = 656.0
-margin_bottom = 432.0
-
-[node name="Panel3" type="Panel" parent="Popup/tutorial/t4"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -560.0
-margin_top = 128.0
-margin_right = 80.0
-margin_bottom = 192.0
-
-[node name="Panel4" type="Panel" parent="Popup/tutorial/t4"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 496.0
-margin_top = 128.0
-margin_right = 1156.0
-margin_bottom = 192.0
-
-[node name="Panel5" type="Panel" parent="Popup/tutorial/t4"]
+[node name="Panel1" type="Panel" parent="Popup/tutorial/t3"]
 margin_left = 48.0
-margin_top = 208.0
+margin_right = 592.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Popup/tutorial/t3/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 96.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "Before you try to solve the puzzle, you can use the Table by pressing this icon to inspect the data you are working with and get hints for building your query."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="arrow1" type="Node2D" parent="Popup/tutorial/t3"]
+position = Vector2( 576, 146 )
+
+[node name="Sprite" type="Sprite" parent="Popup/tutorial/t3/arrow1"]
+rotation = 4.71239
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t3/arrow1/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 43 )
+"anims/floating arrow" = SubResource( 44 )
+
+[node name="t4" type="Node2D" parent="Popup/tutorial"]
+position = Vector2( 0, -240 )
+
+[node name="Panel1" type="Panel" parent="Popup/tutorial/t4"]
+margin_left = 48.0
+margin_top = 240.0
 margin_right = 592.0
 margin_bottom = 320.0
 custom_styles/panel = SubResource( 6 )
 
-[node name="Label" type="Label" parent="Popup/tutorial/t4/Panel5"]
-margin_right = 544.0
-margin_bottom = 108.0
+[node name="Label" type="Label" parent="Popup/tutorial/t4/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 80.0
 mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "Now try solving the puzzle by dragging the blocks in correct order."
+text = "The Table will show you the raw dataset,  table name, exact rows, and columns you need to query. "
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Popup/tutorial/t4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -32.0
+margin_top = 232.0
+margin_right = 690.0
+margin_bottom = 604.0
 
 [node name="t5" type="Node2D" parent="Popup/tutorial"]
 visible = false
 
-[node name="Panel" type="Panel" parent="Popup/tutorial/t5"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_right = 656.0
-margin_bottom = 272.0
-
-[node name="Panel2" type="Panel" parent="Popup/tutorial/t5"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_top = 313.0
-margin_right = 656.0
-margin_bottom = 432.0
-
-[node name="Panel3" type="Panel" parent="Popup/tutorial/t5"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = -208.0
-margin_top = 272.0
-margin_right = 432.0
-margin_bottom = 313.0
-
-[node name="Panel4" type="Panel" parent="Popup/tutorial/t5"]
-modulate = Color( 1, 1, 1, 0.654902 )
-margin_left = 576.0
-margin_top = 272.0
-margin_right = 1236.0
-margin_bottom = 313.0
-
-[node name="Panel5" type="Panel" parent="Popup/tutorial/t5"]
+[node name="Panel1" type="Panel" parent="Popup/tutorial/t5"]
 margin_left = 48.0
-margin_top = 48.0
 margin_right = 592.0
-margin_bottom = 160.0
+margin_bottom = 80.0
 custom_styles/panel = SubResource( 6 )
 
-[node name="Label" type="Label" parent="Popup/tutorial/t5/Panel5"]
-margin_right = 544.0
-margin_bottom = 108.0
+[node name="Label" type="Label" parent="Popup/tutorial/t5/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 80.0
 mouse_filter = 0
 custom_fonts/font = SubResource( 5 )
-text = "You have succesfully solved the puzzle and unlocked the confirm button."
+text = "Now that you know how everything works, it's time to build your first query. Good luck!."
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="Popup/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 712.0
+margin_bottom = 352.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Popup/tutorial/t5"]
+position = Vector2( 224, 216 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t5/AnimatedSprite"]
+anims/RESET = SubResource( 47 )
+"anims/drag and drop" = SubResource( 48 )
+
+[node name="InstructionLabel" parent="Popup" instance=ExtResource( 19 )]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="Popup2" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -750,6 +1323,8 @@ text = "Confirm"
 [connection signal="pressed" from="Popup/Table" to="." method="_on_Table_pressed"]
 [connection signal="pressed" from="Popup/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Popup/tutorial/t1/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Popup/tutorial/t3/t3button" to="." method="_on_t3button_pressed"]
+[connection signal="pressed" from="Popup/tutorial/t2/Button" to="." method="_on_t2_Button_pressed"]
+[connection signal="pressed" from="Popup/tutorial/t4/Button" to="." method="_on_t4_Button_pressed"]
+[connection signal="pressed" from="Popup/tutorial/t5/Button" to="." method="_on_t5_Button_pressed"]
 [connection signal="pressed" from="Popup2/Logic Gauntlet/LG Confirm" to="." method="_on_LG_Confirm_pressed"]
 [connection signal="pressed" from="Popup2/Data Codex/DC Confirm" to="." method="_on_DC_Confirm_pressed"]
