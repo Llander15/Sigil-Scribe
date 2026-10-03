@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Melancholic Walk ingame bgm.mp3-e5285b2b3d922c3cd122bb5a5a70ca6a.mp3str"
+
+[deps]
+
+source_file="res://Assets2/bgm/Melancholic Walk ingame bgm.mp3"
+dest_files=[ "res://.import/Melancholic Walk ingame bgm.mp3-e5285b2b3d922c3cd122bb5a5a70ca6a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

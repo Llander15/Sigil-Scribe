@@ -6,6 +6,7 @@ onready var mini_viewport = $Control/ViewportContainer/Viewport
 onready var mini_camera = $Control/ViewportContainer/Viewport/Camera2D
 
 func _ready():
+	$bgm.play()
 	yield(get_tree(), "idle_frame") 
 	
 	#mini_viewport.world_2d = main_viewport.world_2d

@@ -14,6 +14,7 @@ func _ready():
 
 
 
+
 # This updates the size inside the Godot editor immediately when you type
 func set_sql_text(new_value):
 	sql_text = new_value
@@ -68,6 +69,8 @@ func get_drag_data(_position):
 		"sql_content": sql_text,
 		"origin_node": self
 	}
+	$drag.pitch_scale = 1
+	$drag.play()
 	
 	# Create the drag preview label
 	var drag_preview = Label.new()
@@ -112,6 +115,10 @@ func drop_data(_position, data):
 		return
 	var origin = data["origin_node"]
 	
+	if not origin.sql_text == self.sql_text:
+		$drag.pitch_scale = 2
+		$drag.play()
+	
 	# Swap text contents between the two labels
 	var temp_text = self.sql_text
 	self.sql_text = data["sql_content"]
@@ -120,3 +127,4 @@ func drop_data(_position, data):
 	# Refresh text lengths and container sizing bounds
 	self.update_text_display()
 	origin.update_text_display()
+

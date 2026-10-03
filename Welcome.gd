@@ -8,6 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$bgm.play()
 	if Data.save_data["player_name"] == "" && Data.save_data["ach"] == []:
 		$Profile.visible = false
 		$NewPlayerName.visible = true

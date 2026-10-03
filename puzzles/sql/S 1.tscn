@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/x.png" type="Texture" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://Assets/infoIcon2.png" type="Texture" id=11]
 [ext_resource path="res://Assets/infoicon1.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Panel.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Icon/ArrowLeft.png" type="Texture" id=14]
+[ext_resource path="res://Assets2/sprite/logic gauntlet.png" type="Texture" id=14]
 [ext_resource path="res://Assets/cursors/cursor_point.png" type="Texture" id=15]
 [ext_resource path="res://Assets/cursors/cursor_drag.png" type="Texture" id=16]
 [ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=17]
 [ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=18]
 [ext_resource path="res://InstructionLabel.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets2/sprite/pointer.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -968,9 +969,7 @@ margin_bottom = 432.0
 position = Vector2( 172, 136 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow1"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow1/Sprite"]
 autoplay = "floating arrow"
@@ -981,9 +980,7 @@ anims/RESET = SubResource( 19 )
 position = Vector2( 254, 136 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow2"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow2/Sprite"]
 autoplay = "floating arrow"
@@ -994,9 +991,7 @@ anims/RESET = SubResource( 21 )
 position = Vector2( 328, 136 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow3"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow3/Sprite"]
 autoplay = "floating arrow"
@@ -1007,9 +1002,7 @@ anims/RESET = SubResource( 23 )
 position = Vector2( 400, 136 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow4"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow4/Sprite"]
 autoplay = "floating arrow"
@@ -1020,9 +1013,7 @@ anims/RESET = SubResource( 25 )
 position = Vector2( 458, 136 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow5"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow5/Sprite"]
 autoplay = "floating arrow"
@@ -1033,9 +1024,7 @@ anims/RESET = SubResource( 27 )
 position = Vector2( 166, 266 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow6"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow6/Sprite"]
 autoplay = "floating arrow"
@@ -1046,9 +1035,7 @@ anims/RESET = SubResource( 29 )
 position = Vector2( 244, 266 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow7"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow7/Sprite"]
 autoplay = "floating arrow"
@@ -1059,9 +1046,7 @@ anims/RESET = SubResource( 31 )
 position = Vector2( 322, 266 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t1/arrow8"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t1/arrow8/Sprite"]
 autoplay = "floating arrow"
@@ -1118,9 +1103,7 @@ autowrap = true
 position = Vector2( 576, 146 )
 
 [node name="Sprite" type="Sprite" parent="Popup/tutorial/t3/arrow1"]
-rotation = 4.71239
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 14 )
+texture = ExtResource( 20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Popup/tutorial/t3/arrow1/Sprite"]
 autoplay = "floating arrow"
@@ -1128,6 +1111,7 @@ anims/RESET = SubResource( 43 )
 "anims/floating arrow" = SubResource( 44 )
 
 [node name="t4" type="Node2D" parent="Popup/tutorial"]
+visible = false
 position = Vector2( 0, -240 )
 
 [node name="Panel1" type="Panel" parent="Popup/tutorial/t4"]
@@ -1243,7 +1227,7 @@ autowrap = true
 
 [node name="Sprite" type="Sprite" parent="Popup2/Logic Gauntlet/NinePatchRect"]
 position = Vector2( 176, 32 )
-texture = ExtResource( 12 )
+texture = ExtResource( 14 )
 
 [node name="LG Confirm" type="Button" parent="Popup2/Logic Gauntlet"]
 margin_left = 128.0

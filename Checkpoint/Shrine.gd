@@ -16,6 +16,7 @@ func _on_Area2D_body_entered(body):
 		
 		# Heal player back to max health safely via signal
 		if Data.save_data.get("current_health", 3) < 3:
+			$sfx.play()
 			Data.save_data["current_health"] = 3
 			if Data.has_method("update_health"):
 				Data.update_health(0) # Triggers UI refresh signal cleanly

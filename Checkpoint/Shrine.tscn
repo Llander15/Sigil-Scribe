@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Checkpoint/Shrine.gd" type="Script" id=1]
 [ext_resource path="res://Assets/save point landmark (non-active).png" type="Texture" id=2]
 [ext_resource path="res://Assets/save point landmark (active).png" type="Texture" id=3]
 [ext_resource path="res://Announcer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets2/sfx/02_Heal_02.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -75,5 +76,8 @@ margin_left = 168.0
 margin_top = 64.0
 margin_right = 472.0
 margin_bottom = 96.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

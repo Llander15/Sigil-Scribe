@@ -101,6 +101,8 @@ func get_drag_data(_position):
 			"gate_name": LogicGate,
 			"source_node": self 
 		}
+		$drag.pitch_scale = 1
+		$drag.play()
 		
 		# 1. Create a "Pivot" node that stays at your finger
 		var pivot = Control.new()
@@ -154,6 +156,11 @@ func can_drop_data(_position, data):
 
 func drop_data(_position, data):
 	var source_node = data["source_node"]
+	
+	#sfx
+	if not source_node.LogicGate == self.LogicGate:
+		$drag.pitch_scale = 2
+		$drag.play()
 	
 	# Swap textures
 	source_node.texture = self.texture

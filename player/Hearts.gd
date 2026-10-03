@@ -8,10 +8,25 @@ onready var tween = $Tween
 var previous_hp: int = -1
 
 func _ready():
+	$CanvasLayer.layer = -100
+	$CanvasLayer/DeathScreen/AnimationPlayer.play("default")
+	
 	if Data.has_signal("health_updated"):
 		if not Data.is_connected("health_updated", self, "_update_heart_output"):
 			Data.connect("health_updated", self, "_update_heart_output")
+		if not Data.is_connected("health_updated", self, "_play_death_anim"):
+			Data.connect("health_updated", self, "_play_death_anim")
 	_update_heart_output()
+
+func _play_death_anim():
+	var hp = int(Data.save_data.get("current_health", 0))
+	if hp <= 0:
+		get_tree().paused = true
+		$CanvasLayer.layer = 100
+		$CanvasLayer/DeathScreen/AnimationPlayer.play("dead")
+		yield($CanvasLayer/DeathScreen/AnimationPlayer, "animation_finished")
+		get_tree().paused = false
+		$CanvasLayer.layer = -100
 
 func _update_heart_output():
 	var hp = int(Data.save_data.get("current_health", 0))

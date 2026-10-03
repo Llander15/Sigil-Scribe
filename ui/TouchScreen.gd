@@ -10,6 +10,9 @@ func _ready():
 	if Data.save_data.get("ach") and "Data Codex" in Data.save_data["ach"]:
 		$"ControlButtons/Data Codex".visible = true
 
+func _play_death_screen():
+	$DeathScreen/AnimationPlayer.play("dead")
+
 func _on_Pause_pressed():
 	get_tree().paused = true
 	$ControlButtons.visible = false

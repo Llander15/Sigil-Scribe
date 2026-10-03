@@ -21,9 +21,26 @@ func update_health(amount: int = 0):
 		var current_hp = save_data.get("current_health", 3)
 		var max_hp = save_data.get("max_health", 3)
 		save_data["current_health"] = clamp(current_hp + amount, 0, max_hp)
+		if amount < 0 and not current_hp == 1:
+			# 1. Load the audio file into an AudioStream resource
+			var sfx = load("res://Assets2/sfx/01._damage_grunt_male.wav")
+			play_temporary_sound(sfx)
 	
 	emit_signal("health_updated")
 
+func play_temporary_sound(stream: AudioStream) -> void:
+	# Make sure the stream actually loaded successfully
+	if not stream:
+		return
+		
+	var temp_player = AudioStreamPlayer.new()
+	temp_player.stream = stream
+	add_child(temp_player)
+	
+	# Godot 3 syntax for connecting signals via code
+	temp_player.connect("finished", temp_player, "queue_free")
+	
+	temp_player.play()
 
 func advance_mission():
 	var current = int(save_data.get("mission_number", 0))
