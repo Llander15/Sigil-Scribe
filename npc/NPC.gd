@@ -77,6 +77,12 @@ func _on_NPC_body_entered(body):
 			
 		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
 			body.connect("interact_pressed", self, "_on_player_interacted")
+		
+		if not Data.save_data["tutorials"]["npc"]:
+			var TouchScreen = body.get_node_or_null("Control/TouchScreen")
+			print(TouchScreen)
+			if TouchScreen:
+				TouchScreen.play_interact_tutorial()
 
 func _on_NPC_body_exited(body):
 	if body.name == "Player":

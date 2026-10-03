@@ -90,6 +90,7 @@ tracks/0/keys = {
 
 [node name="DeathScreen" type="ColorRect"]
 pause_mode = 2
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0, 0, 0, 1 )

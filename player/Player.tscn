@@ -84,6 +84,12 @@ margin_bottom = 40.0
 
 [node name="TouchScreen" parent="Control" instance=ExtResource( 3 )]
 
+[node name="LR Label" parent="Control/TouchScreen/MovementTutorial" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Jump Lable" parent="Control/TouchScreen/MovementTutorial" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -64 )
 current = true

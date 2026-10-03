@@ -290,3 +290,5 @@ func _on_Timer_timeout():
 		$Popup/confirm.disabled = false
 		if not Data.save_data["tutorials"]["digital_logic"]:
 			Data.save_data["tutorials"]["digital_logic"] = true
+		$Popup/Tutorial/t9.visible = true
+		$Popup/Tutorial/t9/AnimationPlayer.play("fade_out")

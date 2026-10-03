@@ -1,0 +1,624 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/cursors/cursor_drag.png" type="Texture" id=1]
+[ext_resource path="res://Assets/cursors/cursor_point.png" type="Texture" id=2]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=6]
+extra_spacing_char = 4
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=25]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 496, 184 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "drag_and_hold"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 496, 184 ), Vector2( 496, 184 ), Vector2( 504, 96 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "fade_out"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 3, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="t1" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t1"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel2" type="Panel" parent="t1"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 72.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t1/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "Welcome to your first Digital Logic Puzzle!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t2" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t2"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel2" type="Panel" parent="t2"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t2/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "Let’s start by looking at the building blocks of Digital Logic puzzles."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t3" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 136.0
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel3" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -48.0
+margin_right = 104.0
+margin_bottom = 368.0
+
+[node name="Panel4" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 104.0
+margin_top = 240.0
+margin_right = 136.0
+margin_bottom = 608.0
+
+[node name="Panel5" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 104.0
+margin_top = -240.0
+margin_right = 136.0
+margin_bottom = 128.0
+
+[node name="Panel8" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 104.0
+margin_top = 160.0
+margin_right = 136.0
+margin_bottom = 208.0
+
+[node name="Panel6" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 104.0
+margin_top = 128.0
+margin_right = 136.0
+margin_bottom = 160.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel7" type="Panel" parent="t3"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 104.0
+margin_top = 208.0
+margin_right = 136.0
+margin_bottom = 240.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel2" type="Panel" parent="t3"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 104.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t3/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "The Source block, it emits light
+Green for positive
+& Red for negative
+the main source of this puzzle."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t3"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t4" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 200.0
+margin_right = 640.0
+margin_bottom = 176.0
+
+[node name="Panel10" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 200.0
+margin_top = 176.0
+margin_right = 232.0
+margin_bottom = 192.0
+
+[node name="Panel3" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 200.0
+margin_top = 192.0
+margin_right = 704.0
+margin_bottom = 560.0
+
+[node name="Panel9" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 304.0
+margin_top = 176.0
+margin_right = 736.0
+margin_bottom = 192.0
+
+[node name="Panel4" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 128.0
+margin_top = 232.0
+margin_right = 200.0
+margin_bottom = 576.0
+
+[node name="Panel5" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 128.0
+margin_top = -208.0
+margin_right = 200.0
+margin_bottom = 136.0
+
+[node name="Panel11" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -56.0
+margin_top = -96.0
+margin_right = 128.0
+margin_bottom = 408.0
+
+[node name="Panel6" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 128.0
+margin_top = 136.0
+margin_right = 200.0
+margin_bottom = 232.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel8" type="Panel" parent="t4"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 232.0
+margin_top = 176.0
+margin_right = 304.0
+margin_bottom = 192.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel2" type="Panel" parent="t4"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t4/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "The Wire, 
+it transfers the state from a block to another."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t5" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 240.0
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel3" type="Panel" parent="t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -48.0
+margin_right = 192.0
+margin_bottom = 368.0
+
+[node name="Panel4" type="Panel" parent="t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 192.0
+margin_top = 208.0
+margin_right = 240.0
+margin_bottom = 576.0
+
+[node name="Panel5" type="Panel" parent="t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 192.0
+margin_top = -208.0
+margin_right = 240.0
+margin_bottom = 160.0
+
+[node name="Panel6" type="Panel" parent="t5"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 192.0
+margin_top = 160.0
+margin_right = 240.0
+margin_bottom = 208.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel2" type="Panel" parent="t5"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 112.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t5/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 104.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "The Logic Gate slot,
+it's where we insert the Logic Gate. 
+The output will change depending on
+what gate is used and its inputs."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t5"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Label" type="Label" parent="t5"]
+margin_left = 136.0
+margin_top = 160.0
+margin_right = 178.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 25 )
+text = "Input a"
+
+[node name="Label2" type="Label" parent="t5"]
+margin_left = 136.0
+margin_top = 192.0
+margin_right = 178.0
+margin_bottom = 209.0
+custom_fonts/font = SubResource( 25 )
+text = "Input b"
+
+[node name="Label3" type="Label" parent="t5"]
+margin_left = 248.0
+margin_top = 176.0
+margin_right = 288.0
+margin_bottom = 193.0
+custom_fonts/font = SubResource( 25 )
+text = "Output"
+
+[node name="t6" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t6"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 384.0
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel3" type="Panel" parent="t6"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -48.0
+margin_right = 288.0
+margin_bottom = 368.0
+
+[node name="Panel4" type="Panel" parent="t6"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 288.0
+margin_top = 240.0
+margin_right = 384.0
+margin_bottom = 608.0
+
+[node name="Panel5" type="Panel" parent="t6"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 288.0
+margin_top = -240.0
+margin_right = 384.0
+margin_bottom = 128.0
+
+[node name="Panel6" type="Panel" parent="t6"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 288.0
+margin_top = 128.0
+margin_right = 384.0
+margin_bottom = 240.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel2" type="Panel" parent="t6"]
+margin_left = 48.0
+margin_top = 56.0
+margin_right = 272.0
+margin_bottom = 312.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t6/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 248.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "The Target block, it consist of two part.
+
+Large:
+current state.
+Small:
+required state
+
+Your goal is to match the color of both blocks."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t6"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t7" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="t7"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 576.0
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="Panel3" type="Panel" parent="t7"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = -48.0
+margin_right = 432.0
+margin_bottom = 368.0
+
+[node name="Panel4" type="Panel" parent="t7"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 432.0
+margin_top = 240.0
+margin_right = 576.0
+margin_bottom = 608.0
+
+[node name="Panel5" type="Panel" parent="t7"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 432.0
+margin_top = -272.0
+margin_right = 576.0
+margin_bottom = 96.0
+
+[node name="Panel6" type="Panel" parent="t7"]
+modulate = Color( 1, 1, 1, 0.654902 )
+margin_left = 432.0
+margin_top = 96.0
+margin_right = 576.0
+margin_bottom = 240.0
+custom_styles/panel = SubResource( 7 )
+
+[node name="Panel2" type="Panel" parent="t7"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 72.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t7/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "The Gate inventory,
+the source of Logic Gate that will be used."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="alpha0Btn" type="Button" parent="t7"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 640.0
+margin_bottom = 368.0
+
+[node name="t8" type="Node2D" parent="."]
+visible = false
+
+[node name="Timer" type="Timer" parent="t8"]
+wait_time = 2.0
+
+[node name="Panel3" type="Panel" parent="t8"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 80.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t8/Panel3"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "DRAG and HOLD a Gate for 2 seconds to see its truth table."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Sprite" type="Sprite" parent="t8"]
+position = Vector2( 496, 184 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="t8/Sprite"]
+autoplay = "drag_and_hold"
+anims/RESET = SubResource( 23 )
+anims/drag_and_hold = SubResource( 24 )
+
+[node name="t9" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel2" type="Panel" parent="t9"]
+margin_left = 72.0
+margin_right = 568.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="t9/Panel2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( -608, -74 )
+custom_fonts/font = SubResource( 6 )
+text = "You may now solve by
+dragging the correct gate into the empty slot
+and press Activate to confirm answer."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="t9"]
+anims/RESET = SubResource( 26 )
+anims/fade_out = SubResource( 27 )

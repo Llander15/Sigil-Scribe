@@ -37,3 +37,4 @@ texture = ExtResource( 1 )
 layer = -100
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
