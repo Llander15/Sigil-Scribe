@@ -2,6 +2,7 @@ extends Node2D
 
 export(Array, int) var target_mission_numbers = [-1]
 var interactable = false
+onready var POPUP = $Popup
 
 func _on_mission_updated(new_mission: int):
 	check_mission_importance()
@@ -23,6 +24,7 @@ var target_player = null
 var puzzle_start = false
 var solved = false
 
+#puzzle
 onready var s1 = $"Popup/NinePatchRect/Sources/Source 1"
 onready var s2 = $"Popup/NinePatchRect/Sources/Source 2"
 
@@ -34,7 +36,20 @@ onready var g1 = $"Popup/NinePatchRect/Gates/Gate 1"
 
 onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
 
+#preview
+onready var ps1 = $"Preview/NinePatchRect/Sources/Source 1"
+onready var ps2 = $"Preview/NinePatchRect/Sources/Source 2"
+
+onready var pw1 = $"Preview/NinePatchRect/Wires/Wire 1"
+onready var pw2 = $"Preview/NinePatchRect/Wires/Wire 2"
+onready var pw3 = $"Preview/NinePatchRect/Wires/Wire 3"
+
+onready var pg1 = $"Preview/NinePatchRect/Gates/Gate 1"
+
+onready var pf1 = $"Preview/NinePatchRect/Final/Final 1"
+
 func _ready():
+	$Preview.visible = false
 	$Popup.visible = false
 	if "LG_5" in Data.save_data["puzzles_solved"]:
 		_puzzle_solved()
@@ -57,21 +72,34 @@ func setup_handshakes():
 	s1.update_logic()
 	s2.update_logic()
 	
+	ps1.connect("signal_updated", pg1, "_on_input_a_received")
+	ps1.connect("signal_updated", pw1, "_on_signal_received")
+	
+	ps2.connect("signal_updated", pg1, "_on_input_b_received")
+	ps2.connect("signal_updated", pw2, "_on_signal_received")
+	
+	pg1.connect("signal_updated", pf1, "_on_signal_received")
+	pg1.connect("signal_updated", pw3, "_on_signal_received")
+
+	ps1.update_logic()
+	ps2.update_logic()
+	
 	if Data.has_signal("mission_updated"):
 		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
 			Data.connect("mission_updated", self, "_on_mission_updated")
 	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
-	if interactable:
-		if body.name == "Player":
-			
-			target_player = body
-			
-			body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = true
-			
-			if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
-				body.connect("interact_pressed", self, "_on_player_interacted")
+	if Data.save_data["mission_number"] < target_mission_numbers[0]:
+		return
+	if body.name == "Player":
+		
+		target_player = body
+		
+		body.get_node("Control/TouchScreen/ControlButtons/Interact").visible = true
+		
+		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
+			body.connect("interact_pressed", self, "_on_player_interacted")
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
@@ -84,7 +112,7 @@ func _on_Area2D_body_exited(body):
 			body.disconnect("interact_pressed", self, "_on_player_interacted")
 
 func _on_player_interacted():
-	$Popup.visible = true
+	POPUP.visible = true
 	puzzle_start = true
 	
 	#tutorial, going back to start
@@ -109,6 +137,8 @@ func _on_exit_released():
 
 func exit_puzzle():
 	$Popup.visible = false
+	$Preview.visible = false
+	POPUP.visible = false
 	puzzle_start = false
 	get_tree().paused = false
 	
@@ -117,6 +147,12 @@ func exit_puzzle():
 		target_player.get_node("Control/TouchScreen/ControlButtons/Interact").visible = false
 
 func _on_confirm_pressed():
+	if g1.LogicGate == "":
+		$Popup/InstructionLabel.text = "Fill in all blank slots first."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
+		return
+	
 	get_tree().get_root().set_disable_input(true)
 	
 	w1.confirm_state()
@@ -136,6 +172,9 @@ func _on_confirm_pressed():
 			
 		_puzzle_solved()
 	else:
+		$Popup/InstructionLabel.text = "Incorrect logic, try again."
+		$Popup/InstructionLabel/AnimationPlayer.stop()
+		$Popup/InstructionLabel/AnimationPlayer.play("in_out")
 		Data.update_health(-1)
 		var current_health = Data.save_data.get("current_health", 3)
 		if current_health <= 0:
@@ -144,9 +183,12 @@ func _on_confirm_pressed():
 	get_tree().get_root().set_disable_input(false)
 
 func _puzzle_solved():
-	$Area2D.visible = false
 	$Torch/AnimatedSprite.play("big_green_fire")
-	$Area2D/CollisionShape2D.disabled = true
+	POPUP = $Preview
+	$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+	$Area2D/Sprite/AnimationPlayer.play("floating")
+	
+	
 	var current_mission = Data.save_data.get("mission_number", -1)
 	if current_mission == 8:
 		var solved = Data.save_data.get("puzzles_solved", [])

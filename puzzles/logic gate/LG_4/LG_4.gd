@@ -25,6 +25,8 @@ var target_player = null
 var puzzle_start = false
 var solved = false
 
+#------------------------------------------------------------
+#puzzle
 onready var s1 = $"Popup/NinePatchRect/Sources/Source 1"
 
 onready var w1 = $"Popup/NinePatchRect/Wires/Wire 1"
@@ -33,6 +35,17 @@ onready var w2 = $"Popup/NinePatchRect/Wires/Wire 2"
 onready var g1 = $"Popup/NinePatchRect/Gates/Gate 1"
 
 onready var f1 = $"Popup/NinePatchRect/Final/Final 1"
+#-----------------------------------------------------------------
+#preview
+onready var ps1 = $"Preview/NinePatchRect/Sources/Source 1"
+
+onready var pw1 = $"Preview/NinePatchRect/Wires/Wire 1"
+onready var pw2 = $"Preview/NinePatchRect/Wires/Wire 2"
+
+onready var pg1 = $"Preview/NinePatchRect/Gates/Gate 1"
+
+onready var pf1 = $"Preview/NinePatchRect/Final/Final 1"
+
 
 onready var POPUP = $Popup
 
@@ -59,12 +72,23 @@ func setup_handshakes():
 
 	s1.update_logic()
 	
+	#preview
+	ps1.connect("signal_updated", pg1, "_on_input_a_received")
+	ps1.connect("signal_updated", pw1, "_on_signal_received")
+	
+	pg1.connect("signal_updated", pf1, "_on_signal_received")
+	pg1.connect("signal_updated", pw2, "_on_signal_received")
+
+	ps1.update_logic()
+	
 	if Data.has_signal("mission_updated"):
 		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
 			Data.connect("mission_updated", self, "_on_mission_updated")
 	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
+	if Data.save_data["mission_number"] < target_mission_numbers[0]:
+		return
 	if body.name == "Player":
 		
 		target_player = body

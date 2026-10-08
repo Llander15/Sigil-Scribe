@@ -2,6 +2,7 @@ extends Node2D
 
 export(Array, int) var target_mission_numbers = [1]
 var interactable = false
+onready var POPUP = $Popup
 
 func check_mission_importance():
 	var current_mission = int(Data.save_data.get("mission_number", -1))
@@ -11,7 +12,7 @@ func check_mission_importance():
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = true
 		interactable = true
-	else:
+	elif Data.save_data["mission_number"] < target_mission_numbers[0]:
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = false
 		interactable = false
@@ -34,6 +35,8 @@ onready var instruction_label_player = $Popup/InstructionLabel/AnimationPlayer
 
 func _ready():
 	$Popup.visible = false
+	$Preview.visible = false
+	
 	$Popup/NinePatchRect/Table.visible = false
 	$Popup/Back.visible = false
 	
@@ -45,9 +48,11 @@ func _ready():
 	_ensure_achievements_array()
 	
 	if "S 1" in Data.save_data["ach"]:
+		POPUP = $Preview
 		puzzleSolved = true
 		if has_node("Area2D/Sprite"):
-			$Area2D/Sprite.visible = false
+			$Area2D/Sprite.visible = true
+			$Area2D/Sprite.scale = Vector2(0.5, 0.5)
 			
 	if Data.has_signal("mission_updated"):
 		if not Data.is_connected("mission_updated", self, "_on_mission_updated"):
@@ -59,18 +64,17 @@ func _on_mission_updated(new_mission: int):
 	check_mission_importance()
 
 func _on_Area2D_body_entered(body):
-	if interactable:
-		if puzzleSolved:
-			return
-		if body.name == "Player":
-			target_player = body
-			
-			var interact_node = body.get_node_or_null("Control/TouchScreen/ControlButtons/Interact")
-			if interact_node:
-				interact_node.visible = true
-			
-			if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
-				body.connect("interact_pressed", self, "_on_player_interacted")
+	if Data.save_data["mission_number"] < target_mission_numbers[0]:
+		return
+	if body.name == "Player":
+		target_player = body
+		
+		var interact_node = body.get_node_or_null("Control/TouchScreen/ControlButtons/Interact")
+		if interact_node:
+			interact_node.visible = true
+		
+		if not body.is_connected("interact_pressed", self, "_on_player_interacted"):
+			body.connect("interact_pressed", self, "_on_player_interacted")
 
 func _on_Area2D_body_exited(body):
 	if body.name == "Player":
@@ -84,19 +88,22 @@ func _on_Area2D_body_exited(body):
 		target_player = null
 
 func _on_player_interacted():
-	print("Player touched the terminal!")
-	$Popup.visible = true
-	$Popup/NinePatchRect/Terminal.visible = true
-	$Popup/Table.visible = true
+	POPUP.visible = true
+	if $Popup.visible:
+		$Popup/NinePatchRect/Terminal.visible = true
+		$Popup/Table.visible = true
 	
-	$Popup/NinePatchRect/Table.visible = false
-	$Popup/Back.visible = false
-	get_tree().paused = true
+		$Popup/NinePatchRect/Table.visible = false
+		$Popup/Back.visible = false
+		get_tree().paused = true
+	
+	
 	
 	if target_player and is_instance_valid(target_player):
 		var touch_screen = target_player.get_node_or_null("Control/TouchScreen")
 		if touch_screen:
 			touch_screen.visible = false
+	#tutorial
 	for t in $Popup/tutorial.get_children():
 		if "visible" in t:
 			t.visible = false
@@ -109,6 +116,7 @@ func _on_exit_released():
 
 func exit_puzzle():
 	$Popup.visible = false
+	$Preview.visible = false
 	get_tree().paused = false
 	
 	if target_player and is_instance_valid(target_player):
@@ -161,6 +169,7 @@ func puzzleSolve():
 	if not "S 1" in Data.save_data["ach"]:
 		Data.save_data["ach"].append("S 1")
 		Data.save_game()
+	_ready()
 
 func _on_Confirm_pressed():
 	if S4.text == "":
@@ -179,8 +188,6 @@ func _on_Confirm_pressed():
 		return
 	puzzleSolve()
 	puzzleSolved = true
-	if has_node("Area2D/Sprite"):
-		$Area2D/Sprite.visible = false
 	
 	$Popup.visible = false
 	$Popup2.visible = true
@@ -264,3 +271,21 @@ func _on_t4_Button_pressed():
 func _on_t5_Button_pressed():
 	$Popup/tutorial/t5.visible = false
 	Data.save_data["tutorials"]["sql"] = true
+
+
+func _on_pTable_pressed():
+	$Preview/NinePatchRect/Table.visible = true
+	$Preview/Back.visible = true
+	
+	$Preview/Table.visible = false
+	$Preview/Confirm.visible = false
+	$Preview/NinePatchRect/Terminal.visible = false
+
+
+func _on_pBack_pressed():
+	$Preview/NinePatchRect/Table.visible = false
+	$Preview/Back.visible = false
+	
+	$Preview/Table.visible = true
+	$Preview/Confirm.visible = true
+	$Preview/NinePatchRect/Terminal.visible = true

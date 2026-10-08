@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/x.png" type="Texture" id=2]
@@ -578,6 +578,478 @@ font_data = ExtResource( 4 )
 atlas = ExtResource( 2 )
 region = Rect2( 52, 8, 32, 32 )
 
+[sub_resource type="StyleBoxFlat" id=58]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=59]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=60]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=86]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=62]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=87]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=64]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=65]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Animation" id=66]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=68]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=69]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=70]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=71]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=72]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=73]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=74]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=75]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=76]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=77]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=78]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=80]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=81]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=82]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=83]
+resource_name = "floating arrow"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=84]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 224, 216 ) ]
+}
+
+[sub_resource type="Animation" id=85]
+resource_name = "drag and drop"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "default", "drag", "drag" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 184, 294 ), Vector2( 184, 294 ), Vector2( 400, 152 ), Vector2( 400, 152 ) ]
+}
+
 [node name="S 1" type="Node2D"]
 z_index = 20
 script = ExtResource( 6 )
@@ -600,6 +1072,7 @@ anims/floating = SubResource( 10 )
 [node name="Popup" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 10
+visible = false
 
 [node name="NinePatchRect" parent="Popup" instance=ExtResource( 1 )]
 margin_left = 32.0
@@ -618,6 +1091,12 @@ patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
+
+[node name="Hearts" parent="Popup/NinePatchRect/Terminal" instance=ExtResource( 18 )]
+margin_left = 416.0
+margin_top = -16.0
+margin_right = 464.0
+margin_bottom = -16.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal"]
 margin_right = 483.0
@@ -728,12 +1207,6 @@ rect_min_size = Vector2( 78, 50 )
 custom_styles/normal = SubResource( 57 )
 text = "floor"
 sql_text = "floor"
-
-[node name="Hearts" parent="Popup/NinePatchRect/Terminal" instance=ExtResource( 18 )]
-margin_left = 416.0
-margin_top = -16.0
-margin_right = 464.0
-margin_bottom = -16.0
 
 [node name="Table" type="NinePatchRect" parent="Popup/NinePatchRect"]
 visible = false
@@ -1300,6 +1773,597 @@ custom_styles/pressed = ExtResource( 7 )
 custom_styles/normal = ExtResource( 5 )
 text = "Confirm"
 
+[node name="Preview" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 10
+
+[node name="NinePatchRect" parent="Preview" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 336.0
+
+[node name="Terminal" type="NinePatchRect" parent="Preview/NinePatchRect"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 516.0
+margin_bottom = 208.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Hearts" parent="Preview/NinePatchRect/Terminal" instance=ExtResource( 18 )]
+margin_left = 416.0
+margin_top = -16.0
+margin_right = 464.0
+margin_bottom = -16.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal"]
+margin_right = 483.0
+margin_bottom = 160.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="S1" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 46.0
+margin_top = 55.0
+margin_right = 132.0
+margin_bottom = 105.0
+custom_styles/normal = SubResource( 58 )
+locked = true
+
+[node name="S2" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 148.0
+margin_top = 55.0
+margin_right = 194.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 46, 50 )
+custom_styles/normal = SubResource( 59 )
+text = "*"
+sql_text = "*"
+locked = true
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 210.0
+margin_top = 55.0
+margin_right = 280.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 70, 50 )
+custom_styles/normal = SubResource( 60 )
+text = "FROM"
+sql_text = "FROM"
+locked = true
+
+[node name="S4" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 296.0
+margin_top = 55.0
+margin_right = 374.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 78, 50 )
+custom_styles/normal = SubResource( 86 )
+text = "chest"
+sql_text = "chest"
+
+[node name="S5" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 390.0
+margin_top = 55.0
+margin_right = 436.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 46, 50 )
+custom_styles/normal = SubResource( 62 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Preview/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 240.0
+texture = ExtResource( 17 )
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="Preview/NinePatchRect/Terminal/NinePatchRect"]
+show_behind_parent = true
+margin_right = 360.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 49 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 450.0
+margin_bottom = 256.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="S1" parent="Preview/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 107.0
+margin_top = 15.0
+margin_right = 147.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 40, 50 )
+custom_styles/normal = SubResource( 87 )
+text = ""
+sql_text = ""
+
+[node name="S2" parent="Preview/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 163.0
+margin_top = 15.0
+margin_right = 249.0
+margin_bottom = 65.0
+custom_styles/normal = SubResource( 64 )
+text = "pocket"
+sql_text = "pocket"
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 265.0
+margin_top = 15.0
+margin_right = 343.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 78, 50 )
+custom_styles/normal = SubResource( 65 )
+text = "floor"
+sql_text = "floor"
+
+[node name="Panel" type="Panel" parent="Preview/NinePatchRect/Terminal"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 488.0
+margin_bottom = 160.0
+
+[node name="Panel2" type="Panel" parent="Preview/NinePatchRect/Terminal"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 240.0
+
+[node name="Table" type="NinePatchRect" parent="Preview/NinePatchRect"]
+visible = false
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 516.0
+margin_bottom = 274.0
+texture = ExtResource( 8 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="tableName" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_right = 496.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 4 )
+text = "chest"
+align = 1
+valign = 1
+
+[node name="id1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "id"
+align = 1
+valign = 1
+
+[node name="id2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="id3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 80.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="name1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "name"
+align = 1
+valign = 1
+
+[node name="name2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 64.0
+margin_right = 288.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "Logic Gauntlet"
+align = 1
+valign = 1
+
+[node name="name3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 96.0
+margin_right = 288.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "Data Codex"
+align = 1
+valign = 1
+
+[node name="description1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 288.0
+margin_top = 32.0
+margin_right = 460.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "description"
+align = 1
+valign = 1
+
+[node name="description2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 288.0
+margin_top = 64.0
+margin_right = 464.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "Tool used.."
+align = 1
+valign = 1
+
+[node name="description3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 288.0
+margin_top = 96.0
+margin_right = 464.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "Reviewer..."
+align = 1
+valign = 1
+
+[node name="Line2D1" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D7" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 32 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D8" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 64 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D9" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 96 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D5" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 64, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D6" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 272, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 464, 176, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D4" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( -16, 0 )
+points = PoolVector2Array( 480, 176, 480, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="exit" type="TouchScreenButton" parent="Preview"]
+position = Vector2( 560, 48 )
+normal = SubResource( 2 )
+
+[node name="Confirm" type="Button" parent="Preview"]
+margin_left = 432.0
+margin_top = 266.0
+margin_right = 576.0
+margin_bottom = 311.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 5 )
+disabled = true
+text = "Confrim"
+
+[node name="Table" type="TextureButton" parent="Preview"]
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 3 )
+
+[node name="Back" type="TextureButton" parent="Preview"]
+visible = false
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 3 )
+
+[node name="Info" type="TextureButton" parent="Preview"]
+visible = false
+margin_left = 560.0
+margin_top = 144.0
+margin_right = 592.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+
+[node name="tutorial" type="Control" parent="Preview"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="t1" type="Node2D" parent="Preview/tutorial"]
+visible = false
+
+[node name="Panel1" type="Panel" parent="Preview/tutorial/t1"]
+margin_left = 48.0
+margin_right = 592.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Preview/tutorial/t1/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 64.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "In this puzzle, you'll work with blocks that represent real SQL syntax."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="Preview/tutorial/t1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 646.0
+margin_bottom = 432.0
+
+[node name="arrow1" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 172, 136 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow1"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow1/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 66 )
+"anims/floating arrow" = SubResource( 67 )
+
+[node name="arrow2" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 254, 136 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow2"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow2/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 68 )
+"anims/floating arrow" = SubResource( 69 )
+
+[node name="arrow3" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 328, 136 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow3"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow3/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 70 )
+"anims/floating arrow" = SubResource( 71 )
+
+[node name="arrow4" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 400, 136 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow4"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow4/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 72 )
+"anims/floating arrow" = SubResource( 73 )
+
+[node name="arrow5" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 458, 136 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow5"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow5/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 74 )
+"anims/floating arrow" = SubResource( 75 )
+
+[node name="arrow6" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 166, 266 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow6"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow6/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 76 )
+"anims/floating arrow" = SubResource( 77 )
+
+[node name="arrow7" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 244, 266 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow7"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow7/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 78 )
+"anims/floating arrow" = SubResource( 79 )
+
+[node name="arrow8" type="Node2D" parent="Preview/tutorial/t1"]
+position = Vector2( 322, 266 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t1/arrow8"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t1/arrow8/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 80 )
+"anims/floating arrow" = SubResource( 81 )
+
+[node name="t2" type="Node2D" parent="Preview/tutorial"]
+visible = false
+
+[node name="Panel1" type="Panel" parent="Preview/tutorial/t2"]
+margin_left = 48.0
+margin_right = 592.0
+margin_bottom = 80.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Preview/tutorial/t2/Panel1"]
+margin_right = 544.0
+margin_bottom = 80.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "There are 2 types of block:
+Blue: Draggable (Swap or move into query slots)
+Gray: Locked / Fixed (Non-draggable reference blocks)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="Preview/tutorial/t2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 656.0
+margin_bottom = 368.0
+
+[node name="t3" type="Node2D" parent="Preview/tutorial"]
+visible = false
+
+[node name="Panel1" type="Panel" parent="Preview/tutorial/t3"]
+margin_left = 48.0
+margin_right = 592.0
+margin_bottom = 96.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Preview/tutorial/t3/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 96.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "Before you try to solve the puzzle, you can use the Table by pressing this icon to inspect the data you are working with and get hints for building your query."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="arrow1" type="Node2D" parent="Preview/tutorial/t3"]
+position = Vector2( 576, 146 )
+
+[node name="Sprite" type="Sprite" parent="Preview/tutorial/t3/arrow1"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t3/arrow1/Sprite"]
+autoplay = "floating arrow"
+anims/RESET = SubResource( 82 )
+"anims/floating arrow" = SubResource( 83 )
+
+[node name="t4" type="Node2D" parent="Preview/tutorial"]
+visible = false
+position = Vector2( 0, -240 )
+
+[node name="Panel1" type="Panel" parent="Preview/tutorial/t4"]
+margin_left = 48.0
+margin_top = 240.0
+margin_right = 592.0
+margin_bottom = 320.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Preview/tutorial/t4/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 80.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "The Table will show you the raw dataset,  table name, exact rows, and columns you need to query. "
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="Preview/tutorial/t4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -32.0
+margin_top = 232.0
+margin_right = 690.0
+margin_bottom = 604.0
+
+[node name="t5" type="Node2D" parent="Preview/tutorial"]
+visible = false
+
+[node name="Panel1" type="Panel" parent="Preview/tutorial/t5"]
+margin_left = 48.0
+margin_right = 592.0
+margin_bottom = 80.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Preview/tutorial/t5/Panel1"]
+margin_left = 16.0
+margin_right = 528.0
+margin_bottom = 80.0
+mouse_filter = 0
+custom_fonts/font = SubResource( 5 )
+text = "Now that you know how everything works, it's time to build your first query. Good luck!."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="Preview/tutorial/t5"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 712.0
+margin_bottom = 352.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Preview/tutorial/t5"]
+position = Vector2( 224, 216 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 46 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Preview/tutorial/t5/AnimatedSprite"]
+anims/RESET = SubResource( 84 )
+"anims/drag and drop" = SubResource( 85 )
+
+[node name="InstructionLabel" parent="Preview" instance=ExtResource( 19 )]
+modulate = Color( 1, 1, 1, 0 )
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="released" from="Popup/exit" to="." method="_on_exit_released"]
@@ -1312,3 +2376,11 @@ text = "Confirm"
 [connection signal="pressed" from="Popup/tutorial/t5/Button" to="." method="_on_t5_Button_pressed"]
 [connection signal="pressed" from="Popup2/Logic Gauntlet/LG Confirm" to="." method="_on_LG_Confirm_pressed"]
 [connection signal="pressed" from="Popup2/Data Codex/DC Confirm" to="." method="_on_DC_Confirm_pressed"]
+[connection signal="released" from="Preview/exit" to="." method="_on_exit_released"]
+[connection signal="pressed" from="Preview/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Preview/Table" to="." method="_on_pTable_pressed"]
+[connection signal="pressed" from="Preview/Back" to="." method="_on_pBack_pressed"]
+[connection signal="pressed" from="Preview/tutorial/t1/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Preview/tutorial/t2/Button" to="." method="_on_t2_Button_pressed"]
+[connection signal="pressed" from="Preview/tutorial/t4/Button" to="." method="_on_t4_Button_pressed"]
+[connection signal="pressed" from="Preview/tutorial/t5/Button" to="." method="_on_t5_Button_pressed"]

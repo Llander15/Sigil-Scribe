@@ -374,6 +374,12 @@ margin_top = 32.0
 margin_right = 608.0
 margin_bottom = 336.0
 
+[node name="Hearts" parent="Popup/NinePatchRect" instance=ExtResource( 17 )]
+margin_left = 408.0
+margin_top = 40.0
+margin_right = 456.0
+margin_bottom = 40.0
+
 [node name="NinePatchRect" type="NinePatchRect" parent="Popup/NinePatchRect"]
 margin_left = 32.0
 margin_top = 32.0
@@ -492,8 +498,6 @@ custom_styles/pressed = ExtResource( 12 )
 custom_styles/disabled = ExtResource( 9 )
 custom_styles/normal = ExtResource( 9 )
 text = "Activate"
-
-[node name="Hearts" parent="Popup" instance=ExtResource( 17 )]
 
 [node name="InstructionLabel" parent="Popup" instance=ExtResource( 18 )]
 modulate = Color( 1, 1, 1, 0 )
@@ -1063,7 +1067,6 @@ margin_left = -84.0
 margin_top = 169.0
 margin_right = -84.0
 margin_bottom = 169.0
-update_on_confirm = true
 
 [node name="Line2D" parent="Preview/NinePatchRect/Wires/Wire 1" index="0"]
 position = Vector2( 172, -41 )
@@ -1074,8 +1077,6 @@ margin_left = -88.0
 margin_top = 232.0
 margin_right = -88.0
 margin_bottom = 232.0
-update_on_confirm = true
-delay = 0.5
 
 [node name="Line2D" parent="Preview/NinePatchRect/Wires/Wire 2" index="0"]
 position = Vector2( 172, -41 )
@@ -1134,8 +1135,6 @@ margin_left = 272.0
 margin_top = 122.0
 margin_right = 312.0
 margin_bottom = 162.0
-update_on_confirm = true
-delay = 1.0
 
 [node name="exit" type="TouchScreenButton" parent="Preview"]
 position = Vector2( 560, 48 )
