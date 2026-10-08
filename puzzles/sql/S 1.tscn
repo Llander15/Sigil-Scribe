@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/x.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=18]
 [ext_resource path="res://InstructionLabel.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Assets2/sprite/pointer.png" type="Texture" id=20]
+[ext_resource path="res://Assets2/SQL puzzle sprites/table.png" type="Texture" id=21]
+[ext_resource path="res://Assets2/SQL puzzle sprites/terminal.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -54,7 +56,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -16 ), Vector2( 0, -32 ), Vector2( 0, -16 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=50]
+[sub_resource type="StyleBoxFlat" id=86]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -70,7 +72,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=51]
+[sub_resource type="StyleBoxFlat" id=87]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -86,7 +88,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=52]
+[sub_resource type="StyleBoxFlat" id=88]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -102,7 +104,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=53]
+[sub_resource type="StyleBoxFlat" id=89]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -118,7 +120,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=54]
+[sub_resource type="StyleBoxFlat" id=90]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -137,7 +139,7 @@ expand_margin_bottom = 4.0
 [sub_resource type="StyleBoxFlat" id=49]
 bg_color = Color( 0.156863, 0.14902, 0.0823529, 1 )
 
-[sub_resource type="StyleBoxFlat" id=55]
+[sub_resource type="StyleBoxFlat" id=91]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -153,7 +155,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=56]
+[sub_resource type="StyleBoxFlat" id=92]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -169,7 +171,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=57]
+[sub_resource type="StyleBoxFlat" id=93]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -578,7 +580,7 @@ font_data = ExtResource( 4 )
 atlas = ExtResource( 2 )
 region = Rect2( 52, 8, 32, 32 )
 
-[sub_resource type="StyleBoxFlat" id=58]
+[sub_resource type="StyleBoxFlat" id=94]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -594,7 +596,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=59]
+[sub_resource type="StyleBoxFlat" id=95]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -610,7 +612,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=60]
+[sub_resource type="StyleBoxFlat" id=96]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -626,7 +628,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=86]
+[sub_resource type="StyleBoxFlat" id=97]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -642,7 +644,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=62]
+[sub_resource type="StyleBoxFlat" id=98]
 bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -658,7 +660,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=87]
+[sub_resource type="StyleBoxFlat" id=99]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -674,7 +676,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=64]
+[sub_resource type="StyleBoxFlat" id=100]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -690,7 +692,7 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id=65]
+[sub_resource type="StyleBoxFlat" id=101]
 bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -1109,7 +1111,7 @@ margin_left = 65.0
 margin_top = 55.0
 margin_right = 151.0
 margin_bottom = 105.0
-custom_styles/normal = SubResource( 50 )
+custom_styles/normal = SubResource( 86 )
 locked = true
 
 [node name="S2" parent="Popup/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
@@ -1118,7 +1120,7 @@ margin_top = 55.0
 margin_right = 213.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 46, 50 )
-custom_styles/normal = SubResource( 51 )
+custom_styles/normal = SubResource( 87 )
 text = "*"
 sql_text = "*"
 locked = true
@@ -1129,7 +1131,7 @@ margin_top = 55.0
 margin_right = 299.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 70, 50 )
-custom_styles/normal = SubResource( 52 )
+custom_styles/normal = SubResource( 88 )
 text = "FROM"
 sql_text = "FROM"
 locked = true
@@ -1140,7 +1142,7 @@ margin_top = 55.0
 margin_right = 355.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 40, 50 )
-custom_styles/normal = SubResource( 53 )
+custom_styles/normal = SubResource( 89 )
 text = ""
 sql_text = ""
 
@@ -1150,7 +1152,7 @@ margin_top = 55.0
 margin_right = 417.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 46, 50 )
-custom_styles/normal = SubResource( 54 )
+custom_styles/normal = SubResource( 90 )
 text = ";"
 sql_text = ";"
 locked = true
@@ -1185,7 +1187,7 @@ margin_top = 15.0
 margin_right = 166.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 78, 50 )
-custom_styles/normal = SubResource( 55 )
+custom_styles/normal = SubResource( 91 )
 text = "chest"
 sql_text = "chest"
 
@@ -1194,7 +1196,7 @@ margin_left = 182.0
 margin_top = 15.0
 margin_right = 268.0
 margin_bottom = 65.0
-custom_styles/normal = SubResource( 56 )
+custom_styles/normal = SubResource( 92 )
 text = "pocket"
 sql_text = "pocket"
 
@@ -1204,7 +1206,7 @@ margin_top = 15.0
 margin_right = 362.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 78, 50 )
-custom_styles/normal = SubResource( 57 )
+custom_styles/normal = SubResource( 93 )
 text = "floor"
 sql_text = "floor"
 
@@ -1383,14 +1385,14 @@ custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 10 )
 custom_styles/normal = ExtResource( 5 )
-text = "Confrim"
+text = "Confirm"
 
 [node name="Table" type="TextureButton" parent="Popup"]
 margin_left = 560.0
 margin_top = 136.0
 margin_right = 592.0
 margin_bottom = 168.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 21 )
 
 [node name="Back" type="TextureButton" parent="Popup"]
 visible = false
@@ -1398,7 +1400,7 @@ margin_left = 560.0
 margin_top = 136.0
 margin_right = 592.0
 margin_bottom = 168.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 22 )
 
 [node name="Info" type="TextureButton" parent="Popup"]
 visible = false
@@ -1812,7 +1814,7 @@ margin_left = 46.0
 margin_top = 55.0
 margin_right = 132.0
 margin_bottom = 105.0
-custom_styles/normal = SubResource( 58 )
+custom_styles/normal = SubResource( 94 )
 locked = true
 
 [node name="S2" parent="Preview/NinePatchRect/Terminal/HBoxContainer" instance=ExtResource( 9 )]
@@ -1821,7 +1823,7 @@ margin_top = 55.0
 margin_right = 194.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 46, 50 )
-custom_styles/normal = SubResource( 59 )
+custom_styles/normal = SubResource( 95 )
 text = "*"
 sql_text = "*"
 locked = true
@@ -1832,7 +1834,7 @@ margin_top = 55.0
 margin_right = 280.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 70, 50 )
-custom_styles/normal = SubResource( 60 )
+custom_styles/normal = SubResource( 96 )
 text = "FROM"
 sql_text = "FROM"
 locked = true
@@ -1843,7 +1845,7 @@ margin_top = 55.0
 margin_right = 374.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 78, 50 )
-custom_styles/normal = SubResource( 86 )
+custom_styles/normal = SubResource( 97 )
 text = "chest"
 sql_text = "chest"
 
@@ -1853,7 +1855,7 @@ margin_top = 55.0
 margin_right = 436.0
 margin_bottom = 105.0
 rect_min_size = Vector2( 46, 50 )
-custom_styles/normal = SubResource( 62 )
+custom_styles/normal = SubResource( 98 )
 text = ";"
 sql_text = ";"
 locked = true
@@ -1888,7 +1890,7 @@ margin_top = 15.0
 margin_right = 147.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 40, 50 )
-custom_styles/normal = SubResource( 87 )
+custom_styles/normal = SubResource( 99 )
 text = ""
 sql_text = ""
 
@@ -1897,7 +1899,7 @@ margin_left = 163.0
 margin_top = 15.0
 margin_right = 249.0
 margin_bottom = 65.0
-custom_styles/normal = SubResource( 64 )
+custom_styles/normal = SubResource( 100 )
 text = "pocket"
 sql_text = "pocket"
 
@@ -1907,7 +1909,7 @@ margin_top = 15.0
 margin_right = 343.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 78, 50 )
-custom_styles/normal = SubResource( 65 )
+custom_styles/normal = SubResource( 101 )
 text = "floor"
 sql_text = "floor"
 
@@ -2098,14 +2100,14 @@ custom_styles/pressed = ExtResource( 7 )
 custom_styles/disabled = ExtResource( 10 )
 custom_styles/normal = ExtResource( 5 )
 disabled = true
-text = "Confrim"
+text = "Confirm"
 
 [node name="Table" type="TextureButton" parent="Preview"]
 margin_left = 560.0
 margin_top = 136.0
 margin_right = 592.0
 margin_bottom = 168.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 21 )
 
 [node name="Back" type="TextureButton" parent="Preview"]
 visible = false
@@ -2113,7 +2115,7 @@ margin_left = 560.0
 margin_top = 136.0
 margin_right = 592.0
 margin_bottom = 168.0
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 22 )
 
 [node name="Info" type="TextureButton" parent="Preview"]
 visible = false

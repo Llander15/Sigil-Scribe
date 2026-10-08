@@ -54,6 +54,8 @@ tracks/0/keys = {
 }
 
 [node name="InstructionLabel" type="Label"]
+pause_mode = 2
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 160.0
 margin_top = 48.0
 margin_right = 464.0

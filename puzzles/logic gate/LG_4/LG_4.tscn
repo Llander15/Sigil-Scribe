@@ -500,7 +500,6 @@ custom_styles/normal = ExtResource( 9 )
 text = "Activate"
 
 [node name="InstructionLabel" parent="Popup" instance=ExtResource( 18 )]
-modulate = Color( 1, 1, 1, 0 )
 margin_left = 89.0
 margin_top = 80.0
 margin_right = 393.0

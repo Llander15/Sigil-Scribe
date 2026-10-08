@@ -24,8 +24,8 @@ func _play_death_anim():
 		get_tree().paused = true
 		$CanvasLayer.layer = 100
 		$CanvasLayer/DeathScreen/AnimationPlayer.play("dead")
-		yield($CanvasLayer/DeathScreen/AnimationPlayer, "animation_finished")
 		get_tree().paused = false
+		yield($CanvasLayer/DeathScreen/AnimationPlayer, "animation_finished")
 		$CanvasLayer.layer = -100
 
 func _update_heart_output():
