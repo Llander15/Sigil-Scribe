@@ -493,7 +493,6 @@ custom_styles/normal = ExtResource( 9 )
 text = "Activate"
 
 [node name="InstructionLabel" parent="Popup" instance=ExtResource( 20 )]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="Tutorial" type="Node2D" parent="Popup"]
 

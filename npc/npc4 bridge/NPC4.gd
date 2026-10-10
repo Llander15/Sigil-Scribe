@@ -1,6 +1,6 @@
 extends Area2D
 
-export var npc_name : String = "Senior Scribe"
+export var npc_name : String = "Alex"
 export var important : bool = false
 # Export an array of mission numbers where this NPC is priority (e.g. [0, 2])
 export(Array, int) var target_mission_numbers = [0, 2]
@@ -9,57 +9,27 @@ var no_player_interacted = 0
 
 # Dialogue arrays
 export(Array, String, MULTILINE) var dialogue_lines = [
-	"Good job reaching this stage %s.",
-	"Now, for your next task.",
-	"You must first find the remaining 3 torches that are located on this top side of the cliff.",
-	"Come back here after you finished.",
-	"As I will prepare the test for your final assesment for you to become a full-fledged Scribe."
+	"That badge..",
+	"You are a Scribe!, I've been waiting for one.",
+	"You see, I'm stuck here. I'm only supposed to deliver food here and come back.",
+	"But the bridge suddenly disappeared.",
+	"I saw a pole right there that might be the switch for the bridge, but I don't understand it.",
+	"You a Scribe might be know how, so please try it.",
+	"Ofcourse I will pay if you helped me."
 ]
 
 export(Array, String, MULTILINE) var dialogue_lines2 = [
-	"You haven't  finished the task I gave you.",
-	"Oh, you're asking where the torches located at?",
-	"Just go straight west.",
-	"Just don't fall if you don't have the patience to wait for the moving platform."
+	"(Waiting..)",
+	"(The Scribe's looking at me..)",
+	"(Don't tell me..)",
+	"(...)"
 ]
 
 export(Array, String, MULTILINE) var dialogue_lines3 = [
-	"Good job %s.",
-	"For your final test before I declare you as a full-flege Scribe.",
-	"You must unlock the Gate in front of you with Digital Logic puzzle",
-	"Use everything you have learned to open the gate!"
-]
-
-export(Array, String, MULTILINE) var dialogue_lines4 = [
-	"Your are not supposed to reach this place..."
-]
-
-export(Array, String, MULTILINE) var dialogue_lines5 = [
-	"Hello %s.",
-	"I have no task left for you.",
-	"But I don't mind a company."
-]
-
-export(Array, String, MULTILINE) var dialogue_lines6 = [
-	"Hello %s.",
-	"I have no task left for you.",
-	"But I don't mind a company."
-]
-
-export(Array, String, MULTILINE) var dialogue_lines7 = [
-	"To equip your new badge, you must first unequip your old one."
-]
-
-export(Array, String, MULTILINE) var dialogue_lines8 = [
-	"Ah, it suits you well.",
-	"Others will now recognize the dedication you’ve done.",
-	"You may now pursue the outside.",
-	"Help the people in need using your knowledge.",
-	"Congratulations and goodluck %s."
-]
-
-export(Array, String, MULTILINE) var dialogue_lines9 = [
-	"Congratulations and goodluck %s.",
+	"You really got it!.",
+	"Can I have your name?.",
+	"%s, Thank you very much!",
+	"For the promised payment, here!"
 ]
 
 var is_player_nearby = false
@@ -75,6 +45,7 @@ onready var label = $CanvasLayer/NinePatchRect/Label
 onready var next_indicator = $CanvasLayer/NinePatchRect/NextIndicator
 
 func _ready():
+	$"CanvasLayer/fade in-out".visible = false
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 	# Connect to the global signal safely
@@ -100,6 +71,9 @@ func check_mission_importance():
 	if current_mission in target_mission_numbers:
 		important = true
 		_active_icon()
+	elif current_mission > target_mission_numbers[1]:
+		self.visible = false
+		$CollisionShape2D.disabled = true
 	else:
 		important = false
 		_deactivate_icon()
@@ -139,28 +113,15 @@ func _on_player_interacted():
 
 var advance_mission_after_dialogue = false
 func start_dialogue():
-	if (Data.save_data.get("mission_number", -1)) < 7:
-		current_dialogue_array = dialogue_lines4
-	elif (Data.save_data.get("mission_number", -1)) == 7:
+	if (Data.save_data.get("mission_number", -1)) == 14:
 		current_dialogue_array = dialogue_lines
 		advance_mission_after_dialogue = true
-	elif (Data.save_data.get("mission_number", -1)) == 8:
+	elif (Data.save_data.get("mission_number", -1)) == 15:
 		current_dialogue_array = dialogue_lines2
-	elif (Data.save_data.get("mission_number", -1)) == 9:
+	elif (Data.save_data.get("mission_number", -1)) == 16:
 		current_dialogue_array = dialogue_lines3
 		advance_mission_after_dialogue = true
-	elif (Data.save_data.get("mission_number", -1)) == 10:
-		current_dialogue_array = dialogue_lines5
-	elif (Data.save_data.get("mission_number", -1)) == 11:
-		current_dialogue_array = dialogue_lines6
-		advance_mission_after_dialogue = true
-	elif (Data.save_data.get("mission_number", -1)) == 12:
-		current_dialogue_array = dialogue_lines7
-	elif (Data.save_data.get("mission_number", -1)) == 13:
-		current_dialogue_array = dialogue_lines8
-		advance_mission_after_dialogue = true
-	elif (Data.save_data.get("mission_number", -1)) > 13:
-		current_dialogue_array = dialogue_lines9
+
 	if current_dialogue_array.empty():
 		return
 	
@@ -186,6 +147,16 @@ func advance_dialogue():
 		if advance_mission_after_dialogue:
 			Data.advance_mission()
 			advance_mission_after_dialogue = false
+		
+		if (Data.save_data.get("mission_number", -1)) == 17:
+			dialogue_ui.hide()
+			$"CanvasLayer/fade in-out".visible = true
+			$"CanvasLayer/fade in-out/AnimationPlayer".play("in")
+			yield($"CanvasLayer/fade in-out/AnimationPlayer", "animation_finished")
+			$"CanvasLayer/fade in-out/AnimationPlayer".play("out")
+			yield($"CanvasLayer/fade in-out/AnimationPlayer", "animation_finished")
+			$"CanvasLayer/fade in-out".visible = false
+			check_mission_importance()
 		close_dialogue()
 
 func set_current_line_text():
@@ -212,16 +183,6 @@ func close_dialogue():
 		next_indicator.hide()
 
 	set_player_ui_visible(true)
-	
-	# Only advance mission if dialogue was actually finished naturally
-	if is_dialogue_active and current_line_index >= current_dialogue_array.size() - 1:
-		var current_mission = int(Data.save_data.get("mission_number", -1))
-		if important:
-			important = false
-			_deactivate_icon()
-			if current_mission == 0 or current_mission == 2:
-				if Data.has_method("advance_mission"):
-					Data.advance_mission()
 
 	is_dialogue_active = false
 	current_line_index = 0

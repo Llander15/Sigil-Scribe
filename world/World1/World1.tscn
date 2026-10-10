@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://tileset/dirt_tile.png" type="Texture" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -37,6 +37,9 @@
 [ext_resource path="res://Assets/animated_greeneries/Tree_animated.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Assets/animated_greeneries/Bush_animated.tscn" type="PackedScene" id=36]
 [ext_resource path="res://puzzles/logic gate/LG_8 - Gate/LG_8.tscn" type="PackedScene" id=37]
+[ext_resource path="res://puzzles/sql/S2/s2.tscn" type="PackedScene" id=38]
+[ext_resource path="res://puzzles/logic gate/LG_9 - Bridge/LG_9.tscn" type="PackedScene" id=39]
+[ext_resource path="res://npc/npc4 bridge/NPC4.tscn" type="PackedScene" id=40]
 
 [sub_resource type="Animation" id=9]
 resource_name = "New Anim"
@@ -622,6 +625,9 @@ position = Vector2( 0, 8 )
 z_index = -100
 texture = ExtResource( 24 )
 
+[node name="s2" parent="SQL puzzles" instance=ExtResource( 38 )]
+position = Vector2( 3076, -136 )
+
 [node name="DL puzzles" type="Node2D" parent="."]
 position = Vector2( 1056, 1024 )
 
@@ -654,6 +660,9 @@ target_mission_numbers = [ 8 ]
 [node name="LG_8" parent="DL puzzles" instance=ExtResource( 37 )]
 position = Vector2( 2596, -1032 )
 target_mission_numbers = [ 10 ]
+
+[node name="LG_9" parent="DL puzzles" instance=ExtResource( 39 )]
+position = Vector2( 3136, -1032 )
 
 [node name="minimap" parent="." instance=ExtResource( 11 )]
 layer = 0
@@ -715,7 +724,10 @@ region_rect = Rect2( 0, 32, 96, 8 )
 position = Vector2( 1040, 1024 )
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource( 5 )]
-position = Vector2( 3016, -1056 )
+position = Vector2( 3104, -1056 )
+
+[node name="Checkpoint7" parent="Checkpoints" instance=ExtResource( 5 )]
+position = Vector2( -1048, -736 )
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource( 5 )]
 position = Vector2( 4256, -1056 )
@@ -926,7 +938,13 @@ dialogue_lines4 = [ "Hello, %s. Looks like you are not qualified for my task yet
 [node name="NPC3" parent="NPCs" instance=ExtResource( 34 )]
 position = Vector2( 3512, -16 )
 npc_name = "Alea"
-target_mission_numbers = [ 7, 9 ]
+target_mission_numbers = [ 7, 9, 11, 13 ]
+dialogue_lines5 = [ "You may now try opening the gate.", "Good luck %s." ]
+dialogue_lines6 = [ "Good job on completing the tests %s.", "I now declare you ur newest full-flege Scribe.", "Take this Novice Scribe Badge. As a memento of this achievement and to serve as proof of your advancement.", "You may now equip your new badge. " ]
+
+[node name="NPC4" parent="NPCs" instance=ExtResource( 40 )]
+position = Vector2( 4064, -16 )
+target_mission_numbers = [ 14, 16 ]
 
 [connection signal="body_entered" from="Death Zones/Area2D0" to="Death Zones" method="_on_Area2D0_body_entered"]
 [connection signal="body_entered" from="Death Zones/Area2D1" to="Death Zones" method="_on_Area2D1_body_entered"]

@@ -158,6 +158,7 @@ func _on_confirm_pressed():
 	
 	if is_correct:
 		$Area2D.visible = false
+		follow_pos()
 		$Area2D/CollisionShape2D.disabled = true
 		yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
 		exit_puzzle()
@@ -167,14 +168,23 @@ func _on_confirm_pressed():
 		$Platform/AnimatedSprite.play("default")
 		$Platform/KinematicBody2D/CollisionShape2D.disabled = false
 		
+		POPUP = $Preview
+		$Area2D.visible = true
+		$Area2D/CollisionShape2D.disabled = false
+		$Area2D/Sprite.visible = true
+		$Area2D/Sprite.scale = Vector2(0.5, 0.5)
+		$Area2D/Sprite/AnimationPlayer.play("floating")
+		
+		$Platform/AnimatedSprite.play("default")
+		$Platform/KinematicBody2D/CollisionShape2D.disabled = false
+		$Platform/AnimationPlayer.play("moving_platform")
+	
+		_puzzle_solved()
 		if not "LG_4" in Data.save_data["puzzles_solved"]:
 			Data.save_data["puzzles_solved"].append("LG_4")
 		
+		
 		Data.advance_mission()
-#		if f1.transition_time > 0.0:
-#			yield(get_tree().create_timer(f1.transition_time + f1.delay + 0.5), "timeout")
-			
-		_puzzle_solved()
 	else:
 		$Popup/InstructionLabel.text = "Incorrect logic, try again."
 		$Popup/InstructionLabel/AnimationPlayer.stop()
@@ -187,6 +197,8 @@ func _on_confirm_pressed():
 	get_tree().get_root().set_disable_input(false)
 
 func _puzzle_solved_init():
+	POPUP = $Preview
+	follow_pos()
 	$Area2D/Sprite.visible = true
 	$Area2D/Sprite.scale = Vector2(0.5, 0.5)
 	$Area2D/Sprite/AnimationPlayer.play("floating")
@@ -196,6 +208,7 @@ func _puzzle_solved_init():
 	$Platform/AnimationPlayer.play("moving_platform")
 
 func _puzzle_solved():
+	follow_pos()
 	$Area2D/Sprite.visible = true
 	$Area2D/Sprite.scale = Vector2(0.5, 0.5)
 	$Area2D/Sprite/AnimationPlayer.play("floating")
@@ -258,6 +271,10 @@ func _on_Timer_timeout():
 			if not Data.save_data["tutorials"]["digital_logic"]:
 				Data.save_data["tutorials"]["digital_logic"] = true
 
-func _process(delta):
+#func _process(delta):
+#	if "LG_4" in Data.save_data["puzzles_solved"]:
+#		$Area2D.position = $Platform/KinematicBody2D.position
+
+func follow_pos():
 	if "LG_4" in Data.save_data["puzzles_solved"]:
-		$Area2D.position = $Platform/KinematicBody2D.position
+		$Platform/KinematicBody2D/RemoteTransform2D.update_position = true

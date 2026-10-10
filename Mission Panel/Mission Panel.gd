@@ -40,16 +40,27 @@ func update_mission_panel(mission_id: int = -1): #mission starts at 0
 		9:
 			mission_panel_label.text = "Mission: \n- All torches now are strengthen! Report back to Alea for your next task."
 		10:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Open the gate to become a full-fledge Scribe."
 		11:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Report back to Alea.."
 		12:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Equip your Novice Scribe Badge."
 		13:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Report back to Alea."
 		14:
-			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing."
+			mission_panel_label.text = "Mission: \n- Talk to the girl outside the gate."
+		15:
+			mission_panel_label.text = "Mission: \n- Activate the bridge."
+		16:
+			mission_panel_label.text = "Mission: \n- Tell the girl you successfully activated the bridge."
+		17:
+			mission_panel_label.text = "Mission: \n- You have recieved payment, look for a shop to see available goods."
+		18:
+			mission_panel_label.text = "Mission: \n- Buy an item from Shopkeeper."
 		
+		
+		_:
+			mission_panel_label.text = "Mission: \n- Latest mission is reached, kindly wait for our next expansion.\n- Thank you for playing "
 
 func _notification(what):
 	match what:

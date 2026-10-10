@@ -15,6 +15,9 @@ func check_mission_importance():
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = true
 		interactable = true
+	elif current_mission > target_mission_numbers[0]:
+		if has_node("Area2D/Sprite"):
+			$Area2D/Sprite.visible = true
 	else:
 		if has_node("Area2D/Sprite"):
 			$Area2D/Sprite.visible = false

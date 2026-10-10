@@ -1,0 +1,1612 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://puzzles/testBGNinePatchRect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/x.png" type="Texture" id=2]
+[ext_resource path="res://Assets/sql_area.png" type="Texture" id=3]
+[ext_resource path="res://font/VT323/VT323-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ui/normalbtn1.tres" type="StyleBox" id=5]
+[ext_resource path="res://puzzles/sql/S2/s2.gd" type="Script" id=6]
+[ext_resource path="res://ui/pressedbtn1.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/BG1.png" type="Texture" id=8]
+[ext_resource path="res://puzzles/sql/SQLslot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/disabledbtn.tres" type="StyleBox" id=10]
+[ext_resource path="res://Assets/infoIcon2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/infoicon1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/panel-border-005.png" type="Texture" id=17]
+[ext_resource path="res://player/Hearts.tscn" type="PackedScene" id=18]
+[ext_resource path="res://InstructionLabel.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets2/SQL puzzle sprites/table.png" type="Texture" id=21]
+[ext_resource path="res://Assets2/SQL puzzle sprites/terminal.png" type="Texture" id=22]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -19 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "floating"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ), Vector2( 0, -32 ), Vector2( 0, -16 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=63]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=64]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="DynamicFont" id=2]
+extra_spacing_char = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=65]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=67]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=68]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=69]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=70]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=71]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=72]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=73]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=74]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=75]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=76]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=49]
+bg_color = Color( 0.156863, 0.14902, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=77]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=78]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 52, 32, 32 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+extra_spacing_char = 4
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=79]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=80]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=81]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=82]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=83]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=84]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=85]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=86]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=87]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=88]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=94]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=90]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=91]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=92]
+bg_color = Color( 0.270588, 0.32549, 0.439216, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=93]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=95]
+bg_color = Color( 0.192157, 0.364706, 0.729412, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0235294, 0.0392157, 0.14902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[node name="s2" type="Node2D"]
+z_index = 20
+script = ExtResource( 6 )
+target_mission_numbers = [ 12 ]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 2, 2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+position = Vector2( 0, -19 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Sprite"]
+autoplay = "floating"
+anims/RESET = SubResource( 9 )
+anims/floating = SubResource( 10 )
+
+[node name="Popup" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 10
+
+[node name="NinePatchRect" parent="Popup" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 336.0
+
+[node name="Terminal" type="NinePatchRect" parent="Popup/NinePatchRect"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 516.0
+margin_bottom = 208.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Hearts" parent="Popup/NinePatchRect/Terminal" instance=ExtResource( 18 )]
+margin_left = 416.0
+margin_top = -16.0
+margin_right = 464.0
+margin_bottom = -16.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup/NinePatchRect/Terminal"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 476.0
+margin_bottom = 152.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer"]
+margin_right = 442.0
+margin_bottom = 412.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_right = 442.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 16.0
+margin_right = 442.0
+margin_bottom = 66.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_bottom = 50.0
+
+[node name="S1" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 102.0
+margin_bottom = 50.0
+custom_styles/normal = SubResource( 63 )
+text = "UPDATE"
+sql_text = "UPDATE"
+locked = true
+
+[node name="S2" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 118.0
+margin_right = 228.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 110, 50 )
+custom_styles/normal = SubResource( 64 )
+text = "inventory"
+sql_text = "inventory"
+locked = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 442.0
+margin_bottom = 132.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 78.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 62, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 65 )
+text = "SET"
+sql_text = "SET"
+locked = true
+
+[node name="S4" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_right = 134.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 66 )
+text = ""
+sql_text = ""
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 148.0
+margin_right = 442.0
+margin_bottom = 198.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 78, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 67 )
+text = "WHERE"
+sql_text = "WHERE"
+locked = true
+
+[node name="S4" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 110.0
+margin_right = 380.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 270, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 68 )
+text = "item = 'Student Scribe Badge'"
+sql_text = "item = 'Student Scribe Badge'"
+locked = true
+
+[node name="S5" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 396.0
+margin_right = 442.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 46, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 69 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 442.0
+margin_bottom = 264.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_bottom = 50.0
+
+[node name="S1" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 102.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 70 )
+text = "UPDATE"
+sql_text = "UPDATE"
+locked = true
+
+[node name="S2" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 118.0
+margin_right = 228.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 110, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 71 )
+text = "inventory"
+sql_text = "inventory"
+locked = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 442.0
+margin_bottom = 330.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 78.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 62, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 72 )
+text = "SET"
+sql_text = "SET"
+locked = true
+
+[node name="S4" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_right = 134.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 73 )
+text = ""
+sql_text = ""
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 346.0
+margin_right = 442.0
+margin_bottom = 396.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 78, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 74 )
+text = "WHERE"
+sql_text = "WHERE"
+locked = true
+
+[node name="S4" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 110.0
+margin_right = 372.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 262, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 75 )
+text = "item = 'Novice Scribe Badge'"
+sql_text = "item = 'Novice Scribe Badge'"
+locked = true
+
+[node name="S5" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 388.0
+margin_right = 434.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 46, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 76 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="Control2" type="Control" parent="Popup/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 412.0
+margin_right = 442.0
+margin_bottom = 412.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Popup/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 240.0
+texture = ExtResource( 17 )
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="Popup/NinePatchRect/Terminal/NinePatchRect"]
+show_behind_parent = true
+margin_right = 360.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 49 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 600.0
+margin_bottom = 289.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="S1" parent="Popup/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_top = 31.0
+margin_right = 300.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 206, 50 )
+custom_styles/normal = SubResource( 77 )
+text = "status = 'unequipped'"
+sql_text = "status = 'unequipped'"
+
+[node name="S2" parent="Popup/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 316.0
+margin_top = 31.0
+margin_right = 506.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 190, 50 )
+custom_styles/normal = SubResource( 78 )
+text = "status = 'equipped'"
+sql_text = "status = 'equipped'"
+
+[node name="Table" type="NinePatchRect" parent="Popup/NinePatchRect"]
+visible = false
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 516.0
+margin_bottom = 274.0
+texture = ExtResource( 8 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="tableName" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_right = 496.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 4 )
+text = "inventory"
+align = 1
+valign = 1
+
+[node name="id1" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "id"
+align = 1
+valign = 1
+
+[node name="id2" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="id3" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 80.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="name1" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "item"
+align = 1
+valign = 1
+
+[node name="name2" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 64.0
+margin_right = 312.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "Student Scribe Badge"
+align = 1
+valign = 1
+
+[node name="name3" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 96.0
+margin_right = 312.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "Novice Scribe Badge"
+align = 1
+valign = 1
+
+[node name="description1" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 32.0
+margin_right = 460.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "status"
+align = 1
+valign = 1
+
+[node name="description2" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 64.0
+margin_right = 464.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "equipped"
+align = 1
+valign = 1
+
+[node name="description3" type="Label" parent="Popup/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 96.0
+margin_right = 464.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "unequipped"
+align = 1
+valign = 1
+
+[node name="Line2D1" type="Line2D" parent="Popup/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D7" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( 0, 32 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D8" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( 0, 64 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D9" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( 0, 96 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Popup/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D5" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( 64, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D6" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( 296, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Popup/NinePatchRect/Table"]
+points = PoolVector2Array( 464, 176, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D4" type="Line2D" parent="Popup/NinePatchRect/Table"]
+position = Vector2( -16, 0 )
+points = PoolVector2Array( 480, 176, 480, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="exit" type="TouchScreenButton" parent="Popup"]
+position = Vector2( 560, 48 )
+normal = SubResource( 62 )
+
+[node name="Confirm" type="Button" parent="Popup"]
+margin_left = 432.0
+margin_top = 266.0
+margin_right = 576.0
+margin_bottom = 311.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 5 )
+text = "Confirm"
+
+[node name="Table" type="TextureButton" parent="Popup"]
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 21 )
+
+[node name="Back" type="TextureButton" parent="Popup"]
+visible = false
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 22 )
+
+[node name="Info" type="TextureButton" parent="Popup"]
+visible = false
+margin_left = 560.0
+margin_top = 144.0
+margin_right = 592.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+
+[node name="InstructionLabel" parent="Popup" instance=ExtResource( 19 )]
+
+[node name="Preview" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 10
+
+[node name="NinePatchRect" parent="Preview" instance=ExtResource( 1 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 608.0
+margin_bottom = 336.0
+
+[node name="Terminal" type="NinePatchRect" parent="Preview/NinePatchRect"]
+margin_left = 32.0
+margin_top = 48.0
+margin_right = 516.0
+margin_bottom = 208.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Hearts" parent="Preview/NinePatchRect/Terminal" instance=ExtResource( 18 )]
+margin_left = 416.0
+margin_top = -16.0
+margin_right = 464.0
+margin_bottom = -16.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Preview/NinePatchRect/Terminal"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 476.0
+margin_bottom = 152.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer"]
+margin_right = 442.0
+margin_bottom = 412.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_right = 442.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 16.0
+margin_right = 442.0
+margin_bottom = 66.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_bottom = 50.0
+
+[node name="S1" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 102.0
+margin_bottom = 50.0
+custom_styles/normal = SubResource( 79 )
+text = "UPDATE"
+sql_text = "UPDATE"
+locked = true
+
+[node name="S2" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 9 )]
+margin_left = 118.0
+margin_right = 228.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 110, 50 )
+custom_styles/normal = SubResource( 80 )
+text = "inventory"
+sql_text = "inventory"
+locked = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 442.0
+margin_bottom = 132.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 78.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 62, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 81 )
+text = "SET"
+sql_text = "SET"
+locked = true
+
+[node name="S4" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer3" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 206, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 82 )
+text = "status = 'unequipped'"
+sql_text = "status = 'unequipped'"
+locked = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 148.0
+margin_right = 442.0
+margin_bottom = 198.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 78, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 83 )
+text = "WHERE"
+sql_text = "WHERE"
+locked = true
+
+[node name="S4" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 110.0
+margin_right = 380.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 270, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 84 )
+text = "item = 'Student Scribe Badge'"
+sql_text = "item = 'Student Scribe Badge'"
+locked = true
+
+[node name="S5" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer4" instance=ExtResource( 9 )]
+margin_left = 396.0
+margin_right = 442.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 46, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 85 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 442.0
+margin_bottom = 264.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_bottom = 50.0
+
+[node name="S1" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 102.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 86 )
+text = "UPDATE"
+sql_text = "UPDATE"
+locked = true
+
+[node name="S2" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 118.0
+margin_right = 228.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 110, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 87 )
+text = "inventory"
+sql_text = "inventory"
+locked = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 442.0
+margin_bottom = 330.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 78.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 62, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 88 )
+text = "SET"
+sql_text = "SET"
+locked = true
+
+[node name="S4" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer5" instance=ExtResource( 9 )]
+margin_left = 94.0
+margin_right = 284.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 190, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 94 )
+text = "status = 'equipped'"
+sql_text = "status = 'equipped'"
+locked = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 346.0
+margin_right = 442.0
+margin_bottom = 396.0
+custom_constants/separation = 16
+
+[node name="Control" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6"]
+margin_bottom = 50.0
+
+[node name="S3" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 16.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 78, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 90 )
+text = "WHERE"
+sql_text = "WHERE"
+locked = true
+
+[node name="S4" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 110.0
+margin_right = 372.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 262, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 91 )
+text = "item = 'Novice Scribe Badge'"
+sql_text = "item = 'Novice Scribe Badge'"
+locked = true
+
+[node name="S5" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer/HBoxContainer6" instance=ExtResource( 9 )]
+margin_left = 388.0
+margin_right = 434.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 46, 50 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 92 )
+text = ";"
+sql_text = ";"
+locked = true
+
+[node name="Control2" type="Control" parent="Preview/NinePatchRect/Terminal/ScrollContainer/VBoxContainer"]
+margin_top = 412.0
+margin_right = 442.0
+margin_bottom = 412.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Preview/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 360.0
+margin_bottom = 240.0
+texture = ExtResource( 17 )
+patch_margin_left = 14
+patch_margin_top = 14
+patch_margin_right = 14
+patch_margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="Preview/NinePatchRect/Terminal/NinePatchRect"]
+show_behind_parent = true
+margin_right = 360.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 49 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Preview/NinePatchRect/Terminal"]
+margin_top = 176.0
+margin_right = 600.0
+margin_bottom = 289.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="S1" parent="Preview/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 252.0
+margin_top = 31.0
+margin_right = 292.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 40, 50 )
+custom_styles/normal = SubResource( 93 )
+text = ""
+sql_text = ""
+locked = true
+
+[node name="S2" parent="Preview/NinePatchRect/Terminal/HBoxContainer2" instance=ExtResource( 9 )]
+margin_left = 308.0
+margin_top = 31.0
+margin_right = 348.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 40, 50 )
+custom_styles/normal = SubResource( 95 )
+text = ""
+sql_text = ""
+locked = true
+
+[node name="Table" type="NinePatchRect" parent="Preview/NinePatchRect"]
+visible = false
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 516.0
+margin_bottom = 274.0
+texture = ExtResource( 8 )
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="tableName" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_right = 496.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 4 )
+text = "inventory"
+align = 1
+valign = 1
+
+[node name="id1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "id"
+align = 1
+valign = 1
+
+[node name="id2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="id3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 80.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="name1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "item"
+align = 1
+valign = 1
+
+[node name="name2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 64.0
+margin_right = 312.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "Student Scribe Badge"
+align = 1
+valign = 1
+
+[node name="name3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 80.0
+margin_top = 96.0
+margin_right = 312.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "Novice Scribe Badge"
+align = 1
+valign = 1
+
+[node name="description1" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 32.0
+margin_right = 460.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "status"
+align = 1
+valign = 1
+
+[node name="description2" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 64.0
+margin_right = 464.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 4 )
+text = "unequipped"
+align = 1
+valign = 1
+
+[node name="description3" type="Label" parent="Preview/NinePatchRect/Table"]
+margin_left = 312.0
+margin_top = 96.0
+margin_right = 464.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 4 )
+text = "equipped"
+align = 1
+valign = 1
+
+[node name="Line2D1" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D7" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 32 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D8" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 64 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D9" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 0, 96 )
+points = PoolVector2Array( 16, 32, 464, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D2" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D5" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 64, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D6" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( 296, 0 )
+points = PoolVector2Array( 16, 32, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D3" type="Line2D" parent="Preview/NinePatchRect/Table"]
+points = PoolVector2Array( 464, 176, 16, 176 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="Line2D4" type="Line2D" parent="Preview/NinePatchRect/Table"]
+position = Vector2( -16, 0 )
+points = PoolVector2Array( 480, 176, 480, 32 )
+width = 4.0
+default_color = Color( 0.890196, 0.901961, 0.968627, 1 )
+
+[node name="exit" type="TouchScreenButton" parent="Preview"]
+position = Vector2( 560, 48 )
+normal = SubResource( 62 )
+
+[node name="Confirm" type="Button" parent="Preview"]
+margin_left = 432.0
+margin_top = 266.0
+margin_right = 576.0
+margin_bottom = 311.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 5 )
+disabled = true
+text = "Confirm"
+
+[node name="Table" type="TextureButton" parent="Preview"]
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 21 )
+
+[node name="Back" type="TextureButton" parent="Preview"]
+visible = false
+margin_left = 560.0
+margin_top = 136.0
+margin_right = 592.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 22 )
+
+[node name="Info" type="TextureButton" parent="Preview"]
+visible = false
+margin_left = 560.0
+margin_top = 144.0
+margin_right = 592.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+
+[node name="InstructionLabel" parent="Preview" instance=ExtResource( 19 )]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="released" from="Popup/exit" to="." method="_on_exit_released"]
+[connection signal="pressed" from="Popup/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Popup/Table" to="." method="_on_Table_pressed"]
+[connection signal="pressed" from="Popup/Back" to="." method="_on_Back_pressed"]
+[connection signal="released" from="Preview/exit" to="." method="_on_exit_released"]
+[connection signal="pressed" from="Preview/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Preview/Table" to="." method="_on_pTable_pressed"]
+[connection signal="pressed" from="Preview/Back" to="." method="_on_pBack_pressed"]
